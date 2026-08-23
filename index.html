@@ -122,9 +122,10 @@ h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--
   animation:bob 2.4s ease-in-out infinite; z-index:2; transition:opacity .3s}
 .colwrap.scrolls.atend .cue{opacity:0}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,4px)}}
-.leaf{position:relative; display:grid; grid-template-columns:minmax(0,calc(66ch + 28px)) clamp(170px,16vw,215px);
-  gap:clamp(24px,3.6vw,54px); min-height:0; width:100%; max-width:1060px; margin:0 auto;
-  justify-content:center; padding:clamp(10px,2vh,26px) clamp(8px,1.6vw,22px)}
+.leaf{position:relative; display:flex; justify-content:center; min-height:0; width:100%; max-width:1060px; margin:0 auto;
+  padding:clamp(10px,2vh,26px) clamp(22px,2.4vw,34px)}
+.type{position:relative; display:grid; grid-template-columns:minmax(0,calc(66ch + 28px)) clamp(170px,16vw,215px);
+  gap:clamp(24px,3.6vw,54px); min-height:0; max-width:100%}
 .leaf.turning{animation:leafin .55s cubic-bezier(.2,.7,.3,1)}
 @keyframes leafin{from{opacity:0; transform:translateX(var(--dir,18px))}}
 .col{min-height:0; overflow:auto; padding:clamp(6px,1.4vh,16px) clamp(8px,1vw,14px) 30px clamp(8px,1vw,14px); scrollbar-width:thin;
@@ -155,12 +156,12 @@ h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--
 .opener .sub{font-style:italic; color:var(--ink3); font-size:.94rem; margin:.7em auto 0; max-width:46ch}
 .opener .orn-rule{margin-top:clamp(14px,2.4vh,24px)}
 .band{display:block; width:min(100%,400px); height:auto; margin:clamp(12px,2vh,20px) auto 0; opacity:.9}
-.corners{position:absolute; inset:6px clamp(10px,2.2vw,30px); pointer-events:none}
-.corners span{position:absolute; width:22px; height:22px; border:1px solid var(--gold); opacity:.55}
-.corners .tl{top:0;left:0;border-right:0;border-bottom:0}
-.corners .tr{top:0;right:0;border-left:0;border-bottom:0}
-.corners .bl{bottom:0;left:0;border-right:0;border-top:0}
-.corners .br{bottom:0;right:0;border-left:0;border-top:0}
+.corners{position:absolute; inset:-14px -16px; pointer-events:none; z-index:1}
+.corners span{position:absolute; width:20px; height:20px; border:1px solid var(--gold); opacity:.5; margin:0; padding:0}
+.corners .ktl{top:0;left:0;border-right:0;border-bottom:0}
+.corners .ktr{top:0;right:0;border-left:0;border-bottom:0}
+.corners .kbl{bottom:0;left:0;border-right:0;border-top:0}
+.corners .kbr{bottom:0;right:0;border-left:0;border-top:0}
 
 .col p{margin:0 0 1.05em; text-align:justify; -webkit-hyphens:auto; hyphens:auto; text-wrap:pretty}
 .col p.first::first-letter{
@@ -218,7 +219,7 @@ h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--
 .nextch:hover{background:rgba(168,128,44,.12)}
 
 @media (max-width:1040px){
-  .leaf{grid-template-columns:minmax(0,1fr)}
+  .type{grid-template-columns:minmax(0,1fr); width:100%}
   .marg{position:absolute; left:0; right:0; bottom:0; max-height:56%; z-index:5;
     background:var(--paper2); border-left:0; border-top:1px solid var(--rule2);
     box-shadow:0 -14px 34px rgba(34,30,24,.10); padding:16px clamp(14px,4vw,26px) 20px; display:none}
@@ -239,9 +240,9 @@ h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--
   .pips .pip{display:none}
   .pips .plabel{display:inline}
   .pips{gap:14px; min-height:22px; padding:10px 14px 14px}
-  .corners{inset:4px 8px}
-  .corners span{width:14px; height:14px}
-  .leaf{padding:8px 6px}
+  .corners{inset:-7px -8px}
+  .corners span{width:13px; height:13px}
+  .leaf{padding:9px 11px}
   .marg{max-height:60%}
 }
 @media (max-width:860px){
@@ -325,7 +326,6 @@ h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M15 4 L7 12 L15 20"/><path d="M12 8.6 L8.4 12 L12 15.4" opacity=".5"/></svg>
     </button>
     <div class="leafwrap">
-      <div class="corners" aria-hidden="true"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
       <article class="leaf" id="leaf"></article>
     </div>
     <button class="turn next" id="btnNext" aria-label="Next leaf">
@@ -395,7 +395,7 @@ function blocksHTML(c, idxs, withDrop) {
 /* — measure-driven pagination: a leaf always fits the viewport — */
 const probe = document.createElement('article');
 probe.className = 'leaf probe'; probe.setAttribute('aria-hidden', 'true');
-probe.innerHTML = '<div class="col"></div><aside class="marg"></aside>';
+probe.innerHTML = '<div class="type"><div class="col"></div><aside class="marg"></aside></div>';
 document.querySelector('.leafwrap').appendChild(probe);
 const pcol = probe.querySelector('.col');
 let PAGES = [];
@@ -442,10 +442,13 @@ function render(dir) {
 
   const leaf = $('#leaf');
   leaf.style.setProperty('--dir', (dir === -1 ? '-18px' : '18px'));
-  leaf.innerHTML = `<div class="colwrap"><div class="col">${inner}</div></div>
-    <aside class="marg${notes ? '' : ' empty'}"><button class="close" aria-label="Close notes">×</button>
-      <div class="mfolio"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#starsm"/></svg>${c.num || '✦'} · ${rom(li + 1).toLowerCase()}</div>
-      <div class="mhead">Notes</div>${notes}</aside>`;
+  leaf.innerHTML = `<div class="type">
+      <div class="colwrap"><div class="col">${inner}</div></div>
+      <aside class="marg${notes ? '' : ' empty'}"><button class="close" aria-label="Close notes">×</button>
+        <div class="mfolio"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#starsm"/></svg>${c.num || '✦'} · ${rom(li + 1).toLowerCase()}</div>
+        <div class="mhead">Notes</div>${notes}</aside>
+      <div class="corners" aria-hidden="true"><span class="ktl"></span><span class="ktr"></span><span class="kbl"></span><span class="kbr"></span></div>
+    </div>`;
   leaf.classList.remove('turning'); void leaf.offsetWidth; leaf.classList.add('turning');
   const col = leaf.querySelector('.col');
   col.scrollTop = 0;
@@ -520,13 +523,13 @@ document.addEventListener('click', e => {
   const f = e.target.closest('.fnref'); if (!f) return;
   document.querySelectorAll('.note.lit,.fnref.lit').forEach(x => x.classList.remove('lit'));
   f.classList.add('lit');
-  const marg = document.querySelector('.marg');
+  const marg = document.querySelector('#leaf .marg');
   const n = document.querySelector(`.note[data-n="${f.dataset.n}"]`);
   if (marg) marg.classList.add('open');
   if (n) { n.classList.add('lit'); n.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
 });
 document.addEventListener('click', e => {
-  if (e.target.closest('.marg .close')) document.querySelector('.marg').classList.remove('open');
+  if (e.target.closest('.marg .close')) document.querySelector('#leaf .marg').classList.remove('open');
 });
 let rt;
 addEventListener('resize', () => {
