@@ -65,6 +65,9 @@ h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--
 .orn-rule .ln{flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--rule2),transparent)}
 .byline{font-family:var(--disp); font-size:1.06rem; letter-spacing:.3em; text-transform:uppercase; color:var(--ink2); text-indent:.3em}
 .byline small{display:block; font-size:.66rem; letter-spacing:.28em; color:var(--ink3); margin-top:1em; text-indent:.28em}
+.scrollhint{display:none}
+@media (max-width:860px){.scrollhint{display:block; color:var(--gold); font-size:.9rem; margin-top:22px; animation:bob2 2.4s ease-in-out infinite}}
+@keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 .colophon .tp{display:none}
 @media (hover:none){.colophon .kb{display:none}.colophon .tp{display:inline}}
 .colophon{position:absolute; bottom:clamp(14px,3vh,28px); left:0; right:0; font-family:var(--disp);
@@ -208,6 +211,7 @@ h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--
 .pip.on{background:var(--gold); transform:rotate(45deg) scale(1.28)}
 .pips.dense{gap:5px}
 .pips.dense .pip{width:6px;height:6px}
+.plabel{display:none; font-family:var(--disp); font-size:.72rem; letter-spacing:.18em; color:var(--ink3)}
 .pips .lbl{font-family:var(--disp); font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:var(--ink3); margin:0 14px}
 .nextch{font-family:var(--disp); font-size:.68rem; padding:7px 16px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold);
   border:1px solid var(--rule2); padding:7px 16px; margin-left:6px; transition:background .35s}
@@ -226,13 +230,29 @@ h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--
   .col p,.col .li p{text-align:left; hyphens:none}
   .tr{font-size:1em}
 }
+@media (max-width:700px){
+  body{font-size:17px}
+  .rbar{grid-template-columns:auto minmax(0,1fr); gap:12px; padding:10px 14px}
+  .rbar .rt{text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:.62rem; letter-spacing:.14em}
+  .rbar .folio{display:none}
+  .rbar .back span{display:none}
+  .pips .pip{display:none}
+  .pips .plabel{display:inline}
+  .pips{gap:14px; min-height:22px; padding:10px 14px 14px}
+  .corners{inset:4px 8px}
+  .corners span{width:14px; height:14px}
+  .leaf{padding:8px 6px}
+  .marg{max-height:60%}
+}
 @media (max-width:860px){
   body{font-size:18px}
-  #index{grid-template-columns:1fr; overflow:auto}
-  .frontis{border-right:0; border-bottom:1px solid var(--rule); min-height:74vh}
+  #index{display:block; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; overscroll-behavior:contain}
+  .frontis{border-right:0; border-bottom:1px solid var(--rule); min-height:min(78vh,660px)}
   .frontis::after{display:none}
   .colophon{position:static; margin-top:26px}
-  .toc{padding:26px 20px 44px}
+  .toc{display:block; padding:26px 20px 56px}
+  .toc ol{overflow:visible}
+  .toc-head{margin-bottom:18px}
   .entry{grid-template-columns:44px 1fr; gap:14px}
   .entry .folio{display:none}
   .stage{grid-template-columns:34px minmax(0,1fr) 34px}
@@ -282,6 +302,7 @@ h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--
     <h1 class="booktitle">The Call<span class="to">to</span>Truth</h1>
     <div class="orn-rule"><span class="ln"></span><svg width="16" height="16" viewBox="0 0 100 100" aria-hidden="true"><use href="#starsm"/></svg><span class="ln"></span></div>
     <div class="byline">Javed Ahmed Ghamidi<small>An interpretation of Islam · after Mīzān</small></div>
+    <div class="scrollhint" aria-hidden="true">▾</div>
     <div class="colophon"><span class="kb">Read with ← → · Esc returns here</span><span class="tp">Swipe to turn the leaves</span></div>
   </section>
   <nav class="toc" aria-label="Chapters">
@@ -294,7 +315,7 @@ h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--
   <div class="progress" id="prog" style="width:0"></div>
   <header class="rbar">
     <button class="back" id="btnBack" aria-label="Return to contents">
-      <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#starsm"/></svg> Contents
+      <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#starsm"/></svg> <span>Contents</span>
     </button>
     <div class="rt" id="rTitle"></div>
     <div class="folio" id="rFolio"></div>
@@ -451,6 +472,7 @@ function render(dir) {
   const last = li === pg.length - 1 && ci < DATA.chapters.length - 1;
   pips.classList.toggle('dense', pg.length > 18);
   pips.innerHTML = pg.map((_, i) => `<button class="pip ${i === li ? 'on' : ''}" data-l="${i}" aria-label="Leaf ${i + 1}"></button>`).join('')
+    + `<span class="plabel">${rom(li + 1).toLowerCase()} / ${rom(pg.length).toLowerCase()}</span>`
     + (last ? `<button class="nextch" data-next="1">${DATA.chapters[ci + 1].title} →</button>` : '');
 
   const total = PAGES.reduce((a, x) => a + x.length, 0);
