@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دعوت حق — جاوید احمد غامدی</title>
+<meta name="theme-color" content="#F4EEE0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=EB+Garamond:wght@400;500&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3EDDF; --paper2:#FBF7EC; --paper3:#EFE7D4;
+  --ink:#221E18; --ink2:#544B3B; --ink3:#7A6E59;
+  --gold:#A8802C; --gold2:#D9C08A; --goldw:#EDE0C0;
+  --lapis:#1E3B60; --verm:#9A3324;
+  --rule:rgba(34,30,24,.16); --rule2:rgba(168,128,44,.42);
+  --disp:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --body:"EB Garamond",Garamond,"Times New Roman",serif;
+  --ar:"Amiri","Scheherazade New","Traditional Arabic",serif;
+  --lead:1.72;
+  --togglefont:"EB Garamond",Garamond,serif;
+  --togglenudge:-0.8px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--body); font-size:19px; line-height:var(--lead);
+  -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(255,252,244,.85), transparent 60%),
+    radial-gradient(90% 70% at 10% 110%, rgba(168,128,44,.10), transparent 60%),
+    radial-gradient(90% 70% at 95% 100%, rgba(30,59,96,.07), transparent 60%);
+}
+.bgpat{position:fixed; inset:0; width:100%; height:100%; z-index:0; opacity:.085; pointer-events:none}
+.view{position:relative; z-index:1; height:100%; }
+[hidden]{display:none!important}
+button{font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer}
+::selection{background:var(--goldw)}
+
+/* ————————————————— INDEX ————————————————— */
+#index{display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); align-items:stretch;}
+#index.enter .frontis>*,#index.enter .toc>*{animation:rise .9s cubic-bezier(.2,.7,.3,1) backwards}
+@keyframes rise{from{opacity:0; transform:translateY(14px)}}
+.frontis{
+  position:relative; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  padding:clamp(24px,4vw,60px); text-align:center; border-inline-end:1px solid var(--rule);
+}
+.frontis::after{content:""; position:absolute; top:0; inset-inline-end:-1px; bottom:0; width:3px;
+  background:linear-gradient(180deg,transparent,var(--rule2) 22%,var(--rule2) 78%,transparent)}
+.medallion{width:clamp(150px,17vw,224px); height:clamp(150px,17vw,224px); margin-bottom:clamp(18px,3vh,34px)}
+.medallion .spin{transform-origin:50% 50%; animation:turn 110s linear infinite}
+.medallion .rev{animation-duration:150s; animation-direction:reverse}
+@keyframes turn{to{transform:rotate(360deg)}}
+.kicker{font-family:var(--disp); font-size:.74rem; letter-spacing:.42em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.1em; text-indent:.42em}
+h1.booktitle{
+  font-family:var(--disp); font-weight:300; font-size:clamp(3rem,6.4vw,5.6rem); line-height:.98;
+  margin:0; letter-spacing:.01em;
+}
+h1.booktitle .to{display:block; font-style:italic; font-size:.42em; color:var(--gold); letter-spacing:.16em; margin:.18em 0}
+.orn-rule{display:flex; align-items:center; gap:14px; margin:clamp(20px,3.4vh,34px) auto; width:min(320px,80%)}
+.orn-rule .ln{flex:1; height:1px; background:linear-gradient(90deg,transparent,var(--rule2),transparent)}
+.byline{font-family:var(--disp); font-size:1.06rem; letter-spacing:.3em; text-transform:uppercase; color:var(--ink2); text-indent:.3em}
+.byline small{display:block; font-size:.66rem; letter-spacing:.28em; color:var(--ink3); margin-top:1em; text-indent:.28em}
+.scrollhint{display:none}
+@media (max-width:860px){.scrollhint{display:block; color:var(--gold); font-size:.9rem; margin-top:22px; animation:bob2 2.4s ease-in-out infinite}}
+@keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.lang{display:inline-flex; align-items:center; justify-content:center; height:32px; padding:0 14px;
+  font-family:var(--togglefont,var(--disp)); font-size:.62rem; line-height:1; letter-spacing:.2em; text-transform:uppercase;
+  text-indent:.2em;
+  color:var(--ink3); text-decoration:none; border:1px solid var(--rule2); border-radius:999px;
+  background:var(--paper2); transition:color .3s, background .3s, border-color .3s}
+.lang span{display:block; transform:translateY(var(--togglenudge,0))}
+.lang:hover{color:var(--gold); background:var(--goldw); border-color:var(--gold)}
+.frontis .lang{margin-top:clamp(18px,3vh,30px)}
+.barleft{display:flex; align-items:center; gap:14px}
+.colophon .tp{display:none}
+@media (hover:none){.colophon .kb{display:none}.colophon .tp{display:inline}}
+.colophon{position:absolute; bottom:clamp(14px,3vh,28px); left:0; right:0; font-family:var(--disp);
+  font-size:.66rem; letter-spacing:.24em; text-transform:uppercase; color:var(--ink3)}
+
+.toc{display:flex; flex-direction:column; justify-content:center; padding:clamp(20px,3.4vw,56px) clamp(20px,4vw,72px); min-height:0}
+.toc-head{display:flex; align-items:baseline; gap:16px; margin-bottom:clamp(12px,2.4vh,26px)}
+.toc-head span{font-family:var(--disp); font-size:.72rem; letter-spacing:.4em; text-transform:uppercase; color:var(--gold)}
+.toc-head .ln{flex:1; height:1px; background:var(--rule)}
+.toc ol{list-style:none; margin:0; padding:0; overflow:auto; scrollbar-width:thin}
+.entry{display:grid; grid-template-columns:58px 1fr auto; align-items:center; gap:clamp(12px,1.6vw,22px);
+  width:100%; text-align:start; padding:clamp(9px,1.5vh,15px) 10px; border-bottom:1px solid var(--rule);
+  transition:background .35s, padding .35s}
+.entry:first-child{border-top:1px solid var(--rule)}
+.entry:hover,.entry:focus-visible{background:linear-gradient(to inline-end,rgba(168,128,44,.09),rgba(168,128,44,0)); outline:none; padding-inline-start:18px}
+.entry .med{width:44px;height:44px; transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.entry:hover .med,.entry:focus-visible .med{transform:rotate(22.5deg)}
+.entry .med .fill{fill:transparent; transition:fill .45s}
+.entry:hover .med .fill,.entry:focus-visible .med .fill{fill:rgba(168,128,44,.13)}
+.entry .num{font-family:var(--disp); font-size:30px; font-weight:500; letter-spacing:.04em; fill:var(--gold)}
+.entry h2{font-family:var(--disp); font-weight:500; font-size:clamp(1.35rem,2.1vw,1.86rem); margin:0; line-height:1.16; letter-spacing:.005em}
+.entry p{margin:.24em 0 0; font-size:.86rem; color:var(--ink3); font-style:italic; line-height:1.42}
+.entry .folio{font-family:var(--disp); font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--ink3); white-space:nowrap}
+.entry:hover .folio{color:var(--gold)}
+
+/* ————————————————— READER ————————————————— */
+#reader{display:grid; grid-template-rows:auto minmax(0,1fr) auto}
+.progress{position:fixed; top:0; inset-inline-start:0; height:2px; background:linear-gradient(to inline-end,var(--gold2),var(--gold)); z-index:9; transition:width .5s cubic-bezier(.2,.7,.3,1)}
+.rbar{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px;
+  padding:clamp(12px,2vh,20px) clamp(16px,3vw,40px); border-bottom:1px solid var(--rule)}
+.rbar .back{display:inline-flex; align-items:center; gap:11px; font-family:var(--disp); font-size:.68rem;
+  letter-spacing:.26em; text-transform:uppercase; color:var(--ink2); transition:color .3s}
+.rbar .back:hover{color:var(--gold)}
+.rbar .back .chip{display:grid; place-items:center; width:32px; height:32px; flex:none; border-radius:50%;
+  background:var(--paper2); border:1px solid var(--rule2); box-shadow:0 1px 0 rgba(34,30,24,.04);
+  transition:background .3s, border-color .3s}
+.rbar .back:hover .chip{background:var(--goldw); border-color:var(--gold)}
+.rbar .back svg{width:15px;height:15px}
+.rbar .back svg .fill{fill:rgba(168,128,44,.3)}
+.rbar .rt{font-family:var(--disp); font-size:.82rem; letter-spacing:.3em; text-transform:uppercase; text-align:center; text-indent:.3em}
+.rbar .rt b{font-weight:500; color:var(--ink)}
+.rbar .rt i{font-style:normal; color:var(--gold)}
+.rbar .folio{justify-self:end; font-family:var(--disp); font-size:.7rem; letter-spacing:.22em; color:var(--ink3)}
+
+.stage{position:relative; min-height:0; display:grid; grid-template-columns:clamp(44px,6vw,86px) minmax(0,1fr) clamp(44px,6vw,86px)}
+.turn{display:grid; place-items:center; color:var(--ink3); transition:color .3s, background .4s}
+.turn:hover:not(:disabled){color:var(--gold); background:linear-gradient(to inline-end,rgba(168,128,44,.08),transparent)}
+.turn.next:hover:not(:disabled){background:linear-gradient(to inline-start,rgba(168,128,44,.08),transparent)}
+[dir="rtl"] .turn svg{transform:scaleX(-1)}
+.turn:disabled{opacity:.16; cursor:default}
+.turn svg{width:26px;height:26px}
+.leafwrap{position:relative; min-height:0; display:grid; place-items:stretch}
+.leaf.probe{position:absolute; inset:0; visibility:hidden; pointer-events:none; z-index:-1}
+.colwrap{position:relative; min-height:0; display:grid}
+.colwrap.scrolls .cue{position:absolute; left:50%; bottom:2px; transform:translateX(-50%); color:var(--gold);
+  display:flex; align-items:center; justify-content:center; width:26px; height:18px; pointer-events:none;
+  background:var(--paper2); border:1px solid var(--rule2); border-radius:9px;
+  animation:bob 2.4s ease-in-out infinite; z-index:2; transition:opacity .3s}
+.colwrap.scrolls .cue svg{display:block; width:11px; height:7px}
+.colwrap.scrolls.atend .cue{opacity:0}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,4px)}}
+.leaf{position:relative; display:flex; justify-content:center; min-height:0; width:100%; max-width:1060px; margin:0 auto;
+  padding:clamp(10px,2vh,26px) clamp(22px,2.4vw,34px)}
+.type{position:relative; display:grid; grid-template-columns:minmax(0,calc(66ch + 28px)) clamp(170px,16vw,215px);
+  gap:clamp(24px,3.6vw,54px); min-height:0; max-width:100%}
+.leaf.turning{animation:leafin .55s cubic-bezier(.2,.7,.3,1)}
+@keyframes leafin{from{opacity:0; transform:translateX(var(--dir,18px))}}
+.col{min-height:0; overflow:auto; padding:clamp(6px,1.4vh,16px) clamp(8px,1vw,14px) 30px clamp(8px,1vw,14px); scrollbar-width:thin;
+  display:grid; align-content:safe center; grid-auto-rows:max-content;
+  scrollbar-color:var(--rule2) transparent}
+.col::-webkit-scrollbar{width:5px}
+.col::-webkit-scrollbar-thumb{background:var(--rule2); border-radius:9px}
+.marg{position:relative; min-height:0; overflow:auto; border-inline-start:1px solid var(--rule);
+  padding:8px 0; padding-inline-start:clamp(14px,1.6vw,24px); scrollbar-width:none}
+.marg::-webkit-scrollbar{display:none}
+.marg .mfolio{display:flex; align-items:center; gap:10px; font-family:var(--disp); font-size:.68rem;
+  letter-spacing:.22em; color:var(--ink3); margin-bottom:1.7em}
+.marg .mfolio svg{width:13px; height:13px; opacity:.8}
+.marg .mfolio span:nth-of-type(2){opacity:.45}
+.leaf .marg.empty{border-inline-start-color:var(--rule)}
+.leaf .marg.empty .mhead,.leaf .marg.empty .note{display:none}
+.marg .close{display:none}
+.marg .mhead{font-family:var(--disp); font-size:.6rem; letter-spacing:.32em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2em}
+.note{display:grid; grid-template-columns:22px 1fr; gap:6px; font-size:.79rem; line-height:1.5; color:var(--ink3);
+  margin-bottom:1.15em; padding:4px 6px 4px 0; border-radius:2px; transition:background .4s,color .4s}
+.note b{font-family:var(--disp); font-weight:500; color:var(--gold); font-size:.82rem}
+.note.lit{background:rgba(168,128,44,.14); color:var(--ink2)}
+.note em{font-style:italic}
+
+.opener{text-align:center; margin:clamp(6px,2vh,26px) 0 clamp(22px,4vh,44px)}
+.opener .med{width:clamp(72px,8vw,104px); height:clamp(72px,8vw,104px); margin:0 auto clamp(10px,1.6vh,18px)}
+.opener .num{font-family:var(--disp); font-size:26px; font-weight:500; letter-spacing:.04em; fill:var(--gold)}
+.opener h2{font-family:var(--disp); font-weight:400; font-size:clamp(2.1rem,4.2vw,3.3rem); line-height:1.06; margin:0; letter-spacing:.005em}
+.col .opener p,.opener .sub{text-align:center}
+.opener .sub{font-style:italic; color:var(--ink3); font-size:.94rem; margin:.7em auto 0; max-width:46ch}
+.opener .orn-rule{margin-top:clamp(14px,2.4vh,24px)}
+.band{display:block; width:min(100%,400px); height:auto; margin:clamp(12px,2vh,20px) auto 0; opacity:.9}
+.corners{position:absolute; inset:-14px -16px; pointer-events:none; z-index:1}
+.corners span{position:absolute; width:20px; height:20px; border:1px solid var(--gold); opacity:.5; margin:0; padding:0}
+.corners .ktl{top:0;left:0;border-right:0;border-bottom:0}
+.corners .ktr{top:0;right:0;border-left:0;border-bottom:0}
+.corners .kbl{bottom:0;left:0;border-right:0;border-top:0}
+.corners .kbr{bottom:0;right:0;border-left:0;border-top:0}
+
+.col p{margin:0 0 1.05em; text-align:justify; -webkit-hyphens:auto; hyphens:auto; text-wrap:pretty}
+.col p.first::first-letter{
+  float:inline-start; font-family:var(--disp); font-weight:500; font-size:3.9em; line-height:.82;
+  padding:.06em .12em 0 0; margin:.04em .06em 0 0; color:var(--verm);
+}
+.col h3{font-family:var(--disp); font-weight:500; font-size:1.42rem; letter-spacing:.01em; margin:1.4em 0 .7em; color:var(--ink);
+  display:flex; align-items:center; gap:14px}
+.col h3::before{content:""; width:9px;height:9px; flex:none; transform:rotate(45deg); border:1px solid var(--gold); background:rgba(168,128,44,.18)}
+.li{display:grid; grid-template-columns:2.5em 1fr; gap:.2em; margin:0 0 1.05em}
+.li .mk{font-family:var(--disp); color:var(--gold); font-size:.98em; letter-spacing:.04em; padding-top:.08em}
+.li p{margin:0}
+.sig{text-align:end; margin-top:2.2em}
+.sig .nm{font-family:var(--disp); font-size:1.5rem; font-style:italic}
+.sig .sb{font-size:.76rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink3); margin-top:.5em}
+
+.quote{position:relative; margin:1.7em 0 1.8em; padding:1.2em clamp(16px,2vw,26px) 1.1em;
+  border-top:1px solid var(--rule2); border-bottom:1px solid var(--rule2);
+  background:linear-gradient(180deg,rgba(251,247,236,.55),rgba(251,247,236,0));
+  font-size:.955em; color:var(--ink2)}
+.quote::before{content:""; position:absolute; top:-5px; inset-inline-start:clamp(16px,2vw,26px); width:9px; height:9px;
+  transform:rotate(45deg); background:var(--paper); border:1px solid var(--gold)}
+.quote p{margin:0}
+.qref{display:block; text-align:end; margin-top:.75em; font-family:var(--disp); font-size:.7rem;
+  letter-spacing:.2em; color:var(--lapis)}
+.qref span{border-bottom:1px solid var(--rule2); padding:0 2px 3px}
+.verse{margin:1.7em 0 1.8em; position:relative}
+.vfrm{position:relative; background:linear-gradient(180deg,var(--paper2),rgba(251,247,236,.35));
+  border:1px solid var(--rule2); padding:clamp(18px,2.6vw,30px) clamp(18px,2.8vw,34px)}
+.vfrm::before{content:""; position:absolute; inset:4px; border:1px solid rgba(168,128,44,.22); pointer-events:none}
+.vfrm .cnr{position:absolute; width:9px; height:9px; border:1px solid var(--gold); background:var(--paper); transform:rotate(45deg)}
+.vfrm .cnr.a{left:-5px;top:-5px}.vfrm .cnr.b{right:-5px;top:-5px}.vfrm .cnr.c{left:-5px;bottom:-5px}.vfrm .cnr.d{right:-5px;bottom:-5px}
+.col p.ar,.ar{font-family:var(--ar); direction:rtl; text-align:center; font-size:clamp(1.22rem,1.95vw,1.5rem); line-height:2.2;
+  margin:0 0 .4em; color:var(--ink); hyphens:none}
+.ar:last-child{margin-bottom:0}
+.ar.fa{font-size:clamp(1.06rem,1.6vw,1.24rem); line-height:2.05}
+.ar-in{font-family:var(--ar); direction:rtl; unicode-bidi:isolate; font-size:1.06em; white-space:nowrap; word-spacing:normal}
+.col p:has(.ar-in),.col .li p:has(.ar-in),.tr:has(.ar-in){text-align:start; hyphens:none}
+.tr{margin:1.05em 0 0; padding-inline-start:clamp(14px,1.8vw,22px); border-inline-start:2px solid var(--gold2);
+  font-size:1.005em; color:var(--ink2); font-style:italic}
+.tr em{font-style:normal}
+.vref{display:block; text-align:end; margin:.6em 0 0;
+  font-family:var(--disp); font-size:.7rem; letter-spacing:.2em; color:var(--lapis); white-space:nowrap}
+.vref span{border-bottom:1px solid var(--rule2); padding:0 2px 3px}
+.fnref{font-family:var(--disp); color:var(--gold); font-size:.62em; font-weight:600; vertical-align:super; line-height:0;
+  padding:0 .12em; cursor:pointer; transition:color .25s}
+.fnref:hover,.fnref.lit{color:var(--verm)}
+
+.pips{display:flex; align-items:center; justify-content:center; gap:9px; min-height:34px; padding:clamp(10px,1.8vh,18px) 20px clamp(14px,2.2vh,22px);
+  border-top:1px solid var(--rule); flex-wrap:wrap}
+.pip{width:8px;height:8px; transform:rotate(45deg); border:1px solid var(--gold); background:transparent;
+  transition:background .35s, transform .35s}
+.pip:hover{background:var(--gold2)}
+.pip.on{background:var(--gold); transform:rotate(45deg) scale(1.28)}
+.pips.dense{gap:5px}
+.pips.dense .pip{width:6px;height:6px}
+.plabel{display:none; font-family:var(--disp); font-size:.72rem; letter-spacing:.18em; color:var(--ink3)}
+.pips .lbl{font-family:var(--disp); font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:var(--ink3); margin:0 14px}
+.nextch{font-family:var(--disp); font-size:.68rem; padding:7px 16px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold);
+  border:1px solid var(--rule2); padding:7px 16px; margin-inline-start:6px; transition:background .35s}
+.nextch:hover{background:rgba(168,128,44,.12)}
+
+@media (max-width:1040px){
+  .type{grid-template-columns:minmax(0,1fr); width:100%}
+  .marg{position:absolute; left:0; right:0; bottom:0; max-height:56%; z-index:5;
+    background:var(--paper2); border-inline-start:0; border-top:1px solid var(--rule2);
+    box-shadow:0 -14px 34px rgba(34,30,24,.10); padding:16px clamp(14px,4vw,26px) 20px; display:none}
+  .marg.open{display:block}
+  .marg.empty{display:none}
+  .marg .close{display:block; position:absolute; top:8px; inset-inline-end:12px; font-family:var(--disp); font-size:1.2rem; color:var(--ink3); line-height:1}
+}
+@media (max-width:700px){
+  .col p,.col .li p{text-align:start; hyphens:none}
+  .tr{font-size:1em}
+}
+@media (max-width:700px){
+  body{font-size:17px}
+  .rbar{grid-template-columns:auto minmax(0,1fr); gap:12px; padding:8px 14px}
+  .rbar .rt{text-align:end; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:.62rem; letter-spacing:.14em}
+  .rbar .folio{display:none}
+  .rbar .back span:not(.chip){display:none}
+  .rbar .back .chip{width:34px; height:34px}
+  .rbar .lang{height:34px}
+  .rbar .back svg{width:17px; height:17px}
+  .pips .pip{display:none}
+  .pips .plabel{display:inline}
+  .pips{gap:14px; min-height:22px; padding:9px 14px 11px}
+  .corners{inset:-9px -10px}
+  .corners span{width:13px; height:13px}
+  .leaf{padding:17px 17px}
+  .marg{max-height:60%}
+}
+@media (max-width:860px){
+  body{font-size:18px}
+  #index{display:block; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; overscroll-behavior:contain}
+  .frontis{border-inline-end:0; border-bottom:1px solid var(--rule); min-height:min(78vh,660px)}
+  .frontis::after{display:none}
+  .colophon{position:static; margin-top:26px}
+  .toc{display:block; padding:26px 20px 56px}
+  .toc ol{overflow:visible}
+  .toc-head{margin-bottom:18px}
+  .entry{grid-template-columns:44px 1fr; gap:14px}
+  .entry .folio{display:none}
+  .stage{grid-template-columns:34px minmax(0,1fr) 34px}
+  .rbar .rt{font-size:.66rem; letter-spacing:.18em}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+
+/* ── language overrides ── */
+/* Urdu edition: same design, set in Nastaliq and running right to left.
+   Only what the script demands is changed — type, tracking, alignment. */
+
+:root{
+  --disp:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Noto Naskh Arabic",serif;
+  --body:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Noto Naskh Arabic",serif;
+  --lead:2.25;
+}
+body{font-size:19px}
+
+/* Arabic script joins its letters: tracking and case transforms break it */
+.kicker,.byline,.byline small,.colophon,.toc-head span,.rbar .back,.rbar .rt,.rbar .folio,
+.entry .folio,.entry h2,.plabel,.nextch,.marg .mhead,.marg .mfolio,.vref,.qref,.lang,
+.opener .sub,.sig .sb,.note b{
+  letter-spacing:normal; text-transform:none; text-indent:0;
+}
+
+/* Nastaliq hangs below the baseline — every line needs more air */
+h1.booktitle{font-weight:400; font-size:clamp(2.2rem,5.2vw,4.4rem); line-height:1.75; white-space:nowrap}
+h1.booktitle .to{font-style:normal; font-size:.42em; margin:.05em 0}
+.entry h2{font-size:clamp(1.2rem,1.9vw,1.6rem); line-height:1.9}
+.entry p{line-height:1.9}
+.opener h2{font-size:clamp(1.7rem,3.4vw,2.7rem); line-height:1.75}
+.opener .sub{line-height:1.9}
+.col h3{line-height:1.9; font-size:1.3rem}
+.byline{font-size:1.15rem; line-height:1.9}
+.byline small{font-size:.8rem; line-height:1.9; margin-top:.7em}
+.kicker{font-size:.85rem}
+.colophon{font-size:.78rem}
+.toc-head span{font-size:.85rem}
+.rbar .rt{font-size:.92rem}
+.rbar .back,.rbar .folio,.entry .folio,.plabel,.nextch,.lang{font-size:.8rem}
+.rbar .back span:not(.chip){line-height:1.25}
+.marg .mhead{font-size:.78rem}
+.marg .mfolio{font-size:.8rem}
+.note{font-size:.85rem; line-height:1.85}
+.vref,.qref{font-size:.8rem}
+
+/* Urdu is not hyphenated, and Nastaliq justifies poorly */
+.col p,.col .li p,.tr,.quote p{text-align:start; hyphens:none; -webkit-hyphens:none}
+
+/* a floated initial cannot sit on a sloping baseline — a gold rosette opens
+   the chapter instead */
+.col p.first::first-letter{float:none; font-size:inherit; color:inherit;
+  margin:0; padding:0; line-height:inherit}
+.col p.first::before{content:"❖"; color:var(--verm); font-size:1.1em; margin-inline-end:.45em}
+
+/* translations and quotations are set upright; italic is not an Urdu convention */
+.tr,.quote,.opener .sub,.entry p,.sig .nm{font-style:normal}
+.tr{font-size:1em}
+
+/* SVG centring is computed from font metrics, and Nastaliq's are hugely
+   asymmetric — a numeral set in it rides high inside the medallion. The
+   numerals take Amiri, which centres true (and is the face already used for
+   scripture). */
+.entry .num,.opener .num{font-family:"Amiri",serif; font-weight:400;
+  transform:translateY(4px)}   /* measured: Amiri's digits ride ~4% high in the medallion */
+
+/* the Qur'ānic Arabic keeps its own face */
+.ar,.ar-in{font-family:"Amiri","Scheherazade New",serif}
+.col p.ar{line-height:2.25}
+
+/* list markers sit tight to Urdu numerals */
+.li{grid-template-columns:2.2em 1fr}
+
+@media (max-width:860px){
+  h1.booktitle{font-size:min(13vw,3.4rem)}
+}
+@media (max-width:700px){
+  body{font-size:18px}
+  .rbar .rt{font-size:.78rem}
+}
+
+
+/* ── optical centring ──────────────────────────────────────────────────────
+   Noto Nastaliq Urdu reserves a great deal of space above the ink so its
+   sloping baseline has room, which leaves every centred label sitting low in
+   its own box — measured at +12% to +23%. Chrome that is centred against
+   something else gets its line box tightened and the ink lifted. Values are
+   measured, not guessed; see the audit in the session notes. */
+.kicker,.toc-head span,.rbar .rt,.rbar .folio,.rbar .back span:not(.chip),
+.plabel,.marg .mhead,.marg .mfolio,.vref,.qref,.nextch,.sig .sb,.colophon{line-height:1.3}
+.entry h2{transform:translateY(-0.40em)}
+.opener h2{transform:translateY(-0.36em)}
+.byline{transform:translateY(-0.18em)}
+.rbar .rt{transform:translateY(-0.38em)}
+.rbar .folio{transform:translateY(-0.39em)}
+.rbar .back span:not(.chip){transform:translateY(-0.34em)}
+.plabel{transform:translateY(0.58em)}
+.marg .mhead,.marg .mfolio{transform:translateY(-0.30em)}
+.nextch{transform:translateY(-0.30em)}
+
+/* The running head is clipped to a single line on phones. Nastaliq's ink
+   reaches past a tight line box, so the clip was cutting the bottom of the
+   chapter title — give the line room before it applies. Must come after the
+   optical-centring block above, which also sets line-height. */
+@media (max-width:700px){
+  .rbar .rt{line-height:1.8; padding-block:1px}
+}
+
+</style>
+</head>
+<body>
+<svg class="bgpat" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+ <defs><pattern id="girih" width="100" height="100" patternUnits="userSpaceOnUse">
+   <path d="M0.00,-30.00 L8.79,-21.21 L21.21,-21.21 L21.21,-8.79 L30.00,0.00 L21.21,8.79 L21.21,21.21 L8.79,21.21 L0.00,30.00 L-8.79,21.21 L-21.21,21.21 L-21.21,8.79 L-30.00,0.00 L-21.21,-8.79 L-21.21,-21.21 L-8.79,-21.21 Z M100.00,-30.00 L108.79,-21.21 L121.21,-21.21 L121.21,-8.79 L130.00,0.00 L121.21,8.79 L121.21,21.21 L108.79,21.21 L100.00,30.00 L91.21,21.21 L78.79,21.21 L78.79,8.79 L70.00,0.00 L78.79,-8.79 L78.79,-21.21 L91.21,-21.21 Z M0.00,70.00 L8.79,78.79 L21.21,78.79 L21.21,91.21 L30.00,100.00 L21.21,108.79 L21.21,121.21 L8.79,121.21 L0.00,130.00 L-8.79,121.21 L-21.21,121.21 L-21.21,108.79 L-30.00,100.00 L-21.21,91.21 L-21.21,78.79 L-8.79,78.79 Z M100.00,70.00 L108.79,78.79 L121.21,78.79 L121.21,91.21 L130.00,100.00 L121.21,108.79 L121.21,121.21 L108.79,121.21 L100.00,130.00 L91.21,121.21 L78.79,121.21 L78.79,108.79 L70.00,100.00 L78.79,91.21 L78.79,78.79 L91.21,78.79 Z M50.00,20.00 L58.79,28.79 L71.21,28.79 L71.21,41.21 L80.00,50.00 L71.21,58.79 L71.21,71.21 L58.79,71.21 L50.00,80.00 L41.21,71.21 L28.79,71.21 L28.79,58.79 L20.00,50.00 L28.79,41.21 L28.79,28.79 L41.21,28.79 Z" fill="none" stroke="#A8802C" stroke-width="1"/>
+   <path d="M50,0 L100,50 L50,100 L0,50 Z" fill="none" stroke="#1E3B60" stroke-width=".7" opacity=".7"/>
+ </pattern></defs>
+ <rect width="100%" height="100%" fill="url(#girih)"/>
+</svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <g id="star"><path class="fill" d="M50.00,4.00 L63.47,17.47 L82.53,17.47 L82.53,36.53 L96.00,50.00 L82.53,63.47 L82.53,82.53 L63.47,82.53 L50.00,96.00 L36.53,82.53 L17.47,82.53 L17.47,63.47 L4.00,50.00 L17.47,36.53 L17.47,17.47 L36.53,17.47 Z" fill="transparent"/><path d="M50.00,4.00 L63.47,17.47 L82.53,17.47 L82.53,36.53 L96.00,50.00 L82.53,63.47 L82.53,82.53 L63.47,82.53 L50.00,96.00 L36.53,82.53 L17.47,82.53 L17.47,63.47 L4.00,50.00 L17.47,36.53 L17.47,17.47 L36.53,17.47 Z" fill="none" stroke="#A8802C" stroke-width="1.4"/><path d="M50.00,10.00 L78.28,21.72 L90.00,50.00 L78.28,78.28 L50.00,90.00 L21.72,78.28 L10.00,50.00 L21.72,21.72 Z" fill="none" stroke="#A8802C" stroke-width=".7" opacity=".55"/></g>
+  <pattern id="band" width="40" height="20" patternUnits="userSpaceOnUse">
+    <path d="M20,1 L29,10 L20,19 L11,10 Z" fill="none" stroke="#A8802C" stroke-width="1"/>
+    <path d="M0,10 L11,10 M29,10 L40,10" stroke="#A8802C" stroke-width="1"/>
+    <path d="M20,5.5 L24.5,10 L20,14.5 L15.5,10 Z" fill="#A8802C" opacity=".35"/>
+    <path d="M0,1 L11,1 M29,1 L40,1 M0,19 L11,19 M29,19 L40,19" stroke="#1E3B60" stroke-width=".6" opacity=".5"/>
+  </pattern>
+  <g id="starsm"><path class="fill" d="M50.00,2.00 L64.06,16.06 L83.94,16.06 L83.94,35.94 L98.00,50.00 L83.94,64.06 L83.94,83.94 L64.06,83.94 L50.00,98.00 L35.94,83.94 L16.06,83.94 L16.06,64.06 L2.00,50.00 L16.06,35.94 L16.06,16.06 L35.94,16.06 Z" fill="transparent"/><path d="M50.00,2.00 L64.06,16.06 L83.94,16.06 L83.94,35.94 L98.00,50.00 L83.94,64.06 L83.94,83.94 L64.06,83.94 L50.00,98.00 L35.94,83.94 L16.06,83.94 L16.06,64.06 L2.00,50.00 L16.06,35.94 L16.06,16.06 L35.94,16.06 Z" fill="none" stroke="#A8802C" stroke-width="2"/></g>
+ </defs>
+</svg>
+
+<main id="index" class="view" aria-label="Contents">
+  <section class="frontis">
+    <svg class="medallion" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="49" fill="none" stroke="#A8802C" stroke-width=".5" opacity=".45"/>
+      <path d="M50.00,10.00 L78.28,21.72 L90.00,50.00 L78.28,78.28 L50.00,90.00 L21.72,78.28 L10.00,50.00 L21.72,21.72 Z" fill="none" stroke="#1E3B60" stroke-width=".5" opacity=".35"
+            transform="translate(50,50) scale(1.18) translate(-50,-50)"/>
+      <g class="spin"><use href="#star"/></g>
+      <g class="spin rev">
+        <path d="M50.00,4.00 L63.47,17.47 L82.53,17.47 L82.53,36.53 L96.00,50.00 L82.53,63.47 L82.53,82.53 L63.47,82.53 L50.00,96.00 L36.53,82.53 L17.47,82.53 L17.47,63.47 L4.00,50.00 L17.47,36.53 L17.47,17.47 L36.53,17.47 Z" fill="none" stroke="#1E3B60" stroke-width=".8" opacity=".55"
+              transform="translate(50,50) scale(.58) translate(-50,-50)"/>
+      </g>
+      <path d="M50.00,4.00 L63.47,17.47 L82.53,17.47 L82.53,36.53 L96.00,50.00 L82.53,63.47 L82.53,82.53 L63.47,82.53 L50.00,96.00 L36.53,82.53 L17.47,82.53 L17.47,63.47 L4.00,50.00 L17.47,36.53 L17.47,17.47 L36.53,17.47 Z" fill="#A8802C" opacity=".22"
+            transform="translate(50,50) scale(.2) translate(-50,-50)"/>
+      <circle cx="50" cy="50" r="12" fill="none" stroke="#9A3324" stroke-width=".7" opacity=".8"/>
+    </svg>
+    <div class="kicker">چھ ابواب پر مشتمل رسالہ</div>
+    <h1 class="booktitle">دعوتِ&nbsp;حق</h1>
+    <div class="orn-rule"><span class="ln"></span><svg width="16" height="16" viewBox="0 0 100 100" aria-hidden="true"><use href="#starsm"/></svg><span class="ln"></span></div>
+    <div class="byline">جاوید احمد غامدی<small>اسلام کی تعبیر · میزان کے بعد</small></div>
+    <a class="lang" href="../index.html"><span>English</span></a>
+    <div class="scrollhint" aria-hidden="true">▾</div>
+    <div class="colophon"><span class="kb"></span><span class="tp"></span></div>
+  </section>
+  <nav class="toc" aria-label="Chapters">
+    <div class="toc-head"><span id="tocLabel"></span><span class="ln"></span></div>
+    <ol id="tocList"></ol>
+  </nav>
+</main>
+
+<main id="reader" class="view" hidden>
+  <div class="progress" id="prog" style="width:0"></div>
+  <header class="rbar">
+    <div class="barleft">
+      <button class="back" id="btnBack">
+        <span class="chip"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#starsm"/></svg></span> <span id="backLabel"></span>
+      </button>
+      <a class="lang" href="../index.html"><span>English</span></a>
+    </div>
+    <div class="rt" id="rTitle"></div>
+    <div class="folio" id="rFolio"></div>
+  </header>
+  <div class="stage">
+    <button class="turn prev" id="btnPrev" >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M15 4 L7 12 L15 20"/><path d="M12 8.6 L8.4 12 L12 15.4" opacity=".5"/></svg>
+    </button>
+    <div class="leafwrap">
+      <article class="leaf" id="leaf"></article>
+    </div>
+    <button class="turn next" id="btnNext" >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M9 4 L17 12 L9 20"/><path d="M12 8.6 L15.6 12 L12 15.4" opacity=".5"/></svg>
+    </button>
+  </div>
+  <footer class="pips" id="pips"></footer>
+</main>
+
+<script>
+const DATA = {"title": "دعوت حق", "author": "جاوید احمد غامدی", "lang": "ur", "dir": "rtl", "numerals": "urdu", "labels": {"contents": "فہرست", "notes": "حواشی", "page": "صفحہ {n} از {m}", "pages_one": "{n} صفحہ", "pages_many": "{n} صفحات", "note": "حاشیہ {n}", "prev": "پچھلا صفحہ", "next": "اگلا صفحہ", "arrow": "←", "keyhint": "← → سے پڑھیے · Esc سے فہرست", "touchhint": "صفحہ پلٹنے کے لیے سوائپ کریں"}, "chapters": [{"title": "دیباچہ", "sub": "", "num": "", "blocks": [{"t": "p", "html": "اسلام خدا کا دین ہے۔ اِس کی صحیح تعبیر کیا ہے؟ یہ رسالہ اُس کا بیان ہے، اور اِسی تعبیر کی طرف دعوت کے لیے ترتیب دیا گیا ہے۔ اِس کے لیے جو تحریریں منتخب کی گئی ہیں، وہ بالاجمال اُس پورے دین کو بیان کر دیتی ہیں، جس کی شرح و وضاحت ہم نے اپنی کتاب ''میزان'' میں کی ہے۔ اِس سے مقصود یہ ہے کہ دور حاضر میں اسلام کی دعوت کے لیے یہ تعبیر اب ہر عارف وعامی تک پہنچا دی جائے:", "keep": true}, {"t": "verse", "persian": true, "ref": null, "ar": ["راہے کہ خضر داشت ز سرچشمہ دور بود", "لب تشنگی ز راہ دگر بردہ ایم ما"], "trans": []}, {"t": "sig", "html": "جاوید", "sub": "ڈیلس، ریاست ہاے متحدہ امریکا &nbsp;·&nbsp; ۷ ؍جون ۲۰۲۶ء"}], "bounds": [0, 2, 3], "est": 1}, {"title": "ہماری دعوت", "sub": "", "num": "۱", "blocks": [{"t": "p", "html": "دین اللہ تعالیٰ کی ہدایت ہے جو اُس نے پہلے انسان کی فطرت میں الہام فرمائی اور اِس کے بعد اُس کی تمام ضروری تفصیلات کے ساتھ اپنے پیغمبروں کی وساطت سے انسان کو دی ہے۔ اِس سلسلہ کے آخری پیغمبر محمد صلی اللہ علیہ وسلم ہیں۔ چنانچہ دین کا تنہا ماخذ اب آپ ہی کی ذات والا صفات ہے اور دین حق اب وہی ہے جسے آپ اپنے قول و فعل اور تقریر و تصویب سے دین قرار دیں۔<sup class=\"fnref\" data-n=\"1\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 1\">1</sup>"}, {"t": "p", "html": "دنیا کے تمام انسانوں کو ہم اِس دین پر ایمان اور اِس کے مطابق اپنی انفرادی اور اجتماعی زندگی کے تزکیے کی دعوت دیتے ہیں۔ جو لوگ اِس دعوت کو قبول کر لیں، اُن کا صلہ خدا کی جنت ہے جس کی وسعت پوری کائنات کی وسعت ہے؛ جس میں زندگی کے ساتھ موت، لذت کے ساتھ الم، خوشی کے ساتھ غم، اطمینان کے ساتھ اضطراب، راحت کے ساتھ تکلیف اور نعمت کے ساتھ نقمت کا کوئی تصور نہیں ہے؛ جس کا آرام دائمی ہے، جس کی لذت بے انتہا ہے، جس کے شب و روز جاوداں ہیں، جس کی سلامتی ابدی ہے، جس کی مسرت غیر فانی ہے، جس کا جمال لازوال اور کمال بے نہایت ہے۔ اللہ تعالیٰ نے اپنے بندوں کے لیے اِس میں وہ کچھ مہیا کیا ہے جسے نہ آنکھوں نے دیکھا، نہ کانوں نے سنا اور نہ کسی انسان کے دل میں اُس کا خیال کبھی گزرا ہے۔<sup class=\"fnref\" data-n=\"2\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 2\">2</sup>"}, {"t": "p", "html": "اِس وقت جو لوگ اِس دین کے ماننے والے ہیں، اُنھیں ہم دعوت دیتے ہیں کہ خدا کی اِس جنت کو پانے کے لیے اپنے عمل کو بھی وہ اپنے ایما ن کے مطابق کر لیں، خدا اور اُس کے بندوں کے حقوق پوری دیانت اور پورے اخلاص کے ساتھ ادا کریں اور کسی کے جان و مال اور آبرو کے خلاف کوئی زیادتی نہ کریں۔<sup class=\"fnref\" data-n=\"3\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 3\">3</sup>"}, {"t": "p", "html": "ہم اُنھیں دعوت دیتے ہیں کہ اپنے ماحول اور اپنے دائرۂ عمل میں وہ ایک دوسرے کو بھلائی کی نصیحت کریں اور برائی سے روکیں۔ یہ اُن کا فرض ہے جو اُن کے پروردگار نے اُن پر عائد کیا ہے۔ یہ فرض باپ کو بیٹے کے لیے اور بیٹے کو باپ کے لیے، شوہر کو بیوی کے لیے اور بیوی کو شوہر کے لیے، بھائی کو بہن کے لیے اور بہن کو بھائی کے لیے، دوست کو دوست کے لیے اور پڑوسی کو پڑوسی کے لیے، غرض یہ کہ ہر شخص کو اپنے ساتھ متعلق ہر شخص کے لیے ادا کرنا ہے۔ چنانچہ وہ جہاں یہ دیکھیں کہ اُن کے متعلقین میں سے کسی نے کوئی خلاف حق طریقہ اختیار کیا ہے، اُنھیں چاہیے کہ اپنے علم اور اپنی استعداد و صلاحیت کے مطابق اُسے راستی کی روش اپنانے کی نصیحت کریں۔<sup class=\"fnref\" data-n=\"4\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 4\">4</sup>"}, {"t": "p", "html": "دین و دنیا کے کسی معاملے میں اُن کے جذبات، تعصبات، مفادات اور خواہشیں اگر اُنھیں انصاف کی راہ سے ہٹانا چاہیں تو حق و انصاف پر قائم رہیں، بلکہ یہ اگر گواہی کا مطالبہ کریں تو جان کی بازی لگا کر اِن کا یہ مطالبہ پورا کریں۔ حق کہیں، حق کے سامنے اپنا سر جھکا دیں، انصاف کی گواہی دیں اور اپنے عقیدہ و عمل میں انصاف کے سوا کبھی کوئی چیز اختیار نہ کریں۔<sup class=\"fnref\" data-n=\"5\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 5\">5</sup>"}, {"t": "p", "html": "اُنھیں مذہبی جبر (persecution) کا نشانہ بنایا جائے تو تشدد کے جواب میں تشدد کا طریقہ اختیار کرنے کے بجاے صبر کریں<sup class=\"fnref\" data-n=\"6\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 6\">6</sup>[ اور ممکن ہو تو جس جگہ یہ صورت حال پیش آجائے، اُس جگہ کو چھوڑ کر کسی ایسے مقام کی طرف منتقل ہو جائیں، جہاں وہ علانیہ اپنے دین پر عمل پیرا ہو سکیں۔]<sup class=\"fnref\" data-n=\"7\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 7\">7</sup>"}, {"t": "p", "html": "مدرسۂ فراہی کے اکابر اہل علم نے خدا کی توفیق سے دین حق کو دور حاضر میں فقہ و کلام اور فلسفہ و تصوف کی ہر آمیزش سے الگ کر کے بے کم و کاست اور خالص قرآن و سنت کی بنیاد پر پیش کر دیا ہے۔ اِس دین کی نشر و اشاعت، اِس کے مطابق لوگوں کی تعلیم و تربیت اور اِس کی روشنی میں مسلمانوں کے مذہبی فکر کی تشکیل جدید ایک جہاد کبیر ہے۔ ہم اُنھیں دعوت دیتے ہیں کہ اپنی تائید، اپنے وقت اور اپنے وسائل سے وہ اِس جہاد میں ہماری مدد کریں۔ یہ خدا کے سچے دین کی نصرت ہے جس سے زیادہ کوئی چیز بھی بندۂ مومن کو عزیز نہیں ہونی چاہیے: <sup class=\"fnref\" data-n=\"8\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 8\">8</sup>", "keep": true}, {"t": "verse", "ar": ["يٰ٘اَيُّهَا الَّذِيْنَ اٰمَنُوْا، كُوْنُوْ٘ا اَنْصَارَ اللّٰهِ، كَمَا قَالَ عِيْسَي ابْنُ مَرْيَمَ لِلْحَوَارِيّٖنَ: مَنْ اَنْصَارِيْ٘ اِلَي اللّٰهِ؟ قَالَ الْحَوَارِيُّوْنَ: نَحْنُ اَنْصَارُ اللّٰهِ"], "trans": ["''ایمان والو، اللہ کے مددگار بنو، جس طرح عیسیٰ ابن مریم نے حواریوں سے کہا تھا: کون اللہ کی راہ میں میرا مددگار بنتا ہے؟ حواریوں نے جواب دیا: ہم اللہ کے مددگار ہیں۔''"], "ref": "الصف ۶۱: ۱۴"}], "bounds": [0, 1, 2, 3, 4, 5, 6, 8], "est": 3}, {"title": "خدا پر ایمان", "sub": "", "num": "۲", "blocks": [{"t": "p", "html": "انسان مخلوق ہے۔ مذہب کا مقدمہ اِسی حقیقت کے ادراک سے شروع ہوتا ہے۔ یہ ایک وجودی حقیقت ہے، جس کا مشاہدہ ہم جب چاہیں، اپنی آنکھوں سے کر سکتے ہیں۔ چنانچہ ہم جانتے ہیں کہ انسان کی تخلیق کن بے جان عناصر سے ہوتی ہے۔ ہماری غذا کے ذریعے سے یہ کہاں اور کس مصنع (Factory) میں جاتے ہیں۔ ہمیں معلوم ہے کہ اِن میں انسانی تخم کہیں نہیں ہوتا اور نہ کوئی ایسی چیز ہوتی ہے، جو مادے کو حیات اور حیات کو شعور میں بدل دے۔ لیکن یہی غذا جب ایک خاص مقام پر پہنچتی ہے تو اُس نطفے میں تبدیل ہو جاتی ہے، جس کے اندر انسان بن جانے کی صلاحیت رکھنے والے تخم موجود ہوتے ہیں۔ یہ تخم اُس نطفے میں لاکھوں اور کروڑوں کی تعداد میں پائے جاتے ہیں، جو ایک وقت میں ایک مرد سے نکلتا ہے، اور اِن میں سے ہر ایک یہ صلاحیت رکھتا ہے کہ عورت کے بیضے سے ملے، جو اِسی طریقے سے ایک دوسرے مصنع (Factory) میں بنتا ہے، اور پورا انسان بن جائے۔ ہم دیکھ سکتے ہیں کہ یہ جب بیضے سے ملتا ہے تو ابتدا میں جو چیز وجود میں آتی ہے، وہ اتنی چھوٹی ہوتی ہے کہ خوردبین کے بغیر مشکل ہی سے دیکھی جا سکتی ہے، مگر یہی حقیر سی چیز پھر نو مہینے اور چند دنوں میں پانی کی ایک بوند سے لوتھڑے، لوتھڑے سے بوٹی، پھر بوٹی کی ہڈیوں اور ہڈیوں پر چڑھے ہوئے گوشت کے ساتھ ایک دوسری ہی چیز بن کر ماں کے پیٹ سے باہر آجاتی ہے تاکہ اپنی حیرت انگیز قوتوں اور صلاحیتوں کے ساتھ علم و استدلال، عقل و دانش اور صنعت و حرفت کے وہ کمالات دکھائے، جو اِس وقت دنیا میں ہر جگہ دیکھ لیے جاسکتے ہیں۔"}, {"t": "p", "html": "ہم اِس مخلوق کو دیکھتے ہیں اور اپنے شعور کی ساخت ہی سے مجبور ہیں کہ اِس کا خالق تلاش کریں۔ اِس لیے نہیں کہ ہر چیز کا خالق ہونا چاہیے، اِس لیے کہ ہر مخلوق کا خالق ہونا چاہیے۔ یہ خلق کا فعل ہے، جو ہمیں اِس تلاش کے لیے مجبور کرتا ہے۔ ہم اِس اضطرار کے ساتھ پیدا ہوئے ہیں، لہٰذا کبھی اِس پر راضی نہیں ہو سکتے کہ اثر کے لیے موثر اور فعل کے لیے فاعل کی تلاش سے دست بردار ہو جائیں۔ فلسفہ، سائنس اور تصوف کے اساطین کو ایک ایک کر کے دیکھ لیجیے، کوئی بھی اِس سے دست بردار نہیں ہو سکا۔ چنانچہ علم کی پوری تاریخ اِسی حقیقت کے اعتراف کی تاریخ ہے کہ ہر مخلوق کا خالق ہے، انسان مخلوق ہے، لہٰذا انسان کا بھی خالق ہے۔"}, {"t": "p", "html": "پھر یہی نہیں، ہم جانتے ہیں کہ خلق کے جس فعل کا ہم نے مشاہدہ کیا ہے، وہ ارادی ہے اور اُس کے ایک ایک جزو میں بے پایاں قدرت اور بے نظیر علم و حکمت کا ظہور ہوا ہے۔ ہم جس طرح خلق کا انکار نہیں کر سکتے، اُسی طرح فعل کی اِس نوعیت کا انکار بھی نہیں کر سکتے۔ اِس لیے کہ فعل کی یہ نوعیت بھی اُسی طرح ایک حقیقت ہے، جس طرح خلق کا فعل ایک حقیقت ہے۔ ہم جس طرح فعل کا مشاہدہ کرتے ہیں، اُسی طرح اِس حقیقت کا بھی مشاہدہ کرتے ہیں، لہٰذا مجبور ہیں کہ اِس کے ساتھ یہ اعتراف بھی کریں کہ انسان کا خالق صاحب ارادہ ہے، اُس کی قدرت بے پایاں ہے، اور وہ علیم و حکیم ہے۔"}, {"t": "p", "html": "انسان کی عقل اُسے یہاں تک لے آتی ہے۔ اِس سفر میں اُس کو خارج سے کسی رہنمائی کی ضرورت نہیں ہوتی۔ علم و ادراک کی جو صلاحیت انسان کو اُس کی پیدایش کے ساتھ عطا ہوئی ہے، وہی اِس سفر میں رہنمائی کے لیے کافی ہے۔ لیکن اِس سے آگے یہ سوال کہ وہ خالق کون ہے؟ اِس کا جواب انسان کی عقل اِسی قطعیت اور یقین و اذعان کے ساتھ نہیں دے سکتی۔ چنانچہ بالعموم اُنھی دو جوابات کی طرف دیکھتی ہے، جو انسانیت کی پوری تاریخ میں اب تک دیے گئے ہیں اور اُن میں سے کسی ایک کا انتخاب کر لیتی یا اُن کے درمیان متردد رہتی ہے۔"}, {"t": "p", "html": "پہلا جواب یہ ہے کہ انسان جس کائنات کی آغوش میں شعور کی آنکھ کھولتا ہے، وہی اُس کی خالق ہے۔ یہ الحاد کا جواب ہے۔"}, {"t": "p", "html": "اِس کی تقریر بالعموم اِس طرح کی جاتی ہے کہ کائنات اپنا شعور رکھتی ہے، لہٰذا وہ قوت بھی اِس کے اندر ہی ہے، جو اپنی حقیقت کے لحاظ سے خلّاق ہے۔ اِس سے باہر کچھ نہیں، بلکہ اندر اور باہر کی تفریق بھی اِس کے اندر ہی ہے۔ اِس کا ہر جزو اپنے آپ میں اندر بھی ہے اور باہر بھی۔ یہ اسباب و علل کا کارخانہ ہے، لیکن اپنی کلیت میں آخری علت بھی خود ہی ہے۔"}, {"t": "p", "html": "یہ جواب محض ادعا ہے۔"}, {"t": "p", "html": "اولاً، اِس لیے کہ اِس میں کائنات کی جس خود شعوری کا دعویٰ کیا گیا ہے، اُس کے کوئی شواہد ہمارے مشاہدے میں کبھی نہیں آئے۔ ہم جانتے ہیں کہ کائنات کی حقیقت مادہ ہے، اور مادہ ارادے سے خالی ہے، وہ علم و عقل سے بھی خالی ہے۔یہ چیزیں کسی نہ کسی درجے میں اگر کہیں پائی جاتی ہیں تو اُسی مخلوق میں پائی جاتی ہیں، جس کا خالق اِس کائنات کو کہا گیا ہے۔ پھر یہی نہیں، وہ قدرت بھی کسی درجے میں اگر کہیں ہے تو اُسی مخلوق میں ہے، جس کے بغیر علم و عقل اور ارادہ، سب بے معنی ہو جاتے ہیں۔"}, {"t": "p", "html": "ثانیاً، اِس لیے کہ کائنات کی جس قوت کے ظہور کو تخلیق سمجھ لیا گیا ہے، وہ محض شے کے خواص اور اُس کی تاثیر کا ظہور ہے۔ اِس طرح کا ظہورِ قوت ہم اُن خودکار مشینوں کے ہر پرزے میں دیکھ سکتے ہیں، جو انسان نے ایجاد کی ہیں، اور مصنوعی ذہانت (Artificial Intelligence) کی صورت میں جن کا منتہاے کمال اب ہر شخص کو حیرت میں ڈالے ہوئے ہے۔"}, {"t": "p", "html": "ثالثاً، اِس لیے کہ اِس کی کلیت بھی اگر کچھ ہے تو اُنھی تاثیرات اور خواص کی کلیت ہے، جو اِس میں علت و معلول کے رشتے پیدا کرتے ہیں۔ اِس کا تخلیق کے اُس فعل سے کوئی تعلق نہیں ہے، جو ہر ہر مرحلے پر علم و عقل، ارادے اور فعل کی قدرت کا تقاضا کرتا ہے۔ یہ اسباب و علل، مناہج اور قوانین کی دنیا ہے۔ اِس سے زیادہ اِس کی کوئی حیثیت نہیں ہے۔"}, {"t": "p", "html": "انسان کا خالق کون ہے؟ اِس سوال کا دوسرا جواب اُن لوگوں نے دیا ہے، جو اپنے آپ کو پیغمبر کی حیثیت سے پیش کرتے ہیں۔ انسان کو یہ جواب اُس کی تخلیق کے ساتھ ہی دے دیا گیا تھا۔ چنانچہ پہلا انسان جس طرح پہلا انسان تھا، اُسی طرح پہلا پیغمبر بھی تھا۔ اِس جواب کی جو تفصیلات اِس کے بعد ہمارے علم میں آتی رہی ہیں، اُن کا خلاصہ یہ ہے کہ انسان کا خالق اِس کائنات سے ماورا ایک علیم و حکیم ہستی ہے۔ انسان کی تخلیق کا آغاز اُس نے زمین کے پیٹ سے کیا تھا۔ مٹی کے وہی اجزا جو غذا کی صورت میں ہمارے اندر جاتے اور حقیر پانی کے خلاصے میں تبدیل ہو کر اُس عمل کی ابتدا کرتے ہیں، جس سے انسان بنتے ہیں، اُس وقت سڑے ہوئے گارے کے اندر اِسی عمل سے گزرے، یہاں تک کہ جب خِلقت پوری ہو گئی تو اوپر سے وہی گارا خشک ہو کر ٹھیکری کی طرح بجتی ہوئی مٹی بن گیا، جس کے ٹوٹنے سے جیتی جاگتی ایک مخلوق نمودار ہوئی، جسے انسان کا حیوانی وجود کہنا چاہیے۔ پھر وہی عمل جو زمین کے اندر ہوا تھا، علم و ادراک سے محروم اِس ناتراشیدہ حیوان کے اندر ہونے لگا، جس کے بعد اُسے ہر لحاظ سے سنوارا اور نک سک سے درست کیا گیا، یہاں تک کہ وہ اِس قابل ہو گیا کہ اُسے انسان کی شخصیت عطا کی جائے۔ چنانچہ ایک لطیف پھونک کے ذریعے سے یہ شخصیت اُسے عطا کر دی گئی:", "keep": true}, {"t": "verse", "ar": ["وَبَدَاَ خَلْقَ الْاِنْسَانِ مِنْ طِيْنٍ، ثُمَّ جَعَلَ نَسْلَهٗ مِنْ سُلٰلَةٍ مِّنْ مَّآءٍ مَّهِيْنٍ، ثُمَّ سَوّٰىهُ وَنَفَخَ فِيْهِ مِنْ رُّوْحِهٖ وَجَعَلَ لَكُمُ السَّمْعَ وَالْاَبْصَارَ وَالْاَفْـِٕدَةَﵧ قَلِيْلًا مَّا تَشْكُرُوْنَ"], "trans": ["''انسان کی تخلیق کا آغاز اُس کے خالق نے مٹی سے کیا، پھر اُس کی نسل حقیر پانی کے خلاصے سے چلائی، پھر اُس کے نوک پلک سنوارے اور اُس میں اپنی روح پھونک دی، اور تمھارے (سننے کے) لیے کان اور (دیکھنے کے لیے) آنکھیں اور (سمجھنے کے لیے) دل بنا دیے۔ تم کم ہی شکرگزار ہوتے ہو۔''"], "ref": "السجدہ ۳۲: ۷- ۹"}, {"t": "p", "html": "یہ جواب آخری مرتبہ جس ذریعے سے دیا گیا، وہ یہی قر آن ہے، جس کی آیات اوپر نقل ہوئی ہیں۔ اِس کو جس ہستی کی طرف سے پیش کیا گیا ہے، اُس کا دعویٰ ہے کہ یہ کسی بشر کا نہیں، بلکہ خالق کا اپنا کلام ہے، جو اُس نے اپنے پیغمبر پر نازل کیا ہے، اور جس طرح نازل کیا ہے، اُس نے بے کم و کاست اُسی طرح لوگوں کو پڑھ کر سنا دیا ہے۔ اِس میں ایک حرف، ایک شوشے کی تبدیلی نہ اُس نے کی ہے اور نہ آگے قیامت تک کوئی کرنے کی جسارت کر سکے گا۔ چنانچہ فرمایا ہے کہ تم اگر اِسے خدا کی کتاب نہیں سمجھتے تو اپنی ہدایت، مضامین اور اپنے اسلوب بیان کے لحاظ سے جس شان کا یہ کلام ہے، اِس شان کی کوئی ایک سورہ ہی بنا کر پیش کر دو، اگر تم اپنے اِس گمان میں سچے ہو:", "keep": true}, {"t": "verse", "ar": ["وَاِنْ كُنْتُمْ فِيْ رَيْبٍ مِّمَّا نَزَّلْنَا عَلٰي عَبْدِنَا، فَاْتُوْا بِسُوْرَةٍ مِّنْ مِّثْلِهٖ، وَادْعُوْا شُهَدَآءَكُمْ مِّنْ دُوْنِ اللّٰهِ، اِنْ كُنْتُمْ صٰدِقِيْنَ"], "trans": ["''اور جو کچھ ہم نے اپنے بندے پر نازل کیا ہے، اُس کے بارے میں اگر تمھیں شبہ ہے تو (جاؤ اور) اِس کے مانند ایک سورہ ہی بنا لاؤ اور (اِس کے لیے) خدا کے سوا تمھارے جو زعما ہیں، اُنھیں بھی بلا لو، اگر تم اپنے اِس گمان میں سچے ہو۔''"], "ref": "البقرہ ۲۳:۲"}, {"t": "p", "html": "قر آن میں یہ دعویٰ ایک سے زیادہ مقامات پر بیان ہوا ہے، اور اِس کے ساتھ ایک نہایت واضح معیار بھی سامنے رکھ دیا گیا ہے، جس کی بنیاد پرہم فیصلہ کر سکتے ہیں کہ قرآن فی الواقع خالق کا کلام ہے یا کسی انسان نے افترا کر کے اِس کو خالق کی طرف منسوب کر دیا ہے؟"}, {"t": "p", "html": "وہ معیار کیا ہے؟ اِسے ہم درج ذیل تین نکات کی صورت میں پیش کر سکتے ہیں:", "keep": true}, {"t": "p", "html": "پہلا یہ کہ انسان جو علم بھی پیدا کرتا ہے، لفظ اور معنی، دونوں کے لحاظ سے سعی و خطا (Trial and Error) کے بہت سے مراحل سے گزر کر پیدا کرتا ہے۔ وہ پہلے دن نہ سقراط و فلاطوں ہوتا ہے، نہ غالب اور شیکسپئر اور نہ نیوٹن اور آئن اسٹائن۔ چنانچہ سیکھتا، سمجھتا، سیکھنے اور سمجھنے کے ہر ہر مرحلے میں غلطیاں کرتا اور اُن کی اصلاح بھی کرتا ہے۔ اُسے ہم برسوں اگلوں سے لیتے، اُس کی مشق اور مزاولت کرتے، نوک پلک سنوارتے اور اُس میں درجہ بہ درجہ آگے بڑھتے ہوئے دیکھتے ہیں، یہاں تک کہ علم و ادب کا کوئی شہ پارہ اُس کی طرف سے سامنے آجاتا ہے۔ یہ انسان کی تقدیر ہے۔ وہ اِسی کے ساتھ پیدا کیا گیا ہے۔ علم و ادب کی پوری تاریخ میں اِس سے کبھی کوئی استثنا نہیں دیکھا گیا اور نہ آگے کبھی اِس کا کوئی تصور کیا جاسکتا ہے۔"}, {"t": "p", "html": "لیکن قر آن اِس سے مستثنیٰ ہے۔ وہ جس ہستی کی طرف سے پیش کیا گیا ہے، اُس کو چند سو گھروں کی ایک چھوٹی سی بستی میں اُس کی قوم نے چالیس برس تک شب و روز دیکھا ہے۔ اُس کے دن اور راتیں اُن کی آنکھوں کے سامنے گزری ہیں، مگر اُنھوں نے کبھی نہیں دیکھا کہ اِس طرح کے علم اور کلام کے لیے سعی و خطا کے جو مراحل ہر انسان کے لیے مقدر ہیں، اُن کا کوئی شائبہ کبھی اُس کی شخصیت میں کہیں پایا گیا ہو۔ چنانچہ یہ حقیقت ہے کہ اُنھیں باور ہی نہیں آتا تھا کہ اُن کی بستی کا یہ صادق اور امین اِس طرح کے کسی علم اور اِس شان کے کسی کلام کا خالق ہوسکتا ہے۔ چنانچہ جھنجلا کر کہتے تھے کہ یہ سب اِس کو کسی پڑھے لکھے عجمی نے املا کرادیا ہے۔ قرآن نے اِسی طرف توجہ دلائی اور فرمایا:", "keep": true}, {"t": "verse", "ar": ["قُلْ لَّوْ شَآءَ اللّٰهُ مَا تَلَوْتُهٗ عَلَيْكُمْ وَلَا٘ اَدْرٰىكُمْ بِهٖ، فَقَدْ لَبِثْتُ فِيْكُمْ عُمُرًا مِّنْ قَبْلِهٖ، اَفَلَا تَعْقِلُوْنَ؟ فَمَنْ اَظْلَمُ مِمَّنِ افْتَرٰي عَلَي اللّٰهِ كَذِبًا اَوْ كَذَّبَ بِاٰيٰتِهٖ، اِنَّهٗ لَا يُفْلِحُ الْمُجْرِمُوْنَ"], "trans": ["''(اِن سے) کہہ دو، اگر اللہ چاہتا تو نہ میں یہ قرآن تمھیں سناتا، نہ اللہ اِس کی خبر تمھیں دیتا۔ یہ اُسی کا فیصلہ ہے، اِس لیے کہ میں تو اِس سے پہلے ایک عمر تمھارے درمیان گزار چکا ہوں۔ (میں نے کب اِس طرح کی کوئی بات کبھی کی ہے)؟ پھر کیا تم عقل سے کام نہیں لیتے؟ سو اُس شخص سے بڑھ کر ظالم کون ہوگا، جو اللہ پر جھوٹ باندھے یا اُس کی آیتوں کو جھٹلا دے؟ حقیقت یہ ہے کہ اِس طرح کے مجرم کبھی فلاح نہیں پائیں گے۔''"], "ref": "یونس ۱۰: ۱۶- ۱۷"}, {"t": "p", "html": "مدعا یہ تھا کہ احمقو، تم نے کب دیکھا ہے کہ میں اُن مباحث میں دل چسپی لے رہا ہوں یا اُن کے بارے میں کچھ خیالات و افکار کا اظہار کر رہا ہوں یا اُن کی ترتیب و تدوین کے لیے مشق و مزاولت میں مصروف ہوں یا اُن سے متعلق کسی علم و فن کا اکتساب کر رہا ہوں، جو اِس وقت قرآن کی سورتوں میں پے در پے زیر بحث آرہے ہیں؟ پورے چالیس سال میں نے تمھارے درمیان گزارے ہیں، میری باتوں اور میری حرکات وسکنات میں تم نے کب ایسی کوئی چیز محسوس کی ہے، جسے اُس دعوت کی تمہید کہا جاسکے، جو میں اِس وقت پیش کر رہا ہوں؟ جو کچھ میں آج کہہ رہا ہوں، اُس کے نشو و ارتقا کے کوئی نشانات تم نے کبھی میری زندگی میں پائے ہیں؟ تم جانتے ہو کہ انسانی دماغ اپنی عمر کے کسی مرحلے میں بھی ایسی کوئی چیز پیش نہیں کر سکتا، جس کے نشو و ارتقا کے نشانات اُس سے پہلے کے مرحلوں میں نہ پائے جاتے ہوں؟ تم کہتے ہو کہ میں خدا پر جھوٹ باندھ رہا ہوں۔ اِس سے پہلے کسی جھوٹ، فریب، جعل یا مکاری و عیاری کا کوئی ادنیٰ شائبہ تم نے کبھی میری سیرت و کردار میں دیکھا ہے؟ آج تک تم مجھے صادق اور امین سمجھتے رہے ہو۔ اب کس طرح کہہ رہے ہو کہ وہی صادق اور امین راتوں رات برخود غلط، لپاٹیا اور مفتری بن گیا ہے؟ خدا کے بندو، تم عقل سے کام کیوں نہیں لیتے؟"}, {"t": "p", "html": "دوسرا یہ کہ انسان کا علم کبھی تضادات سے خالی نہیں ہو سکتا۔ تراشیدم، پرستیدم، شکستم کی جو داستان وہ پہلے دن سے رقم کرنا شروع کرتا ہے، وہی آخر تک جاری رہتی ہے۔ یہ بھی، اگر غور کیجیے تو اُسی سعی و خطا کا نتیجہ ہے، جس کا ذکر پیچھے ہوا۔ پھر یہی نہیں، اُس کا یہ علم اگر کبھی ادب کا پیرہن اختیار کرے تو اُس میں بھی یہی صورت پیدا ہوجاتی ہے۔ اُس کی تخلیقات کو دقت نظر کے ساتھ دیکھیے تو نظم، بلا غت، معانی، ہر چیز متفاوت نظر آئے گی۔ اُس کا کلام کسی جگہ حسن بیان کا معجزہ ہوگا اور کسی جگہ اِس سے کہیں نیچے، بلکہ مہمل دکھائی دے گا۔ چنانچہ یہ حقیقت ہے کہ دنیا میں کوئی ایسا انسان کبھی نہیں ہوا، جو فصاحت و بلاغت کے لحاظ سے حد اعجاز کو پہنچی ہوئی تقریریں متنوع موضوعات پر اور مختلف حالات میں مسلسل کرتا رہے، اور شروع سے آخر تک اُس کی یہ تقریریں جب مرتب کی جائیں تو ایک ایسے ہم رنگ اور متوافق مجموعۂ کلام کی صورت اختیار کر لیں، جس میں نہ خیالات کا کوئی تصادم ہو، نہ متکلم کے دل و دماغ میں پیدا ہونے والی کیفیات کی کوئی جھلک دکھائی دے، اور نہ راے اور نقطۂ نظر کی تبدیلی کے کوئی آثار کہیں دیکھے جا سکتے ہوں۔"}, {"t": "p", "html": "اِس سے بھی، اگر کوئی استثنا ہے تو وہ تنہا قرآن کا ہے۔ چنانچہ فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["اَفَلَا يَتَدَبَّرُوْنَ الْقُرْاٰنَ وَلَوْ كَانَ مِنْ عِنْدِ غَيْرِ اللّٰهِ لَوَجَدُوْا فِيْهِ اخْتِلَافًا كَثِيْرًا"], "trans": ["''پھر کیا لوگ قرآن پر غور نہیں کرتے؟ اگر یہ اللہ کے سوا کسی اور کی طرف سے ہوتا تو اِس میں یہ بہت کچھ اختلاف پاتے۔''"], "ref": "النساء ۴: ۸۲"}, {"t": "p", "html": "استاذ امام لکھتے ہیں:", "keep": true}, {"t": "quote", "html": "''... قرآن کی ہر بات اپنے اصول اور فروع میں اتنی مستحکم اور مربوط ہے کہ ریاضی اور اقلیدس کے فارمولے بھی اتنے مستحکم و مربوط نہیں ہو سکتے۔ وہ جن عقائد کی تعلیم دیتا ہے، وہ ایک دوسرے سے اِس طرح وابستہ و پیوستہ ہیں کہ اگر اُن میں سے کسی ایک کو بھی الگ کر دیجیے تو پورا سلسلہ ہی درہم برہم ہوجائے۔ وہ جن عبادات و طاعات کا حکم دیتا ہے، وہ عقائد سے اِس طرح پیدا ہوتی ہیں، جس طرح تنے سے شاخیں پھوٹتی ہیں؛ وہ جن اعمال و اخلاق کی تلقین کرتا ہے، وہ اپنے اصول سے اِس طرح ظہور میں آتے ہیں، جس طرح ایک شے سے اُس کے قدرتی اور فطری لوازم ظہور میں آتے ہیں؛ اُس کی مجموعی تعلیم سے زندگی کا جو نظام بنتا ہے، وہ ایک بنیان مرصوص کی شکل میں نمایاں ہوتا ہے، جس کی ہر اینٹ دوسری اینٹ سے اِس طرح جڑی ہوئی ہے کہ اُن میں سے کسی کو بھی الگ کرنا بغیر اِس کے ممکن نہیں کہ پوری عمارت میں خلا پیدا ہوجائے۔''", "ref": "تدبر قرآن ۲/۷۴۳"}, {"t": "p", "html": "تیسرا یہ کہ کسی انسان کا علم کبھی سراسر حق نہیں ہوتا۔ اُس میں ہمیشہ کچھ آمیزش حق کے ساتھ باطل کی بھی ہوجاتی ہے۔ چنانچہ وہ دنیا سے رخصت نہیں ہوتا کہ اُس کے علم، معلومات، استنباط و استدلال اور اندازوں کی غلطیاں واضح ہونا شروع ہوجاتی ہیں۔ سقراط و فلاطوں، نیوٹن اور آئن اسٹائن، ہر ایک کی تقدیر یہی ہے۔ اِس سے کسی کو مفر نہیں۔ علم و ادب کی پوری تاریخ میں اِس سے مستثنیٰ کوئی ایک شخص بھی کسی جگہ اور کسی دور میں کبھی نہیں دیکھا گیا۔ مگر قرآن اِس معاملے میں بھی ایک حیرت انگیز استثنا ہے۔ چنانچہ کم و بیش پندرہ سو سال ہوگئے ہیں، وہ معرض امتحان میں ہے، لیکن کسی بڑے سے بڑے فلسفی، حکیم اور سائنس دان کے لیے بھی ممکن نہیں ہوا کہ اُس کی کسی بات کو غلط اور کسی تعلیم کو باطل ثابت کر دے۔ پچھلی تین صدیوں میں دنیا کہاں سے کہاں پہنچ گئی، مگر اِس پورے سفر میں کسی ایسی حقیقت کا انکشاف نہیں ہوا، جو قرآن کے پیش کردہ حقائق کے خلاف ہو، کسی علم نے قرآن کے بیان کردہ علم کی تردید نہیں کی، کوئی تجربہ اور مشاہدہ ایسا نہیں ہوا، جو اُس رہنمائی کو غلط ٹھیرا دے، جو قرآن نے اپنے پیش نظر کسی بھی مقصد کے لیے انسان کو دی ہے۔ وہ جس کو حق کہتا ہے، وہ کبھی باطل نہیں ہوا اور جس کو باطل کہتا ہے، وہ کبھی حق ثابت نہیں ہوا۔ قرآن کے بارے میں یہ حقائق ناقابل تردید ہیں۔ ارشاد فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["وَاِنَّهٗ لَكِتٰبٌ عَزِيْزٌ، لَّا يَاْتِيْهِ الْبَاطِلُ مِنْۣ بَيْنِ يَدَيْهِ، وَلَا مِنْ خَلْفِهٖ، تَنْزِيْلٌ مِّنْ حَكِيْمٍ حَمِيْدٍ"], "trans": ["''حقیقت یہ ہے کہ یہ ایک بلند پایہ کتاب ہے۔ اِس میں نہ باطل آگے سے داخل ہوسکتا ہے اور نہ اِس کے پیچھے سے۔ یہ نہایت اہتمام کے ساتھ اُس ہستی کی طرف سے اتاری گئی ہے، جو سراسر حکمت ہے، ستودہ صفات ہے۔''"], "ref": "حمٓ السجدہ ۴۱: ۴۱- ۴۲"}, {"t": "p", "html": "یہ معیار ہے، جس کے مطابق اپنی صداقت کو ثابت کر دینے کے بعد قرآن نے انسان کو بتایا ہے کہ جس کائنات کو تم اپنا خالق سمجھنے کی غلطی کر رہے ہو، وہ بھی اُسی کی مخلوق ہے، جو تمھارا خالق ہے۔ تم دیکھتے نہیں ہو کہ اِس دنیا کی ہر چیز حسن تخلیق کا معجزانہ اظہار ہے، ہر چیز میں اتھاہ معنویت ہے، غیر معمولی اہتمام ہے، حکمت، تدبیر، منفعت اور حیرت انگیز نظم و ترتیب ہے، غایت درجہ موزونیت ہے، بے پناہ توافق ہے، بے مثال اقلیدس اور ریاضی ہے، جس کی کوئی توجیہ اِس کے سوا نہیں ہو سکتی کہ اِس کو بھی اُسی علیم و حکیم نے تخلیق کیا ہے، جس نے تمھیں تخلیق کیا ہے۔ وہی جس نے زمین کو تمھارے لیے گہوارہ اور پہاڑوں کو اُس کی میخیں بنادیا ہے، تمھیں جوڑوں کی صورت میں پیدا کیا ہے اور تمھاری نیند کو تمھارے لیے باعث راحت، رات کو لباس اور دن کو معاش کا وقت بنادیا ہے، تمھارے اوپر سات محکم آسمان بنائے اور اُن میں ایک دہکتا چراغ جلا دیا ہے۔ وہی جس نے نچڑتی بدلیوں سے چھاجوں مینہ برسایا اور اُس سے سبزہ اور غلے اور گھنے باغ اگادیے ہیں:", "keep": true}, {"t": "verse", "ar": ["هُوَ اللّٰهُ الَّذِيْ لَا٘ اِلٰهَ اِلَّا هُوَ، عٰلِمُ الْغَيْبِ وَالشَّهَادَةِ، هُوَ الرَّحْمٰنُ الرَّحِيْمُ، هُوَ اللّٰهُ الَّذِيْ لَا٘ اِلٰهَ اِلَّا هُوَ، اَلْمَلِكُ الْقُدُّوْسُ السَّلٰمُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيْزُ الْجَبَّارُ الْمُتَكَبِّرُ، سُبْحٰنَ اللّٰهِ عَمَّا يُشْرِكُوْنَ. هُوَ اللّٰهُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ، لَهُ الْاَسْمَآءُ الْحُسْنٰي، يُسَبِّحُ لَهٗ مَا فِي السَّمٰوٰتِ وَالْاَرْضِ، وَهُوَ الْعَزِيْزُ الْحَكِيْمُ"], "trans": ["''وہی اللہ ہے جس کے سوا کوئی الٰہ نہیں، غائب و حاضر کا جاننے والا، وہ سراسر رحمت ہے، اُس کی شفقت ابدی ہے۔ وہی اللہ ہے جس کے سوا کوئی الٰہ نہیں، بادشاہ، وہ منزہ ہستی، سراسر سلامتی، امن دینے والا، نگہبان، غالب، بڑے زور والا، بڑائی کا مالک۔ پاک ہے اللہ اُن سے جو یہ شریک بناتے ہیں۔ وہی اللہ ہے نقشہ بنانے والا، وجود میں لانے والا، صورت دینے والا، سب اچھے نام اُسی کے ہیں۔ زمین اور آسمانوں کی سب چیزیں اُس کی تسبیح کرتی ہیں، اور وہ عزیز و حکیم ہے۔ ''"], "ref": "الحشر ۵۹: ۲۲- ۲۴"}, {"t": "p", "html": "قرآن نے بتایا ہے کہ اِس خالق کی ربوبیت کا اقرار ایک ایسی چیز ہے، جو ازل ہی سے انسان کی فطرت میں ودیعت کر دی گئی ہے۔ اُس کا بیان ہے کہ اِس کا اولین ظہور ایک عہد و میثاق کی صورت میں ہوا تھا۔ اِس عہد کا ذکر قرآن ایک امر واقعی کی حیثیت سے کرتا ہے۔ انسان کو یہاں امتحان کے لیے بھیجا گیا ہے، اِس لیے یہ واقعہ تو اُس کی یاد داشت سے محو کر دیا گیا ہے، لیکن اِس کی حقیقت اُس کے صفحۂ قلب پر نقش اور اُس کے نہاں خانۂ دماغ میں پیوست ہے، اِسے کوئی چیز بھی محو نہیں کر سکتی۔ چنانچہ ماحول میں کوئی چیز مانع نہ ہو اور انسان کو اِسے یاد دلایا جائے تو وہ اِس کی طرف اِس طرح لپکتا ہے، جس طرح بچہ ماں کی طرف لپکتا ہے، دراں حالیکہ اُس نے کبھی اپنے آپ کو ماں کے پیٹ سے نکلتے ہوئے نہیں دیکھا، اور اِس یقین کے ساتھ لپکتا ہے، جیسے کہ وہ پہلے ہی سے اُس کو جانتا تھا۔ وہ محسوس کرتا ہے کہ خالق کا یہ اقرار اُس کی ایک فطری احتیاج کے تقاضے کا جواب تھا، جو اُس کے اندر ہی موجود تھا۔ اُس نے اِسے پالیا ہے تو اُس کی نفسیات کے تمام تقاضوں نے بھی اِس کے ساتھ ہی اپنی جگہ پالی ہے۔ قرآن کا ارشاد ہے کہ انسان کے باطن کی یہ شہادت ایسی قطعی ہے کہ جہاں تک خدا کی ربوبیت کا تعلق ہے، ہر شخص مجرد اِس شہادت کی بنا پر اللہ کے حضور میں جواب دہ ہے۔ فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["وَاِذْ اَخَذَ رَبُّكَ مِنْۣ بَنِيْ٘ اٰدَمَ مِنْ ظُهُوْرِهِمْ ذُرِّيَّتَهُمْ، وَاَشْهَدَهُمْ عَلٰ٘ي اَنْفُسِهِمْ، اَلَسْتُ بِرَبِّكُمْ؟ قَالُوْا: بَلٰي، شَهِدْنَاﵑ اَنْ تَقُوْلُوْا يَوْمَ الْقِيٰمَةِ: اِنَّا كُنَّا عَنْ هٰذَا غٰفِلِيْنَ. اَوْ تَقُوْلُوْ٘ا اِنَّمَا٘ اَشْرَكَ اٰبَآؤُنَا مِنْ قَبْلُ، وَكُنَّا ذُرِّيَّةً مِّنْۣ بَعْدِهِمْ، اَفَتُهْلِكُنَا بِمَا فَعَلَ الْمُبْطِلُوْنَ؟ وَكَذٰلِكَ نُفَصِّلُ الْاٰيٰتِ، وَلَعَلَّهُمْ يَرْجِعُوْنَ"], "trans": ["''اِنھیں وہ وقت بھی یاد دلاؤ، جب تمھارے پروردگار نے بنی آدم کی پشتوں سے اُن کی نسل کو نکالا اور اُنھیں خود اُن کے اوپر گواہ ٹھیرایا تھا۔ (اُس نے پوچھا تھا): کیا میں تمھارا رب نہیں ہوں؟ اُنھوں نے جواب دیا: ہاں، (آپ ہی ہمارے رب ہیں)، ہم اِس کی گواہی دیتے ہیں۔ یہ ہم نے اِس لیے کیا کہ قیامت کے دن تم کہیں یہ نہ کہہ دو کہ ہم تو اِس بات سے بے خبر ہی رہے یا اپنا یہ عذر پیش کرو کہ شرک کی ابتدا تو ہمارے باپ دادا نے پہلے سے کررکھی تھی اور ہم بعد کو اُن کی اولاد ہوئے ہیں۔ پھر کیا آپ اُن غلط کاروں کے عمل کی پاداش میں ہمیں ہلاک کریں گے؟ ہم اِسی طرح اپنی آیتوں کی تفصیل کرتے ہیں، اِس لیے کہ لوگوں پر حجت قائم ہو اور اِس لیے کہ وہ رجوع کریں۔''"], "ref": "الاعراف ۷: ۱۷۲ - ۱۷۴"}, {"t": "p", "html": "یہی اقرار اِس کائنات کی روح ہے۔ انسان کی عقل اِسی سے مطمئن ہوتی اور اُس کا سینہ اِسی سے مطلع انوار بنتا ہے۔ چنانچہ وہ پکار اٹھتا ہے کہ لاریب، اللہ ہی ہے، جس کے نور سے یہ زمین و آسمان روشن ہیں:", "keep": true}, {"t": "verse", "ar": ["اَللّٰهُ نُوْرُ السَّمٰوٰتِ وَالْاَرْضِ، مَثَلُ نُوْرِهٖ كَمِشْكٰوةٍ فِيْهَا مِصْبَاحٌ، اَلْمِصْبَاحُ فِيْ زُجَاجَةٍ، اَلزُّجَاجَةُ كَاَنَّهَا كَوْكَبٌ دُرِّيٌّ، يُّوْقَدُ مِنْ شَجَرَةٍ مُّبٰرَكَةٍ زَيْتُوْنَةٍ، لَّا شَرْقِيَّةٍ وَّلَا غَرْبِيَّةٍ، يَّكَادُ زَيْتُهَا يُضِيْٓءُ وَلَوْ لَمْ تَمْسَسْهُ نَارٌ، نُوْرٌ عَلٰي نُوْرٍ، يَهْدِي اللّٰهُ لِنُوْرِهٖ مَنْ يَّشَآءُ، وَيَضْرِبُ اللّٰهُ الْاَمْثَالَ لِلنَّاسِ، وَاللّٰهُ بِكُلِّ شَيْءٍ عَلِيْمٌ"], "trans": ["''اللہ زمین اور آسمانوں کی روشنی ہے۔ (انسان کے دل میں) اِس روشنی کی مثال ایسی ہے، جیسے ایک طاق جس میں ایک چراغ ہے۔ چراغ شیشے کے اندر ہے۔ شیشہ ایسا ہے، جیسے ایک چمکتا ہوا تارا۔ وہ زیتون کے ایک ایسے شاداب درخت کے تیل سے روشن کیا جاتا ہے، جو نہ شرقی ہے نہ غربی۔ اُس کا تیل (ایسا شفاف ہے کہ) گویا آگ کے چھوئے بغیر ہی بھڑک اٹھے گا۔ روشنی کے اوپر روشنی! اللہ جس کو چاہتا ہے، اپنی اِس روشنی کی ہدایت بخشتا ہے۔ اللہ یہ تمثیلیں لوگوں کی رہنمائی کے لیے بیان فرماتا ہے، اور اللہ ہر چیز سے واقف ہے۔''"], "ref": "النور ۲۴: ۳۵"}, {"t": "p", "html": "استاذ امام لکھتے ہیں:", "keep": true}, {"t": "quote", "html": "''...یہ آسمان و زمین، بلکہ یہ پوری کائنات اُس شخص کے لیے ایک عالم ظلمات اور ایک اندھیر نگری ہے، جو خدا کو نہیں مانتا یا مانتا ہے، لیکن خدا کی صفات اور اُن کے مقتضیات کو نہیں تسلیم کرتا۔ ایسا شخص نہ یہ جان سکتا ہے کہ یہ دنیا کہاں سے آئی ہے اور نہ یہ جان سکتا ہے کہ اِس کے وجود میں آنے کی غایت اور مقصد کیا ہے؟ وہ خود اپنے متعلق بھی یہ فیصلہ نہیں کر سکتا کہ اُس کا مقصد وجود کیا ہے؟ وہ اِس دنیا میں مطلق العنان اور شتربے مہار ہے یا پابند و محکوم؟ وہ مسؤل ہے یا غیرمسؤل؟ اُس کے لیے کیا خیر ہے اور کیا شر؟ اُسے ظلم کی روش اختیار کرنی چاہیے یا عدل کی؟ اُسے مجرد اپنے مفاد اور خواہشوں کی پیروی کرنی چاہیے یا اُن سے کسی بالاتر نصب العین کی؟ اِن سوالوں کے صحیح جواب ہی پر صحیح اور کامیاب زندگی کا انحصار ہے۔ لیکن جو شخص خدا کو نہیں مانتا، وہ اِن سوالوں کا صحیح حل نہیں پا سکتا۔ وہ اندھیرے میں اندھے بھینسے کی طرح بھٹکتا پھرتا ہے اور بالآخر قعر ہلاکت میں گر کر اپنے کیفر کردار کو پہنچ جاتا ہے۔ البتہ جو شخص خدا کو اُس کی صحیح صفات کے ساتھ مانتا ہے، وہ اِس کائنات کا سرا بھی پا جاتا ہے اور اِس کا انجام بھی اُس پر واضح ہو جاتا ہے۔ اُس پر اُن تمام سوالوں کے جواب بھی روشن ہو جاتے ہیں، جن کو خدا کا نہ ماننے والا کبھی حل نہیں کر سکتا۔ اِس وجہ سے یہ دنیا اُس کے لیے اندھیر نگری نہیں رہتی، بلکہ ایمان کے نور سے اُس کے لیے اِس کی ہر چیز جگمگا اٹھتی ہے اور اِس کا ہر پہلو اُس پر روشن ہو جاتا ہے۔ وہ جو قدم بھی اٹھاتا ہے، پورے دن کی روشنی میں اٹھاتا ہے اور جس سمت میں بھی چلتا ہے، خدا کے ایمان کا نور اُس کی رہنمائی کرتا ہے۔ یہی حقیقت اِس (آیت) میں واضح فرمائی گئی ہے کہ اِس آسمان و زمین کا نور اللہ ہے۔ جس کے پاس یہ نور ہے، وہ روشنی میں اور صراط مستقیم پر ہے۔ اور جو اِس نور سے محروم ہے، وہ ایک عالم ظلمات میں بھٹک رہا ہے اور کوئی دوسرا اُس کو روشنی نہیں دے سکتا۔ 'وَمَنْ لَّمْ يَجْعَلِ اللّٰهُ لَهٗ نُوْرًا فَمَا لَهٗ مِنْ نُّوْرٍ'۔''", "ref": "تدبر قرآن ۵/ ۴۰۹"}], "bounds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 17, 19, 20, 21, 23, 25, 27, 29, 31, 33, 35], "est": 16}, {"title": "اصول و مبادی", "sub": "", "num": "۳", "blocks": [{"t": "p", "html": "ہم نے دین کو جس طرح سمجھاہے، اُس میں تین چیزیں بنیادی اصول کی حیثیت رکھتی ہیں:", "keep": true}, {"t": "p", "html": "اول یہ کہ قرآن حق و باطل کے لیے میزان اور فرقان اور تمام سلسلۂ وحی پر ایک 'مُهَيْمِن' ہے۔ یہ اِس لیے نازل کیا گیا ہے کہ دین و شریعت کے معاملے میں لوگوں کے مابین تمام اختلافات کا فیصلہ کر دے اور اِس کے نتیجے میں وہ ٹھیک حق پرقائم ہو جائیں۔ قرآن نے اپنی یہ حیثیت اپنے لیے خود بیان فرمائی ہے، لہٰذا اِس کی بنیاد پر جو باتیں اُس کے بارے میں بطور اصول ماننی چاہییں، وہ یہ ہیں:", "keep": true}, {"t": "p", "html": "اولاً، اُس کا متن بالکل متعین ہے۔ یہ وہی ہے جو مصحف میں ثبت ہے اور جسے مغرب کے چند علاقوں کو چھوڑ کر پوری دنیا میں امت مسلمہ کی عظیم اکثریت اِس وقت تلاوت کر رہی ہے۔ یہ تلاوت جس قراء ت کے مطابق کی جاتی ہے، اُسے 'قراء ت عامہ' کہا جاتا ہے۔ اِس کے سوا کوئی دوسری قراء ت نہ قرآن ہے اورنہ اُسے قرآن کی حیثیت سے پیش کیا جاسکتا ہے۔"}, {"t": "p", "html": "ثانیاً، قرآن قطعی الدلالۃ ہے۔ اِس کے معنی یہ ہیں کہ قرآن کے الفاظ پوری صلاحیت رکھتے ہیں کہ انسان اُن کی رہنمائی قبول کر لے تو اُسے قطعیت کے ساتھ ٹھیک اُس مدعا تک پہنچا دیں جس کے لیے وہ لائے گئے ہیں۔ یہ صرف قلت علم اور قلت تدبر ہے جس کی بنا پر انسان بعض اوقات اُسے سمجھنے سے قاصر رہ جاتا ہے۔ قرآن کی زبان اور اُس کے اسالیب بیان سے اِس کا کوئی تعلق نہیں ہے۔ وہ اپنا مدعا بیان کرنے سے کبھی قاصر نہیں رہتا۔"}, {"t": "p", "html": "ثالثاً، قرآن کی وہ سب آیتیں محکم ہیں جن پر اُس کی ہدایت کا مدار ہے اور متشابہات صرف وہ آیتیں ہیں جن میں آخرت کی نعمتوں اور نقمتوں میں سے کسی نعمت یا نقمت کا بیان تمثیل اور تشبیہ کے انداز میں ہوا ہے یا اللہ تعالیٰ کے صفات و افعال اور ہمارے علم اور مشاہدے سے ماورا اُس کے کسی عالم کی کوئی بات تمثیلی اسلوب میں بیان کی گئی ہے۔ یہ آیتیں نہ غیر متعین ہیں اور نہ اِن کے مفہوم میں کوئی ابہام ہے۔ اِن کے الفاظ بھی عربی مبین ہی کے الفاظ ہیں اور اِن کے معنی ہم بغیر کسی تردد کے سمجھتے ہیں۔ اِن کی حقیقت ، البتہ ہم اِس دنیا میں نہیں جان سکتے، لیکن اِس جاننے اور نہ جاننے کا قرآن کے فہم سے چونکہ کوئی تعلق نہیں ہے، اِس لیے ہم اِس کے درپے بھی نہیں ہوتے۔"}, {"t": "p", "html": "رابعاً، قرآن سے باہر کوئی وحی خفی یا جلی، یہاں تک کہ خدا کا وہ پیغمبر بھی جس پر وہ نازل ہوا ہے، اُس کے کسی حکم میں کوئی ترمیم و تغیر نہیں کر سکتا۔ دین میں ہر چیز کے ردوقبول کا فیصلہ اُس کی آیات بینات ہی کی روشنی میں کیا جاتا ہے۔ ایمان و عقیدہ کی ہر بحث اُس سے شروع ہوتی اور اُسی پر ختم کر دی جاتی ہے۔ ہر وحی، ہر الہام ، ہر القا، ہر تحقیق اور ہر راے اُس کے تابع ہے۔ بوحنیفہ و شافعی ، بخاری و مسلم، اشعری و ماتریدی اور جنید و شبلی، سب پر اُس کی حکومت قائم ہے اور اُس کے خلاف اِن میں سے کسی کی کوئی چیز بھی قبول نہیں کی جا سکتی۔"}, {"t": "p", "html": "دوم یہ کہ سنت دین ابراہیمی کی وہ روایت ہے جسے رسول اللہ صلی اللہ علیہ وسلم نے اُس کی تجدید و اصلاح کے بعد اور اُس میں بعض اضافوں کے ساتھ اپنے ماننے والوں میں دین کی حیثیت سے جاری فرمایا ہے۔ قرآن نے بتایا ہے کہ اِس کے لیے آپ کو ملت ابراہیمی کی اتباع کا حکم دیا گیا تھا۔ یہ روایت بھی اُسی کا حصہ ہے۔ ثبوت کے اعتبار سے اِس میں اور قرآن مجید میں کوئی فرق نہیں ہے۔ وہ جس طرح صحابہ کے اجماع اور قولی و تحریری تواتر سے ملا ہے، یہ اُسی طرح اُن کے اجماع اور عملی تواتر سے ملی ہے اور قرآن ہی کی طرح ہر دور میں مسلمانوں کے اجماع سے ثابت ہوتی ہے۔ لہٰذا اِس کے بارے میں کسی بحث و نزاع کے لیے کوئی گنجایش نہیں ہے۔"}, {"t": "p", "html": "سوم یہ کہ دین اصلاً وہی ہے جو قرآن و سنت میں بیان کر دیا گیا ہے۔ اِس کے علاوہ کوئی چیز دین ہے، نہ اُسے دین قرار دیا جا سکتا ہے۔ رسول اللہ صلی اللہ علیہ وسلم کے قول و فعل اور تقریر و تصویب کے اخبار آحادجنھیں بالعموم ''حدیث'' کہا جاتا ہے، اُن سے دین میں کسی عقیدہ و عمل کا اضافہ نہیں ہوتا۔ دین سے متعلق جو چیزیں اُن میں آتی ہیں، وہ درحقیقت، قرآن و سنت میں محصور اِسی دین کی تفہیم و تبیین اور اِس پر عمل کے لیے نبی صلی اللہ علیہ وسلم کے اسوۂ حسنہ کا بیان ہیں۔ حدیث کا دائرہ یہی ہے۔ چنانچہ دین کی حیثیت سے اِس دائرے سے باہر کی کوئی چیز نہ حدیث ہو سکتی ہے اور نہ محض حدیث کی بنیاد پر اُسے قبول کیا جا سکتا ہے۔"}, {"t": "p", "html": "اِس دائرے کے اندر، البتہ حدیث کی حجت ہر اُس شخص پر قائم ہو جاتی ہے جو اُس کی صحت پر مطمئن ہو جانے کے بعد رسول اللہ صلی اللہ علیہ وسلم کے قول و فعل یا تقریر و تصویب کی حیثیت سے اُسے قبول کر لیتا ہے ۔ اُس سے انحراف پھر اُس کے لیے جائز نہیں رہتا، بلکہ ضروری ہو جاتا ہے کہ آپ کا کوئی حکم یا فیصلہ اگر اُس میں بیان کیا گیا ہے تو اُس کے سامنے سرتسلیم خم کر دے۔"}], "bounds": [0, 3, 4, 5, 6, 7, 8, 9], "est": 3}, {"title": "دین حق", "sub": "", "num": "۴", "blocks": [{"t": "p", "html": "دین کی حقیقت اگر ایک لفظ میں بیان کی جائے تو قرآن کی اصطلاح میں وہ اللہ کی ''عبادت''ہے ۔ عالم کا پروردگار اِس دنیا میں اپنے بندوں سے اصلاً جو کچھ چاہتا ہے ،وہ یہی ہے ۔ ارشاد فرمایا ہے :", "keep": true}, {"t": "verse", "ar": ["وَمَا خَلَقْتُ الْجِنَّ وَالْاِنْسَ اِلَّا لِيَعْبُدُوْنِ"], "trans": ["''میں نے جنوں اور انسانوں کو صرف اِس لیے پیدا کیا ہے کہ وہ میری عبادت کریں ۔''"], "ref": "الذاریات ۵۱: ۵۶"}, {"t": "p", "html": "قرآن مجید نے جگہ جگہ بڑی وضاحت کے ساتھ بیان کیا ہے کہ خداوند عالم نے اپنے پیغمبر انسان کو اِسی حقیقت سے آگاہ کر دینے کے لیے بھیجے تھے :", "keep": true}, {"t": "verse", "ar": ["وَلَقَدْ بَعَثْنَا فِيْ كُلِّ اُمَّةٍ رَّسُوْلًا اَنِ اعْبُدُوا اللّٰهَ وَاجْتَنِبُوا الطَّاغُوْتَ"], "trans": ["''ہم نے ہر قوم میں ایک رسول اِس دعوت کے ساتھ بھیجا تھاکہ اللہ کی عبادت کرو اور طاغوت سے بچو۔''"], "ref": "النحل ۱۶: ۳۶"}, {"t": "p", "html": "اِس ''عبادت''کے معنی کیا ہیں ؟ یہ اگر غور کیجیے تو سورۂ نحل کی اِسی آیت سے واضح ہیں ۔ اللہ کی عبادت کے بالمقابل یہاں طاغوت کی پیروی سے بچنے کی ہدایت کی گئی ہے۔ 'الطَّاغُوْت' اور 'الشَّيْطَان' قرآن میں بالکل ہم معنی استعمال ہوئے ہیں، یعنی جو خدا کے سامنے سرکشی،تمرد اور استکبار اختیار کرے۔ اِس کا ضد، ظاہر ہے کہ عاجزی اور پستی ہی ہے ۔چنانچہ ''عبادت'' کے معنی ائمۂ لغت بالعموم اِس طرح بیان کرتے ہیں کہ 'أصل العبودیة الخضوع والتذلل'<sup class=\"fnref\" data-n=\"9\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 9\">9</sup> [ (عبادت اصل میں عاجزی اور پستی ہے )۔ یہ چیز اگر خدا کی رحمت، قدرت، ربوبیت اور حکمت کے صحیح شعور کے ساتھ پیدا ہو تو اپنے آپ کو بے انتہا محبت اور بے انتہا خوف کے ساتھ اُس کے سامنے آخری حد تک جھکا دینے کی صورت اختیار کر لیتی ہے۔ خشوع، خضوع، اخبات ، انابت، خشیت، تضرع، قنوت وغیرہ، یہ سب الفاظ قرآن میں اِسی حقیقت کی تعبیر کے لیے استعمال ہوئے ہیں ۔یہ دراصل ایک داخلی کیفیت ہے جو انسان کے اندر پیدا ہوتی اور اُس کے نہاں خانۂ وجود کا احاطہ کر لیتی ہے۔ ذکر،شکر، تقویٰ، اخلاص، توکل ،تفویض اور تسلیم و رضا ـــــ یہ سب عبد و معبود کے مابین اِس تعلق کے باطنی مظاہر ہیں۔] اِس کے معنی یہ ہیں کہ بندہ اِس تعلق میں اپنے پروردگار کی یاد سے اطمینان حاصل کرتا،اُس کی عنایتوں پر اُس کے لیے شکر کے جذبات کو اپنے اندر ایک سیل بے پناہ کی طرح امڈتے ہوئے دیکھتا، اُس کی ناراضی سے ڈرتا، اُسی کا ہو رہتا، اُس کے بھروسے پر جیتا، اپنا ہر معاملہ اُس کے سپرد اور اپنے پورے وجود کو اُس کے حوالے کر دیتا اوراُس کے ہر فیصلے پر راضی رہتا ہے۔انسان کے ظاہری وجود میں اِس تعلق کا ظہور جن صورتوں میں ہوتا ہے، اُن کے بارے میں قرآن کا ارشاد ہے :", "keep": true}, {"t": "verse", "ar": ["اِنَّمَا يُؤْمِنُ بِاٰيٰتِنَا الَّذِيْنَ اِذَا ذُكِّرُوْا بِهَا خَرُّوْا سُجَّدًا وَّسَبَّحُوْا بِحَمْدِ رَبِّهِمْ وَهُمْ لَا يَسْتَكْبِرُوْنَ. تَتَجَافٰي جُنُوْبُهُمْ عَنِ الْمَضَاجِعِ يَدْعُوْنَ رَبَّهُمْ خَوْفًا وَّطَمَعًا، وَّمِمَّا رَزَقْنٰهُمْ يُنْفِقُوْنَ"], "trans": ["''ہماری آیتوں پر تو وہی لوگ ایمان لاتے ہیں، (اے پیغمبر) کہ اُنھیں جب اِن کے ذریعے سے یاددہانی کی جاتی ہے تو سجدے میں گر پڑتے ہیں اور اپنے رب کی حمد کے ساتھ اُس کی تسبیح کرتے ہیں اور وہ ہرگز تکبر نہیں کرتے۔ اُن کے پہلو بستروں سے الگ رہتے ہیں۔ وہ اپنے رب کو خوف اور طمع کے ساتھ پکارتے ہیں اور جو کچھ ہم نے اُن کو دیا ہے، اُس میں سے خرچ کرتے ہیں۔ ''"], "ref": "السجدہ ۳۲: ۱۶-۱۵"}, {"t": "p", "html": "یہ رکوع و سجود،تسبیح و تحمید ،دعا و مناجات اور خدا کی خوشنودی حاصل کرنے کے لیے جان و مال کی قربانی ــــــ یہی اصل ''عبادت''ہے ۔لیکن انسان چونکہ اِس دنیا میں اپنا ایک عملی وجود بھی رکھتا ہے ،اِس وجہ سے اپنے اِس ظہور سے آگے بڑھ کر یہ عبادت انسان کے اُس عملی وجود سے متعلق ہوتی اور اِس طرح پرستش کے ساتھ اطاعت کو بھی شامل ہو جاتی ہے ۔اُس وقت یہ انسان سے مطالبہ کرتی ہے کہ اُس کا باطن جس ہستی کے سامنے جھکا ہوا ہے، اُس کا ظاہر بھی اُس کے سامنے جھک جائے۔ اُس نے اپنے آپ کو اندرونی طور پر جس کے حوالے کر دیا ہے ،اُس کے خارج میں بھی اُس کا حکم جاری ہو جائے، یہاں تک کہ اُس کی زندگی کا کوئی پہلو اِس سے مستثنیٰ نہ رہے۔ دوسرے لفظوں میں یوں کہیے کہ ہر لحاظ سے وہ اپنے پروردگار کا بندہ بن جائے ۔ ارشاد فرمایا ہے :", "keep": true}, {"t": "verse", "ar": ["يٰ٘اَيُّهَا الَّذِيْنَ اٰمَنُوا ارْكَعُوْا وَاسْجُدُوْا وَاعْبُدُوْا رَبَّكُمْ وَافْعَلُوا الْخَيْرَ لَعَلَّكُمْ تُفْلِحُوْنَ"], "trans": ["''ایمان والو، (اِن کا عہد تمام ہوا، اب تمھارا دور شروع ہو رہا ہے تو) رکوع و سجود کرو اور اپنے پروردگار کی بندگی کرواور نیکی کے کام کرو تاکہ تم فلاح پاؤ۔''"], "ref": "الحج ۲۲ : ۷۷"}, {"t": "p", "html": "اللہ اور بندے کے درمیان عبد و معبود کے اِس تعلق کے لیے یہ ''عبادت'' جب مابعدالطبیعیاتی اور اخلاقی اساسات متعین کرتی، مراسم طے کرتی اور دنیا میں اِس تعلق کے تقاضوں کو پورا کرنے کے لیے حدود و قیود مقرر کرتی ہے تو قرآن کی زبان میں اُسے ''دین'' سے تعبیر کیا جاتا ہے ۔اِس کی جو صورت اللہ تعالیٰ نے اپنے پیغمبروں کی وساطت سے بنی آدم پر واضح کی ہے، قرآن اُسے 'الدِّيْن'کہتا ہے اور اُس کے بارے میں اُنھیں ہدایت کرتا ہے کہ وہ اُسے بالکل درست اور اپنی زندگی میں پوری طرح برقرار رکھیں اور اُس میں کوئی تفرقہ پیدا نہ کریں۔ سورۂ شوریٰ میں ہے :", "keep": true}, {"t": "verse", "ar": ["شَرَعَ لَكُمْ مِّنَ الدِّيْنِ مَا وَصّٰي بِهٖ نُوْحًا وَّالَّذِيْ٘ اَوْحَيْنَا٘ اِلَيْكَ وَمَا وَصَّيْنَا بِهٖ٘ اِبْرٰهِيْمَ وَمُوْسٰي وَعِيْسٰ٘ي اَنْ اَقِيْمُوا الدِّيْنَ وَلَا تَتَفَرَّقُوْا فِيْهِ"], "trans": ["''اُس نے تمھارے لیے وہی دین مقرر کیا ہے جس کی ہدایت اُس نے نوح کو فرمائی اور جس کی وحی، (اے پیغمبر)، ہم نے تمھاری طرف کی ہے اور جس کا حکم ہم نے ابراہیم اور موسیٰ اور عیسیٰ کو دیا کہ (اپنی زندگی میں) اِس دین کو قائم رکھو<sup class=\"fnref\" data-n=\"10\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 10\">10</sup> [ اور اِس میں تفرقہ پیدا نہ کرو۔'']"], "ref": "۱۳:۴۲"}, {"t": "p", "html": "اِس ''عبادت'' کے لیے جو مابعد الطبیعیاتی اور اخلاقی اساسات خدا کے اِس دین میں بیان ہوئی ہیں، اُنھیں قرآن 'الْحِكْمَة'اور اِس کے مراسم اور حدود وقیود کو 'الْكِتٰب'، یعنی قانون سے تعبیر کرتا ہے:", "keep": true}, {"t": "verse", "ar": ["وَاَنْزَلَ اللّٰهُ عَلَيْكَ الْكِتٰبَ وَالْحِكْمَةَ وَعَلَّمَكَ مَا لَمْ تَكُنْ تَعْلَمُ، وَكَانَ فَضْلُ اللّٰهِ عَلَيْكَ عَظِيْمًا"], "trans": ["'' اللہ نے تم پر اپنا قانون اور اپنی حکمت نازل فرمائی ہے اور اِس طرح تمھیں وہ چیز سکھائی ہے جو تم نہیں جانتے تھے اور اللہ کی تم پر بڑی عنایت ہے۔''"], "ref": "النساء ۴ : ۱۱۳"}, {"t": "verse", "ar": ["وَاذْكُرُوْا نِعْمَتَ اللّٰهِ عَلَيْكُمْ وَمَا٘ اَنْزَلَ عَلَيْكُمْ مِّنَ الْكِتٰبِ وَالْحِكْمَةِ يَعِظُكُمْ بِهٖ، وَاتَّقُوا اللّٰهَ وَاعْلَمُوْ٘ا اَنَّ اللّٰهَ بِكُلِّ شَيْءٍ عَلِيْمٌ"], "trans": ["''اور اپنے اوپر اللہ کی عنایت کو یاد رکھو، اور اُس قانون اور حکمت کو یاد رکھو جو اُس نے تم پر اتاری ہے، جس کی وہ تمھیں نصیحت کرتا ہے، اور اللہ سے ڈرتے رہو اور خوب جان رکھو کہ اللہ ہر چیز سے واقف ہے۔''"], "ref": "البقرہ ۲ : ۲۳۱"}, {"t": "p", "html": "اِس 'الْكِتٰب' کو وہ ''شریعت'' بھی کہتا ہے :", "keep": true}, {"t": "verse", "ar": ["ثُمَّ جَعَلْنٰكَ عَلٰي شَرِيْعَةٍ مِّنَ الْاَمْرِ فَاتَّبِعْهَا وَلَا تَتَّبِعْ اَهْوَآءَ الَّذِيْنَ لَا يَعْلَمُوْنَ"], "trans": ["'' اِس کے بعد، (اے پیغمبر)، ہم نے تم کو اپنے دین کی ایک واضح شریعت پر قائم کیا ہے تو اب تم اُسی کی پیروی کرو اور اُن لوگوں کی خواہشوں کے پیچھے نہ چلو جن کے پاس علم نہیں ہے۔''"], "ref": "الجاثیہ ۴۵:۱۸"}, {"t": "p", "html": "'الْحِكْمَة' ہمیشہ سے ایک ہی ہے ،لیکن ''شریعت'' بعض وجوہ سے، البتہ بہت کچھ مختلف رہی ہے۔ ارشاد فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["لِكُلٍّ جَعَلْنَا مِنْكُمْ شِرْعَةً وَّمِنْهَاجًا، وَلَوْ شَآءَ اللّٰهُ لَجَعَلَكُمْ اُمَّةً وَّاحِدَةً"], "trans": ["''تم میں سے ہر ایک کے لیے ہم نے ایک شریعت، یعنی ایک لائحۂ عمل مقرر کیا ہے۔ اللہ چاہتا تو تمھیں ایک ہی امت بنا دیتا۔''"], "ref": "المائدہ۴۸:۵"}, {"t": "p", "html": "الہامی لٹریچر کا مطالعہ کرنے سے معلوم ہوتا ہے کہ تورات میں زیادہ تر شریعت اور انجیل میں حکمت بیان ہوئی ہے۔ زبور اِسی حکمت کی تمہید میں خداوند عالم کی تمجید کا مزمور ہے اور قرآن اِن دونوں کے لیے ایک جامع شہ پارۂ ادب اور صحیفۂ انذار و بشارت کی حیثیت سے نازل ہوا ہے۔ بقرہ و نساء کی جو آیات اوپر نقل ہوئی ہیں، اُن میں قرآن سے متعلق یہ حقیقت نہایت واضح الفاظ میں بیان ہوئی ہے۔ تورات و انجیل کے بارے میں اللہ تعالیٰ نے سیدنا مسیح علیہ السلام کے ساتھ قیامت میں اپنا ایک مکالمہ نقل کرتے ہوئے فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["وَاِذْ عَلَّمْتُكَ الْكِتٰبَ وَالْحِكْمَةَ وَالتَّوْرٰىةَ وَالْاِنْجِيْلَ"], "trans": ["''اور اُس وقت، جب میں نے تمھیں قانون اور حکمت سکھائی، یعنی تورات و انجیل کی تعلیم دی ۔''"], "ref": "المائدہ ۵: ۱۱۰"}, {"t": "p", "html": "'الْحِكْمَة' کی تعبیر جن مباحث کے لیے اختیار کی گئی ہے ،وہ بنیادی طور پر دو ہیں :", "keep": true}, {"t": "p", "html": "ایک ایمانیات؛"}, {"t": "p", "html": "دوسرے اخلاقیات ۔"}, {"t": "p", "html": "'الْكِتٰب' کے تحت جو مباحث بیان ہوئے ہیں ،وہ یہ ہیں:", "keep": true}, {"t": "li", "n": "۱۔", "html": "قانون عبادات۔ ۲۔قانون معاشرت ۔ ۳۔قانون سیاست۔ ۴۔قانون معیشت۔ ۵۔قانون دعوت۔ ۶۔قانون جہاد۔ ۷۔حدود و تعزیرات۔ ۸۔خور و نوش۔ ۹۔رسوم و آداب۔ ۱۰۔قسم اور کفارۂ قسم ۔"}, {"t": "p", "html": "یہی سارا دین ہے ۔خدا کے جو پیغمبر اِس دین کو لے کر آئے ، اُنھیں ''نبی''کہا جاتا ہے ۔قرآن سے معلوم ہوتا ہے کہ اُن میں سے بعض ''نبوت''کے ساتھ ''رسالت'' کے منصب پر بھی فائز ہوئے تھے۔"}, {"t": "verse", "ar": [], "trans": ["''نبوت'' یہ ہے کہ بنی آدم میں سے کوئی شخص آسمان سے وحی پا کر لوگوں کو حق بتائے اور اُس کے ماننے والوں کو قیامت میں اچھے انجام کی خوش خبری دے اور نہ ماننے والوں کو برے انجام سے خبردار کرے ۔ قرآن اِسے ''انذار'' اور ''بشارت'' سے تعبیر کرتا ہے :"], "ref": null}, {"t": "verse", "ar": ["كَانَ النَّاسُ اُمَّةً وَّاحِدَةً، فَبَعَثَ اللّٰهُ النَّبِيّٖنَ مُبَشِّرِيْنَ وَمُنْذِرِيْنَ"], "trans": ["'' لوگ ایک ہی امت تھے۔ پھر(اُن میں اختلاف پیدا ہوا تو) اللہ نے نبی بھیجے ، بشارت دیتے اور انذار کرتے ہوئے ۔''", "''رسالت'' یہ ہے کہ نبوت کے منصب پر فائز کوئی شخص اپنی قوم کے لیے اِس طرح خدا کی عدالت بن کر آئے کہ اُس کی قوم اگر اُسے جھٹلا دے تو اُس کے بارے میں خدا کا فیصلہ اِسی دنیا میں اُس پر نافذ کر کے وہ حق کا غلبہ عملاً اُس پر قائم کردے:"], "ref": "البقرہ۲ : ۲۱۳"}, {"t": "verse", "ar": ["وَلِكُلِّ اُمَّةٍ رَّسُوْلٌ، فَاِذَا جَآءَ رَسُوْلُهُمْ قُضِيَ بَيْنَهُمْ بِالْقِسْطِ وَهُمْ لَا يُظْلَمُوْنَ"], "trans": ["'' (اُس کا قانون یہی ہے کہ) ہر قوم کے لیے ایک رسول ہے۔ پھر جب اُن کا رسول آجاتا ہے تو اُن کے درمیان انصاف کے ساتھ فیصلہ کر دیا جاتا ہے اور اُن پر کوئی ظلم نہیں کیا جاتا۔''"], "ref": "یونس۱۰: ۴۷"}, {"t": "verse", "ar": ["اِنَّ الَّذِيْنَ يُحَآدُّوْنَ اللّٰهَ وَرَسُوْلَهٗ٘ اُولٰٓئِكَ فِي الْاَذَلِّيْنَ، كَتَبَ اللّٰهُ لَاَغْلِبَنَّ اَنَا وَرُسُلِيْ، اِنَّ اللّٰهَ قَوِيٌّ عَزِيْزٌ"], "trans": ["''(تمھیں معلوم ہونا چاہیے کہ) جو اللہ اور اُس کے رسول سے دشمنی کریں گے، وہی سب سے بڑھ کر ذلیل ہونے والوں میں ہوں گے۔ اِس لیے کہ اللہ نے لکھ دیا ہے کہ میں اور میرے رسول غالب ہو کر رہیں گے۔ حقیقت یہ ہے کہ اللہ بڑے زور والا اور بڑا زبردست ہے۔''"], "ref": "المجادلہ۵۸: ۲۰-۲۱"}, {"t": "p", "html": "رسالت کا یہی قانون ہے جس کے مطابق خاص نبی صلی اللہ علیہ وسلم کے بارے میں قرآن کا ارشاد ہے:", "keep": true}, {"t": "verse", "ar": ["هُوَ الَّذِيْ٘ اَرْسَلَ رَسُوْلَهٗ بِالْهُدٰي وَدِيْنِ الْحَقِّ لِيُظْهِرَهٗ عَلَي الدِّيْنِ كُلِّهٖ، وَلَوْ كَرِهَ الْمُشْرِكُوْنَ"], "trans": ["''وہی ہے جس نے اپنے رسول کو ہدایت اور دین حق کے ساتھ بھیجا ہے تاکہ (اِس سرزمین کے) تمام ادیان پر اُس کو غالب کر دے، خواہ یہ مشرکین بھی اِسے کتنا ہی ناپسند کریں۔''"], "ref": "الصف ۶۱: ۹"}, {"t": "p", "html": "اِس کی صورت یہ ہوتی ہے کہ اللہ تعالیٰ اِن رسولوں کو اپنی دینونت کے ظہور کے لیے منتخب فرماتا اور پھر قیامت سے پہلے ایک قیامت صغریٰ اُن کے ذریعے سے اِسی دنیا میں برپا کر دیتا ہے ۔ اُنھیں بتا دیا جاتا ہے کہ وہ خدا کے ساتھ اپنے میثاق پر قائم رہیں گے تو اِس کی جزا اور اِس سے انحراف کریں گے تو اِس کی سزا اُنھیں دنیا ہی میں مل جائے گی۔ اِس کا نتیجہ یہ نکلتا ہے کہ اُن کا وجود لوگوں کے لیے ایک آیت الٰہی بن جاتا ہے اور وہ خدا کو گویا اُن کے ساتھ زمین پر چلتے پھرتے اور عدالت کرتے ہوئے دیکھتے ہیں ۔ اِس کے ساتھ اُنھیں حکم دیا جاتا ہے کہ حق کی جو نشانیاں خوداُنھوں نے بہ چشم سر دیکھ لی ہیں، اُن کی بنیاد پر اُس کی تبلیغ کریں اور اللہ تعالیٰ کی ہدایت بے کم و کاست اور پوری قطعیت کے ساتھ لوگوں تک پہنچا دیں۔ قرآن کی تعبیر کے مطابق یہ ''شہادت'' ہے ۔ یہ جب قائم ہو جاتی ہے تو دنیا اور آخرت ، دونوں میں فیصلۂ الٰہی کی بنیاد بن جاتی ہے ۔ چنانچہ اللہ تعالیٰ اِن رسولوں کو غلبہ عطا فرماتا اوراِن کی دعوت کے منکرین پر اپنا عذاب نازل کر دیتا ہے۔ نبی صلی اللہ علیہ وسلم کو قرآن مجید میں 'شَاهِد' اور 'شَهِيْد' اِسی بنا پر کہا گیا ہے۔ ارشاد فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["اِنَّا٘ اَرْسَلْنَا٘ اِلَيْكُمْ رَسُوْلًا، شَاهِدًا عَلَيْكُمْ كَمَا٘ اَرْسَلْنَا٘ اِلٰي فِرْعَوْنَ رَسُوْلًا"], "trans": ["''تمھاری طرف، (اے قریش مکہ)، ہم نے اُسی طرح ایک رسول تم پر گواہ بنا کر بھیجا ہے، جس طرح ہم نے فرعون کی طرف ایک رسول بھیجا تھا۔''"], "ref": "المزمل۷۳: ۱۵"}, {"t": "p", "html": "شہادت کا یہ منصب رسولوں کے علاوہ سیدنا ابراہیم علیہ السلام کی ذریت کو بھی عطا ہوا۔ قرآن نے اِسی کے پیش نظر اُنھیں خدا کے رسول اور اُس کے بندوں کے درمیان ایک جماعت 'اُمَّةً وَّسَطًا'<sup class=\"fnref\" data-n=\"11\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 11\">11</sup>[ قرار دیا اور بتایا ہے کہ اِس منصب کے لیے وہ اُسی طرح منتخب کیے گئے، جس طرح بنی آدم میں سے اللہ تعالیٰ بعض جلیل القدر ہستیوں کو نبوت و رسالت کے لیے منتخب کرتا ہے ۔ ارشاد فرمایا ہے:]"}, {"t": "verse", "ar": ["وَجَاهِدُوْا فِي اللّٰهِ حَقَّ جِهَادِهٖ، هُوَ اجْتَبٰىكُمْ وَمَا جَعَلَ عَلَيْكُمْ فِي الدِّيْنِ مِنْ حَرَجٍ، مِلَّةَ اَبِيْكُمْ اِبْرٰهِيْمَ، هُوَ سَمّٰىكُمُ الْمُسْلِمِيْنَ، مِنْ قَبْلُ وَفِيْ هٰذَا لِيَكُوْنَ الرَّسُوْلُ شَهِيْدًا عَلَيْكُمْ وَتَكُوْنُوْا شُهَدَآءَ عَلَي النَّاسِ"], "trans": ["''اور (مزید یہ کہ اپنے منصب کی ذمہ داریوں کو پورا کرنے کے لیے) اللہ کی راہ میں جدوجہد کرو، جیسا کہ جدوجہد کرنے کا حق ہے۔ اُس نے تمھیں چن لیا ہے اور (جو) شریعت (تمھیں عطا فرمائی ہے، اُس) میں تم پر کوئی تنگی نہیں رکھی ہے۔ تمھارے باپ ــــ ابراہیم ــــــ کی ملت تمھارے لیے پسند فرمائی ہے۔ اُسی نے تمھارا نام مسلم رکھا تھا، اِس سے پہلے اور اِس قرآن میں بھی (تمھارا نام مسلم ہے)۔ اِس لیے چن لیا ہے کہ رسول تم پر (اِس دین کی) گواہی دے اور دنیا کے سب لوگوں پر تم (اِس کی) گواہی دینے والے بنو۔''"], "ref": "الحج ۲۲: ۷۸"}, {"t": "p", "html": "نبیوں اور رسولوں کے ساتھ اللہ تعالیٰ نے بالعموم اپنی کتابیں بھی نازل فرمائی ہیں۔اِن کے نزول کا مقصد قرآن مجید میں یہ بیان ہوا ہے کہ حق و باطل کے لیے یہ میزان قرار پائیں تاکہ اِن کے ذریعے سے لوگ اپنے اختلافات کا فیصلہ کر سکیں اور اِس طرح حق کے معاملے میں ٹھیک انصاف پر قائم ہو جائیں ۔ ارشاد فرمایا ہے :", "keep": true}, {"t": "verse", "ar": ["وَاَنْزَلَ مَعَهُمُ الْكِتٰبَ بِالْحَقِّ لِيَحْكُمَ بَيْنَ النَّاسِ فِيْمَا اخْتَلَفُوْا فِيْهِ"], "trans": ["'' اور اُن کے ساتھ قول فیصل کی صورت میں اپنی کتاب نازل کی تاکہ لوگوں کے درمیان وہ اُن کے اختلافات کا فیصلہ کردے۔''"], "ref": "البقرہ۲ : ۲۱۳"}, {"t": "verse", "ar": ["وَاَنْزَلْنَا مَعَهُمُ الْكِتٰبَ وَالْمِيْزَانَ لِيَقُوْمَ النَّاسُ بِالْقِسْطِ"], "trans": ["''اور اُن کے ساتھ اپنی کتاب، یعنی میزان نازل کی ہے تاکہ لوگ (حق و باطل کے معاملے میں) ٹھیک انصاف پر قائم ہو جائیں ۔''"], "ref": "الحدید ۵۷: ۲۵"}, {"t": "p", "html": "نبوت و رسالت کا یہ سلسلہ آدم علیہ السلام سے شروع ہو کر محمد رسول اللہ صلی اللہ علیہ وسلم پر ختم ہوا ہے۔ آپ کے دنیا سے رخصت ہو جانے کے بعد وحی و الہام کا دروازہ ہمیشہ کے لیے بند ہو گیا ہے اورنبوت ختم کر دی گئی ہے۔<sup class=\"fnref\" data-n=\"12\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 12\">12</sup> [ چنانچہ لوگوں کو دین پر قائم رکھنے کے لیے ''انذار'' کی ذمہ داری اب قیامت تک اِس امت کے علما اداکریں گے۔علما کی یہ ذمہ داری سورۂ توبہ میں اِس طرح بیان ہوئی ہے:]"}, {"t": "verse", "ar": ["وَمَا كَانَ الْمُؤْمِنُوْنَ لِيَنْفِرُوْا كَآفَّةً، فَلَوْلَا نَفَرَ مِنْ كُلِّ فِرْقَةٍ مِّنْهُمْ طَآئِفَةٌ لِّيَتَفَقَّهُوْا فِي الدِّيْنِ وَلِيُنْذِرُوْا قَوْمَهُمْ اِذَا رَجَعُوْ٘ا اِلَيْهِمْ لَعَلَّهُمْ يَحْذَرُوْنَ"], "trans": ["''یہ تو ممکن نہیں تھا کہ مسلمان، سب کے سب نکل کھڑے ہوتے، مگر ایسا کیوں نہ ہوا کہ اُن کے ہر گروہ میں سے کچھ لوگ نکلتے تاکہ دین میں بصیرت پیدا کرتے اور اپنی قوم کے لوگوں کو (اُن کے اِن رویوں پر) خبردار کرتے، جب اُن کی طرف لوٹتے، اِس لیے کہ وہ خدا کی گرفت سے بچتے۔''"], "ref": "۹ : ۱۲۲"}, {"t": "p", "html": "اِس انذار کے لیے اللہ تعالیٰ کی ہدایت ہے کہ یہ قرآن کے ذریعے سے کیا جائے گا۔'فَذَكِّرْ بِالْقُرْاٰنِ مَنْ يَّخَافُ وَعِيْدِ'<sup class=\"fnref\" data-n=\"13\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 13\">13</sup>[ اور 'جَاهِدْهُمْ بِهٖ جِهَادًا كَبِيْرًا']<sup class=\"fnref\" data-n=\"14\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 14\">14</sup>[ کے الفاظ میں قرآن نے اِسی کا حکم دیا ہے۔ رسول اللہ صلی اللہ علیہ وسلم اِسی بنا پر پوری دنیا کے لیے نذیر ہیں اورعلما درحقیقت آپ ہی کے اِس انذار کو لوگوں تک پہنچاتے ہیں: 'تَبٰرَكَ الَّذِيْ نَزَّلَ الْفُرْقَانَ عَلٰي عَبْدِهٖ لِيَكُوْنَ لِلْعٰلَمِيْنَ نَذِيْرًا'۔]<sup class=\"fnref\" data-n=\"15\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 15\">15</sup> [ چنانچہ فرمایا ہے:]"}, {"t": "verse", "ar": ["وَاُوْحِيَ اِلَيَّ هٰذَا الْقُرْاٰنُ لِاُنْذِرَكُمْ بِهٖ وَمَنْۣ بَلَغَ"], "trans": ["'' اور میری طرف یہ قرآن اِس لیے وحی کیا گیا ہے کہ اِس کے ذریعے سے میں تمھیں خبردار کردوں اور اُنھیں بھی جنھیں یہ پہنچے۔''"], "ref": "الانعام ۶: ۱۹"}, {"t": "p", "html": "اِس دین کا نام ''اسلام ''ہے اور اِس کے بارے میں اللہ تعالیٰ نے اپنی کتاب میں فرمایا ہے کہ بنی آدم سے وہ اِس کے سوا ہر گز کوئی دوسرا دین قبول نہ کرے گا :", "keep": true}, {"t": "verse", "ar": ["اِنَّ الدِّيْنَ عِنْدَ اللّٰهِ الْاِسْلَامُ ... وَمَنْ يَّبْتَغِ غَيْرَ الْاِسْلَامِ دِيْنًا فَلَنْ يُّقْبَلَ مِنْهُ، وَهُوَ فِي الْاٰخِرَةِ مِنَ الْخٰسِرِيْنَ"], "trans": ["''اللہ کے نزدیک دین صرف اسلام ہے... اورجو اسلام کے سوا کوئی اور دین اختیار کرنا چاہے گا تو اُس سے وہ ہر گز قبول نہ کیا جائے گا اور قیامت میں وہ نامرادوں میں سے ہوگا۔''", "''اسلام'' کا لفظ جس طرح پورے دین کے لیے استعمال ہوتا ہے ،اُسی طرح دین کے ظاہر کو بھی بعض اوقات اِسی لفظ ''اسلام ''سے تعبیر کیا جاتا ہے۔ اپنے اِس ظاہر کے لحاظ سے یہ پانچ چیزوں سے عبارت ہے :"], "ref": "آل عمران ۳ : ۱۹، ۸۵"}, {"t": "li", "n": "۱۔", "html": "اِس بات کی شہادت دی جائے کہ اللہ کے سوا کوئی الٰہ نہیں اور محمد صلی اللہ علیہ وسلم اُس کے رسول ہیں۔"}, {"t": "li", "n": "۲۔", "html": "نماز قائم کی جائے ۔"}, {"t": "li", "n": "۳۔", "html": "زکوٰۃ ادا کی جائے۔"}, {"t": "li", "n": "۴۔", "html": "رمضان کے روزے رکھے جائیں ۔"}, {"t": "li", "n": "۵۔", "html": "بیت الحرام کا حج کیا جائے۔"}, {"t": "p", "html": "قرآن مجید نے جگہ جگہ اِن کی تاکید فرمائی ہے۔ رسول اللہ صلی اللہ علیہ وسلم کی ایک حدیث میں یہ ایک ہی جگہ اِس طرح بیان ہوئے ہیں :", "keep": true}, {"t": "verse", "ar": ["الإسلام أن تشھد أن لا إله إلا اللہ وأن محمدًا رسول اللہ، وتقیم الصلٰوة، وتؤتي الزکٰوة، وتصوم رمضان، و تحج البیت"], "trans": ["''اسلام یہ ہے کہ تم اِس بات کی گواہی دو کہ اللہ کے سوا کوئی الٰہ نہیں اور محمد (صلی اللہ علیہ وسلم) اُس کے رسول ہیں اور نماز قائم کرو اور زکوٰۃ ادا کرو اور رمضان کے روزے رکھو اور بیت الحرام کا حج کرو۔''"], "ref": "مسلم ، رقم۹۳"}, {"t": "p", "html": "دین کا باطن ''ایمان'' ہے ۔اِس کی جو تفصیل قرآن میں بیان ہوئی ہے ،اُس کی رو سے یہ بھی پانچ ہی چیزوں سے عبارت ہے :", "keep": true}, {"t": "li", "n": "۱۔", "html": "اللہ پر ایمان"}, {"t": "li", "n": "۲۔", "html": "فرشتوں پر ایمان"}, {"t": "li", "n": "۳۔", "html": "نبیوں پر ایمان"}, {"t": "li", "n": "۴۔", "html": "کتابوں پر ایمان"}, {"t": "p", "html": "۵ ۔روز جزا پر ایمان"}, {"t": "p", "html": "سورۂ بقرہ میں ہے :", "keep": true}, {"t": "verse", "ar": ["اٰمَنَ الرَّسُوْلُ بِمَا٘ اُنْزِلَ اِلَيْهِ مِنْ رَّبِّهٖ وَالْمُؤْمِنُوْنَ، كُلٌّ اٰمَنَ بِاللّٰهِ وَمَلٰٓئِكَتِهٖ وَكُتُبِهٖ وَرُسُلِهٖ، لَا نُفَرِّقُ بَيْنَ اَحَدٍ مِّنْ رُّسُلِهٖ، وَقَالُوْا: سَمِعْنَا وَاَطَعْنَا غُفْرَانَكَ رَبَّنَا وَاِلَيْكَ الْمَصِيْرُ"], "trans": ["'' ہمارے پیغمبر نے تو اُس چیز کو مان لیا جو اُس کے پروردگار کی طرف سے اُس پر نازل کی گئی ہے ، اور اُس کے ماننے والوں نے بھی ۔ یہ سب اللہ پر ایمان لائے ، اور اُس کے فرشتوں اور اُس کی کتابوں اور اُس کے پیغمبروں پر ایمان لائے ۔(اِن کا اقرار ہے کہ) ہم اللہ کے پیغمبر وں میں سے کسی کے درمیان کوئی فرق نہیں کرتے اور اِنھوں نے کہہ دیا ہے کہ ہم نے سنا اور سر اطاعت جھکا دیا۔ پروردگار، ہم تیری مغفرت چاہتے ہیں اور (جانتے ہیں کہ) ہمیں لوٹ کر تیرے ہی حضور میں پہنچنا ہے۔''"], "ref": "۲: ۲۸۵"}, {"t": "p", "html": "رسول اللہ صلی اللہ علیہ وسلم نے ایمان باللہ ہی کی ایک فرع ــــــ تقدیر کے خیر و شر ــــــ کو اِن میں شامل کر کے اِنھیں اِس طرح بیان فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["الإیمان أن تؤمن باللہ، وملٰئکته، وکتبه، ورسله، والیوم الاٰخر، وتؤمن بالقدر خیره وشره"], "trans": ["''ایمان یہ ہے کہ تم اللہ کو مانو اور اُس کے فرشتوں، اُس کی کتابوں اور اُس کے رسولوں کو مانو، اور آخرت کے دن کو مانو، اور اپنے پروردگار کی طرف سے تقدیر کے خیروشر کو بھی۔''"], "ref": "مسلم ، رقم۹۳"}, {"t": "p", "html": "یہ ایمان جب اپنی حقیقت کے اعتبار سے دل میں اترتا اور اُس سے اپنی تصدیق حاصل کر لیتا ہے تو اپنے وجود ہی سے دو چیزوں کا تقاضا کرتا ہے :", "keep": true}, {"t": "p", "html": "ایک عمل صالح؛"}, {"t": "p", "html": "دوسرے' تواصي بالحق'اور 'تواصي بالصبر'۔"}, {"t": "p", "html": "ارشاد فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["وَالْعَصْرِ، اِنَّ الْاِنْسَانَ لَفِيْ خُسْرٍ، اِلَّا الَّذِيْنَ اٰمَنُوْا وَعَمِلُوا الصّٰلِحٰتِ، وَتَوَاصَوْا بِالْحَقِّ، وَتَوَاصَوْا بِالصَّبْرِ"], "trans": ["''زمانہ گواہی دیتا ہے، یہ انسان خسارے میں پڑ کر رہیں گے۔ہاں، مگر وہ نہیں جو ایمان لائے اور اُنھوں نے نیک عمل کیے، اور ایک دوسرے کو حق کی نصیحت کی اور حق پر ثابت قدمی کی نصیحت کی۔''", "''عمل صالح''سے مراد ہر وہ عمل ہے جو تزکیۂ اخلاق کے نتیجے میں پیدا ہوتا ہے۔ اِس کی تمام اساسات عقل و فطرت میں ثابت ہیں اور خدا کی شریعت اِسی عمل کی طرف انسان کی رہنمائی کے لیے نازل ہوئی ہے ۔"], "ref": "العصر ۱۰۳:۱-۳"}, {"t": "p", "html": "'تواصي بالحق'اور 'تواصي بالصبر'کے معنی اپنے ماحول میں ایک دوسرے کو حق اور حق پر ثابت قدمی کی نصیحت کے ہیں ۔یہ حق کو ماننے کا بدیہی تقاضا ہے جسے قرآن نے ''امربالمعروف'' اور ''نہی عن المنکر'' سے بھی تعبیر کیا ہے، یعنی وہ باتیں جو عقل و فطرت کی رو سے معروف ہیں، اپنے قریبی ماحول میں لوگوں کو اُن کی تلقین کی جائے اور جو منکر ہیں، اُن سے لوگوں کو روکا جائے :", "keep": true}, {"t": "verse", "ar": ["وَالْمُؤْمِنُوْنَ وَالْمُؤْمِنٰتُ بَعْضُهُمْ اَوْلِيَآءُ بَعْضٍ، يَاْمُرُوْنَ بِالْمَعْرُوْفِ وَيَنْهَوْنَ عَنِ الْمُنْكَرِ"], "trans": ["''مومن مرد اور مومن عورتیں، وہ بھی ایک دوسرے کے رفیق ہیں۔ (اِن منافقوں کے برخلاف) وہ بھلائی کی تلقین کرتے اور برائی سے روکتے ہیں۔''"], "ref": "التوبہ ۹: ۷۱"}, {"t": "p", "html": "اِسی طرح یہ بھی ضروری ہے کہ دنیا میں اگر کسی جگہ اقتدار حاصل ہوجائے تو اپنے اندر سے کچھ لوگوں کو اِس کام کے لیے باقاعدہ مقرر کیا جائے۔ ارشاد فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["وَلْتَكُنْ مِّنْكُمْ اُمَّةٌ يَّدْعُوْنَ اِلَي الْخَيْرِ وَيَاْمُرُوْنَ بِالْمَعْرُوْفِ وَيَنْهَوْنَ عَنِ الْمُنْكَرِ، وَاُولٰٓئِكَ هُمُ الْمُفْلِحُوْنَ"], "trans": ["''اور چاہیے کہ تمھارے اندر سے کچھ لوگ مقرر ہوں جو نیکی کی دعوت دیں، بھلائی کی تلقین کریں اور برائی سے روکتے رہیں۔ (تم یہ اہتمام کرو) اور (یاد رکھو کہ) جو یہ کریں گے، وہی فلاح پائیں گے۔''"], "ref": "آل عمران ۳: ۱۰۴"}, {"t": "p", "html": "یہ ذمہ داری، ظاہر ہے کہ بعض معاملات میں تبلیغ و تلقین کے ذریعے سے اور بعض معاملات میں قانون کی طاقت سے پوری کی جائے گی۔<sup class=\"fnref\" data-n=\"16\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 16\">16</sup> [ پہلی صورت کے لیے جمعہ کا منبر ہے، جو اِسی مقصد سے ارباب حل و عقد کے لیے خاص کیا گیا ہے، اور دوسری صورت کے لیے پولیس کا محکمہ ہے، جو مسلمانوں کی حکومت میں اِسی ذمہ داری کو پورا کرنے کے لیے قائم کیا جاتا ہے۔]"}, {"t": "p", "html": "ایمان کا یہ تقاضا ہر مسلمان کو نصح و خیر خواہی کے جذبے سے پورا کرنا چاہیے ۔دین کی صحیح روح کے ساتھ یہ ذمہ داری اِس جذبے کے بغیر کسی حال میں پوری نہیں کی جا سکتی ۔رسول اللہ صلی اللہ علیہ وسلم کا ارشاد ہے:", "keep": true}, {"t": "verse", "ar": ["الدین النصیحة، للہ، ولکتابه، ولرسوله، ولأئمة المسلمین وعامتھم"], "trans": ["''دین خیر خواہی ہے ۔ اللہ کے لیے ،اُس کی کتاب کے لیے، اُس کے رسول کے لیے، مسلمانوں کے حکمرانوں کے لیے اور اُن کے عوام کے لیے۔''"], "ref": "مسلم، رقم۱۹۶"}, {"t": "p", "html": "عام حالات میں ایمان کے تقاضے یہی ہیں ،لیکن انسان کو اُس کے خارج کے لحاظ سے جو حالتیں اِس دنیا میں پیش آسکتی ہیں،اُن کی رعایت سے اِن کے علاوہ تین اور تقاضے بھی اِس سے پیدا ہوتے ہیں :", "keep": true}, {"t": "p", "html": "ایک ہجرت؛"}, {"t": "p", "html": "دوسرے نصرت؛"}, {"t": "p", "html": "تیسرے قیام بالقسط۔"}, {"t": "p", "html": "بندۂ مومن کے لیے اگر کسی جگہ اپنے پروردگار کی عبادت پر قائم رہنا جان جوکھم کا کام بن جائے، اُسے دین کے لیے ستایا جائے ، یہاں تک کہ اپنے اسلام کو ظاہر کرناہی اُس کے لیے ممکن نہ رہے تو اُس کا یہ ایمان اُس سے تقاضا کرتا ہے کہ اُس جگہ کو چھوڑ کر کسی ایسے مقام کی طرف منتقل ہو جائے جہاں وہ علانیہ اپنے دین پر عمل پیرا ہو سکے۔ قرآن اِسے ''ہجرت'' کہتا ہے۔ زمانۂ رسالت میں جب اللہ اور اُس کے رسول کی طرف سے براہ راست اِس کی دعوت دی گئی تو اِس سے گریز کرنے والوں کوقرآن نے جہنم کی وعید سنائی ہے۔ سورۂ نساء میں ہے :", "keep": true}, {"t": "verse", "ar": ["اِنَّ الَّذِيْنَ تَوَفّٰىهُمُ الْمَلٰٓئِكَةُ ظَالِمِيْ٘ اَنْفُسِهِمْ قَالُوْا فِيْمَ كُنْتُمْ، قَالُوْا كُنَّا مُسْتَضْعَفِيْنَ فِي الْاَرْضِ، قَالُوْ٘ا اَلَمْ تَكُنْ اَرْضُ اللّٰهِ وَاسِعَةً فَتُهَاجِرُوْا فِيْهَا، فَاُولٰٓئِكَ مَاْوٰىهُمْ جَهَنَّمُ، وَسَآءَتْ مَصِيْرًا"], "trans": ["''(اِس موقع پر بھی جو لوگ اُن بستیوں سے نکلنے کے لیے تیار نہیں ہیں، جہاں اُنھیں دین کے لیے ستایا جارہا ہے، اُنھیں بتاؤ، اے پیغمبر کہ) جن لوگوں کی جان فرشتے اِس حال میں قبض کریں گے کہ(اپنے ایمان کو خطرے میں ڈال کر) وہ اپنی جان پر ظلم کر رہے تھے، اُن سے وہ پوچھیں گے کہ یہ تم کس حال میں پڑے رہے؟ وہ جواب دیں گے کہ ہم تو اِس ملک میں بالکل بے بس تھے۔ فرشتے کہیں گے: کیا خدا کی زمین ایسی وسیع نہ تھی کہ تم اُس میں ہجرت کر جاتے۔سو یہی لوگ ہیں جن کا ٹھکانا جہنم ہے اور وہ کیا ہی بُرا ٹھکانا ہے۔''"], "ref": "۴: ۹۷"}, {"t": "p", "html": "اِسی طرح دین کو اپنے فروغ یا اپنی حفاظت کے لیے اگر کسی اقدام کی ضرورت پیش آ جائے تو ایمان کا تقاضا ہے کہ جان و مال سے دین کی مدد کی جائے۔ قرآن کی تعبیر کے مطابق یہ اللہ پروردگار عالم کی ''نصرت'' ہے۔ رسول اللہ صلی اللہ علیہ وسلم کو جب مدینہ میں اقتدار حاصل ہو جانے کے بعد اِس کی ضرورت پیش آئی اور لوگوں سے جہاد وقتال کا مطالبہ کیا گیا تو قرآن نے ایک موقع پر اِس کی دعوت اِس طرح لوگوں کو دی:", "keep": true}, {"t": "verse", "ar": ["يٰ٘اَيُّهَا الَّذِيْنَ اٰمَنُوْا، هَلْ اَدُلُّكُمْ عَلٰي تِجَارَةٍ تُنْجِيْكُمْ مِّنْ عَذَابٍ اَلِيْمٍ؟ تُؤْمِنُوْنَ بِاللّٰهِ وَرَسُوْلِهٖ وَتُجَاهِدُوْنَ فِيْ سَبِيْلِ اللّٰهِ بِاَمْوَالِكُمْ وَاَنْفُسِكُمْ، ذٰلِكُمْ خَيْرٌ لَّكُمْ، اِنْ كُنْتُمْ تَعْلَمُوْنَ. يَغْفِرْ لَكُمْ ذُنُوْبَكُمْ وَيُدْخِلْكُمْ جَنّٰتٍ تَجْرِيْ مِنْ تَحْتِهَا الْاَنْهٰرُ وَمَسٰكِنَ طَيِّبَةً فِيْ جَنّٰتِ عَدْنٍ، ذٰلِكَ الْفَوْزُ الْعَظِيْمُ. وَاُخْرٰي تُحِبُّوْنَهَا، نَصْرٌ مِّنَ اللّٰهِ وَفَتْحٌ قَرِيْبٌ، وَبَشِّرِ الْمُؤْمِنِيْنَ. يٰ٘اَيُّهَا الَّذِيْنَ اٰمَنُوْا، كُوْنُوْ٘ا اَنْصَارَ اللّٰهِ كَمَا قَالَ عِيْسَي ابْنُ مَرْيَمَ لِلْحَوَارِيّٖنَ: مَنْ اَنْصَارِيْ٘ اِلَي اللّٰهِ؟ قَالَ الْحَوَارِيُّوْنَ نَحْنُ اَنْصَارُ اللّٰهِ"], "trans": ["''ایمان والو، میں تم کو وہ تجارت بتاؤں جو تمھیں دردناک عذاب سے نجات دے؟ (یہود نے جو رویہ اختیار کیا ہے، اُس کے برخلاف)، تم اللہ اور اُس کے رسول پر ایمان لاؤ گے، جس طرح کہ ایمان لانے کا حق ہے، اور اپنے جان و مال سے اللہ کی راہ میں جہاد کرو گے۔ یہ تمھارے لیے بہتر ہے، اگر تم سمجھو۔ اِس کے بدلے میں اللہ تمھارے گناہ بخش دے گا اور تمھیں ایسے باغوں میں داخل کرے گا جن کے نیچے نہریں بہ رہی ہوں گی اور بہترین گھر عطا فرمائے گا جو ابد کے باغوں میں ہوں گے۔ یہی بڑی کامیابی ہے۔ اور ایک دوسری چیز بھی عطا فرمائے گا جو تم چاہتے ہو، یعنی اللہ کی مدد اور فتح جو عنقریب حاصل ہو جائے گی۔ ایمان والوں کو اِس کی بشارت دو، (اے پیغمبر)۔ ایمان والو، اللہ کے مددگار بنو ، جس طرح عیسیٰ ابن مریم نے حواریوں سے کہا تھا: کون اللہ کی راہ میں میرا مددگار بنتا ہے؟ حواریوں نے جواب دیا: ہم اللہ کے مددگار ہیں۔''"], "ref": "الصف ۶۱: ۱۴-۱۰"}, {"t": "p", "html": "سلف و خلف میں دین کی حفاظت ،بقا اور تجدید و احیا کے جتنے کام بھی ہوئے ہیں، ایمان کے اِسی تقاضے کو پورا کرنے کے لیے ہوئے ہیں ۔امت کی تاریخ میں زبان و قلم، تیغ وسناں اور درہم و دینار سے دین کے لیے ہر جدوجہد کا ماخذ یہی ''نصرت'' ہے ۔قرآن کا مطالبہ ہے کہ ایمان کا یہ تقاضا اگر کسی وقت سامنے آ جائے تو بندۂ مومن کو دنیا کی کوئی چیز بھی اِس سے عزیز تر نہیں ہونی چاہیے۔ چنانچہ نبی صلی اللہ علیہ وسلم کی دعوت میں جب یہ مرحلہ آیا تو قرآن نے فرمایا :", "keep": true}, {"t": "verse", "ar": ["قُلْ:اِنْ كَانَ اٰبَآؤُكُمْ وَاَبْنَآؤُكُمْ وَاِخْوَانُكُمْ وَاَزْوَاجُكُمْ وَعَشِيْرَتُكُمْ وَاَمْوَالُ اِۨقْتَرَفْتُمُوْهَا وَتِجَارَةٌ تَخْشَوْنَ كَسَادَهَا وَمَسٰكِنُ تَرْضَوْنَهَا٘ اَحَبَّ اِلَيْكُمْ مِّنَ اللّٰهِ وَرَسُوْلِهٖ وَجِهَادٍ فِيْ سَبِيْلِهٖ فَتَرَبَّصُوْا حَتّٰي يَاْتِيَ اللّٰهُ بِاَمْرِهٖ، وَاللّٰهُ لَا يَهْدِي الْقَوْمَ الْفٰسِقِيْنَ"], "trans": ["''اِن سے کہہ دو، (اے پیغمبر) کہ اگر تمھارے باپ اور تمھارے بیٹے؛تمھارے بھائی، تمھاری بیویاں، تمھارا خاندان اور تمھارا وہ مال جو تم نے کمایا ہے اور وہ تجارت جس کے مندے سے تم ڈرتے ہو اور تمھارے وہ گھر جنھیں تم پسند کرتے ہو، یہ سب تمھیں اللہ سے ، اُس کے رسول سے اور اُس کی راہ میں جہاد سے زیادہ عزیز ہیں تو انتظار کرو، یہاں تک کہ اللہ اپنا فیصلہ صادر کر دے۔ اور (جان لو کہ) اِس طرح کے بد عہدلوگوں کو اللہ راہ یاب نہیں کرے گا۔''"], "ref": "التوبہ ۹ : ۲۴"}, {"t": "p", "html": "پھر دین و دنیا کے کسی معاملے میں اگر انسان کے جذبات، تعصبات، مفادات اور خواہشیں اُسے انصاف کی راہ سے ہٹا دینا چاہیں تو یہی ایمان تقاضا کرتا ہے کہ بندۂ مومن نہ صرف یہ کہ حق و انصاف پر قائم رہے ، بلکہ یہ اگر گواہی کا مطالبہ کریں تو جان کی بازی لگا کر اُن کا یہ مطالبہ پورا کرے۔ حق کہے، حق کے سامنے سر تسلیم خم کرے۔ انصاف کرے، انصاف کی شہادت دے اور اپنے عقیدہ و عمل میں حق و انصاف کے سوا کبھی کوئی چیز اختیار نہ کرے۔ یہ ''قیام بالقسط'' ہے اور قرآن مجید میں اِس کا حکم اِس طرح بیان ہوا ہے:", "keep": true}, {"t": "verse", "ar": ["يٰ٘اَيُّهَا الَّذِيْنَ اٰمَنُوْا كُوْنُوْا قَوّٰمِيْنَ بِالْقِسْطِ شُهَدَآءَ لِلّٰهِ وَلَوْ عَلٰ٘ي اَنْفُسِكُمْ اَوِ الْوَالِدَيْنِ وَالْاَقْرَبِيْنَ، اِنْ يَّكُنْ غَنِيًّا اَوْ فَقِيْرًا فَاللّٰهُ اَوْلٰي بِهِمَا، فَلَا تَتَّبِعُوا الْهَوٰ٘ي اَنْ تَعْدِلُوْا، وَاِنْ تَلْوٗ٘ا اَوْ تُعْرِضُوْا فَاِنَّ اللّٰهَ كَانَ بِمَا تَعْمَلُوْنَ خَبِيْرًا"], "trans": ["'' ایمان والو، انصاف پر قائم رہو، اللہ کے لیے اُس کی گواہی دیتے ہوئے، اگرچہ یہ گواہی خود تمھاری ذات، تمھارے ماں باپ اور تمھارے قرابت مندوں کے خلاف ہی پڑے۔ امیر ہو یا غریب، اللہ ہی دونوں کا زیادہ حق دار ہے (کہ اُس کے قانون کی پابندی کی جائے)، اِس لیے (اللہ کی ہدایت کو چھوڑ کر) تم خواہشوں کی پیروی نہ کرو کہ اِس کے نتیجے میں حق سے ہٹ جاؤ اور (یاد رکھو کہ) اگر (حق و انصاف کی بات کو) بگاڑنے یا (اُس سے) پہلو بچانے کی کوشش کرو گے تو اُس کی سزا لازماً پاؤ گے، اِس لیے کہ جو کچھ تم کرتے ہو، اللہ اُس سے خوب واقف ہے۔''"], "ref": "النساء۴: ۱۳۵"}, {"t": "verse", "ar": ["يٰ٘اَيُّهَا الَّذِيْنَ اٰمَنُوْا كُوْنُوْا قَوّٰمِيْنَ لِلّٰهِ شُهَدَآءَ بِالْقِسْطِ، وَلَا يَجْرِمَنَّكُمْ شَنَاٰنُ قَوْمٍ عَلٰ٘ي اَلَّا تَعْدِلُوْا، اِعْدِلُوْا هُوَ اَقْرَبُ لِلتَّقْوٰي، وَاتَّقُوا اللّٰهَ، اِنَّ اللّٰهَ خَبِيْرٌۣ بِمَا تَعْمَلُوْنَ"], "trans": ["''ایمان والو،(اِس عہد و میثاق کا تقاضا ہے کہ ) اللہ کے لیے کھڑے ہو جاؤ، انصاف کی گواہی دیتے ہوئے اور کسی قوم کی دشمنی بھی تمھیں اِس پر نہ ابھارے کہ انصاف سے پھر جاؤ۔ انصاف کرو، یہ تقویٰ سے زیادہ قریب ہے اور اللہ سے ڈرتے رہو، اِس لیے کہ اللہ تمھارے ہر عمل سے با خبر ہے۔''"], "ref": "المائدہ ۸:۵"}, {"t": "p", "html": "اِس دین کا جو مقصد قرآن میں بیان ہوا ہے، وہ قرآن کی اصطلاح میں ''تزکیہ'' ہے۔ اِس کے معنی یہ ہیں کہ انسان کی انفرادی اور اجتماعی زندگی کو آلایشوں سے پاک کر کے اُس کے فکرو عمل کو صحیح سمت میں نشوونما دی جائے۔ قرآن مجید میں یہ بات جگہ جگہ بیان ہوئی ہے کہ انسان کا نصب العین بہشت بریں اور 'رَاضِيَةً مَّرْضِيَّةً' کی بادشاہی ہے اور فوزوفلاح کے اِس مقام تک پہنچنے کی ضمانت اُنھی لوگوں کے لیے ہے جو اِس دنیا میں اپنا تزکیہ کر لیں:", "keep": true}, {"t": "verse", "ar": ["قَدْ اَفْلَحَ مَنْ تَزَكّٰي. وَذَكَرَ اسْمَ رَبِّهٖ فَصَلّٰي. بَلْ تُؤْثِرُوْنَ الْحَيٰوةَ الدُّنْيَا. وَالْاٰخِرَةُ خَيْرٌ وَّاَبْقٰي"], "trans": ["''البتہ فلاح پا گیا وہ جس نے پاکیزگی اختیار کی اور اِس کے لیے اپنے رب کا نام یاد کیا، پھر نماز پڑھی۔ (لوگو، تم کوئی حجت نہیں پاتے)، بلکہ دنیا کی زندگی کو ترجیح دیتے ہو، دراں حالیکہ آخرت اُس سے بہتر بھی ہے اور پایدار بھی۔''"], "ref": "الاعلیٰ ۸۷: ۱۷-۱۴"}, {"t": "p", "html": "لہٰذا دین میں غایت اور مقصود کی حیثیت تزکیہ ہی کو حاصل ہے۔ اللہ کے نبی اِسی مقصد کے لیے مبعوث ہوئے اور سارا دین اِسی مقصود کو پانے اور اِسی غایت تک پہنچنے میں انسان کی رہنمائی کے لیے نازل ہوا ہے۔ ارشاد فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["هُوَ الَّذِيْ بَعَثَ فِي الْاُمِّيّٖنَ رَسُوْلًا مِّنْهُمْ، يَتْلُوْا عَلَيْهِمْ اٰيٰتِهٖ وَيُزَكِّيْهِمْ وَيُعَلِّمُهُمُ الْكِتٰبَ وَالْحِكْمَةَ"], "trans": ["''اُسی نے امیوں کے اندر ایک رسول اُنھی میں سے اٹھایا ہے جو اُس کی آیتیں اُنھیں سناتا اور اُن کا تزکیہ کرتا ہے، اور اِس کے لیے اُنھیں قانون اور حکمت کی تعلیم دیتا ہے۔''"], "ref": "الجمعہ۲:۶۲"}, {"t": "p", "html": "اِس دین پر عمل کے لیے جو رویہ اِس کے ماننے والوں کو اختیار کرنا چاہیے، وہ ''احسان'' ہے۔احسان کے معنی کسی کام کو اُس کے بہترین طریقے پر کرنے کے ہیں ۔دین میں جب کوئی عمل اِس طرح کیا جائے کہ اُس کی روح اور قالب، دونوں پورے توازن کے ساتھ پیش نظر ہوں ، اُس کا ہر جز بہ تمام و کمال ملحوظ رہے اور اُس کے دوران میں آدمی اپنے آپ کو خدا کے حضور میں سمجھے تو اِسے ''احسان'' کہا جاتا ہے۔ اللہ تعالیٰ کا ارشاد ہے:", "keep": true}, {"t": "verse", "ar": ["وَمَنْ اَحْسَنُ دِيْنًا مِّمَّنْ اَسْلَمَ وَجْهَهٗ لِلّٰهِ، وَهُوَ مُحْسِنٌ، وَّاتَّبَعَ مِلَّةَ اِبْرٰهِيْمَ حَنِيْفًا"], "trans": ["''(ایمان والوں کے مقابلے میں یہ منافق مشرکوں کو ترجیح دیتے ہیں) اور (نہیں سمجھتے کہ) اُس شخص سے بہتر کس کا دین ہو سکتا ہے جو اپنے آپ کو اللہ کے حوالے کر دے اور اچھے طریقے سے عمل کرنے والا ہو اور ابراہیم کے طریقے کی پیروی کرے جو بالکل یک سو تھا۔''"], "ref": " النساء۴: ۱۲۵"}, {"t": "p", "html": "نبی صلی اللہ علیہ وسلم نے اپنے بلیغ اسلوب میں اِس کی وضاحت اِس طرح فرمائی ہے:", "keep": true}, {"t": "verse", "ar": ["الإحسان أن تعبد اللہ کأنك تراہ، فإن لم تکن تراه فإنه یراك"], "trans": ["''''احسان''یہ ہے کہ تم اللہ کی عبادت اِس طرح کرو، گویا تم اُسے دیکھ رہے ہو، اِس لیے کہ اگر تم اُسے نہیں دیکھ رہے تو وہ تو تمھیں دیکھ رہا ہے ۔''"], "ref": "مسلم ، رقم ۹۳"}], "bounds": [0, 2, 4, 6, 8, 10, 13, 15, 17, 19, 21, 22, 24, 28, 29, 31, 33, 35, 38, 40, 42, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 56, 57, 59, 61, 63, 64, 66, 68, 70, 71, 73, 75, 76, 77, 79, 81, 83, 86, 88, 90, 92, 94], "est": 28}, {"title": "اسلام اور ریاست", "sub": "", "num": "۵", "blocks": [{"t": "p", "html": "اِس وقت جو صورت حال جہاد و قتال کے لیے منظم بعض جتھوں نے اپنے اقدامات سے اسلام اور مسلمانوں کے لیے پوری دنیا میں پیدا کر دی ہے، یہ اُسی فکر کا مولود فساد ہے جو ہمارے مذہبی مدرسوں میں پڑھا اور پڑھایا جاتا ہے، اور جس کی تبلیغ اسلامی تحریکیں اور مذہبی سیاسی جماعتیں شب و روز کرتی ہیں۔ اِس کے مقابل میں اسلام کا صحیح فکر کیا ہے؟ اِس کو ہم نے اپنی کتاب ''میزان'' میں دلائل کے ساتھ پیش کر دیا ہے۔ اِس کی تفصیلات کے لیے تو ہماری اِس کتاب ہی کی طرف رجوع کرنا چاہیے، لیکن اِس کا جو حصہ اسلام اور ریاست سے متعلق ہے، اُس کا ایک خلاصہ ہم یہاں پیش کر رہے ہیں:", "keep": true}, {"t": "li", "n": "۱۔", "html": "اسلام کی دعوت اصلاً فرد کے لیے ہے۔ وہ اُسی کے دل و دماغ پر اپنی حکومت قائم کرنا چاہتا ہے۔ اُس نے جو احکام معاشرے کو دیے ہیں، اُس کے مخاطب بھی درحقیقت وہ افراد ہیں جو مسلمانوں کے معاشرے میں ارباب حل و عقد کی حیثیت سے اپنی ذمہ داری پوری کر رہے ہوں۔ لہٰذا یہ خیال بالکل بے بنیاد ہے کہ ریاست کا بھی کوئی مذہب ہوتا ہے اور اُس کو بھی کسی قرارداد مقاصد کے ذریعے سے مسلمان کرنے اور آئینی طور پر اِس کا پابند بنانے کی ضرورت ہوتی ہے کہ اُس میں کوئی قانون قرآن و سنت کے خلاف نہیں بنایا جائے گا۔ یہ خیال جن لوگوں نے پیش کیا اور اِسے منوانے میں کامیابی حاصل کی ہے، اُنھوں نے اِس زمانے کی قومی ریاستوں میں مستقل تفرقے کی بنیاد رکھ دی اور اُن میں بسنے والے غیرمسلموں کو یہ پیغام دیا ہے کہ وہ درحقیقت دوسرے درجے کے شہری ہیں جن کی حیثیت زیادہ سے زیادہ ایک محفوظ اقلیت (protected minority) کی ہے اور ریاست کے اصل مالکوں سے وہ اگر کسی حق کا مطالبہ کر سکتے ہیں تو اِسی حیثیت سے کر سکتے ہیں۔"}, {"t": "li", "n": "۲۔", "html": "جن ملکوں میں مسلمانوں کی اکثریت ہے، وہ اپنی ایک ریاست ہاے متحدہ قائم کر لیں۔ یہ ہم میں سے ہر شخص کا خواب ہو سکتا ہے اور ہم اِس کو شرمندۂ تعبیر کرنے کی جدوجہد بھی کر سکتے ہیں، لیکن اِس خیال کی کوئی بنیاد نہیں ہے کہ یہ اسلامی شریعت کا کوئی حکم ہے جس کی خلاف ورزی سے مسلمان گناہ کے مرتکب ہو رہے ہیں۔ ہرگز نہیں، نہ خلافت کوئی دینی اصطلاح ہے اور نہ عالمی سطح پر اِس کا قیام اسلام کا کوئی حکم ہے۔ پہلی صدی ہجری کے بعد ہی، جب مسلمانوں کے جلیل القدر فقہا اُن کے درمیان موجود تھے، اُن کی دو سلطنتیں، دولت عباسیہ بغداد اور دولت امویہ اندلس کے نام سے قائم ہو چکی تھیں اور کئی صدیوں تک قائم رہیں، مگر اُن میں سے کسی نے اِسے اسلامی شریعت کے کسی حکم کی خلاف ورزی قرار نہیں دیا، اِس لیے کہ اِس معاملے میں سرے سے کوئی حکم قرآن وحدیث میں موجود ہی نہیں ہے۔ اِس کے برخلاف یہ بات سب نے کہی اور ہم بھی کہتے ہیں کہ مسلمانوں کا نظم اجتماعی اگر کسی جگہ قائم ہو جائے تو اُس سے خروج ایک بدترین جرم ہے جس کے بارے میں رسول اللہ صلی اللہ علیہ وسلم نے فرمایا ہے کہ اُس کے مرتکبین جاہلیت کی موت مریں گے۔<sup class=\"fnref\" data-n=\"17\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 17\">17</sup>"}, {"t": "li", "n": "۳۔", "html": "اسلام میں قومیت کی بنیاد اسلام نہیں ہے، جس طرح کہ عام طور پر سمجھا جاتا ہے۔ قرآن و حدیث میں کسی جگہ یہ نہیں کہا گیا کہ مسلمان ایک قوم ہیں یا اُنھیں ایک ہی قوم ہونا چاہیے، بلکہ یہ کہا گیا ہے کہ 'اِنَّمَا الْمُؤْمِنُوْنَ اِخْوَةٌ'[ (مسلمان آپس میں بھائی بھائی ہیں)۔ قرآن کی رو سے مسلمانوں کا باہمی رشتہ قومیت کا نہیں، بلکہ اخوت کا ہے۔ وہ دسیوں اقوام، ممالک اور ریاستوں میں تقسیم ہونے کے باوجود ایمان کے رشتے سے ایک دوسرے کے بھائی ہیں۔ اِس لیے یہ تقاضا تو اُن سے کیا جاسکتا ہے اور کرنا چاہیے کہ وہ اپنے بھائیوں کے حالات کی خبر رکھیں، اُن کی مصیبتوں اور تکلیفوں میں اُن کے کام آئیں، وہ مظلوم ہوں تو اُن کی مدد کریں، معاشی اور معاشرتی روابط کے لیے اُن کو ترجیح دیں اور اُن پر اپنے دروازے کسی حال میں بند نہ کریں، مگر یہ تقاضا نہیں کیا جا سکتا کہ اپنی قومی ریاستوں اور قومی شناخت سے دست بردار ہو کر لازماً ایک ہی قوم اور ایک ہی ریاست بن جائیں۔ وہ جس طرح اپنی الگ الگ قومی ریاستیں قائم کر سکتے ہیں، اُسی طرح دین و شریعت پر عمل کی آزادی ہوتو غیر مسلم ریاستوں میں شہری کی حیثیت سے اور وطن کی بنیاد پر ایک قوم بن کر بھی رہ سکتے ہیں۔ اِن میں سے کوئی چیز قرآن و حدیث کی رو سے ناجائز نہیں ہے۔]"}, {"t": "li", "n": "۴۔", "html": "دنیامیں جو لوگ مسلمان ہیں، اپنے مسلمان ہونے کا اقرار، بلکہ اُس پر اصرار کرتے ہیں، مگر کوئی ایسا عقیدہ یا عمل اختیار کرلیتے ہیں جسے کوئی عالم یا علما یا دوسرے تمام مسلمان صحیح نہیں سمجھتے، اُن کے اِس عقیدے یا عمل کو غلط قرار دیا جا سکتا ہے، اُسے ضلالت اور گم راہی بھی کہا جاسکتا ہے، لیکن اُس کے حاملین چونکہ قرآن وحدیث ہی سے استدلال کر رہے ہوتے ہیں، اِس لیے اُنھیں غیر مسلم یا کافر قرار نہیں دیا جا سکتا۔ اِس طرح کے عقائد و اعمال کے بارے میں خدا کا فیصلہ کیا ہے؟ اِس کے لیے قیامت کا انتظار کرنا چاہیے۔ دنیا میں اِن کے حاملین اپنے اقرار کے مطابق مسلمان ہیں، مسلمان سمجھے جائیں گے اور اُن کے ساتھ تمام معاملات اُسی طرح ہوں گے، جس طرح مسلمانوں کی جماعت کے ایک فرد کے ساتھ کیے جاتے ہیں۔ علما کا حق ہے کہ اُن کی غلطی اُن پر واضح کریں، اُنھیں صحیح بات کے قبول کرنے کی دعوت دیں، اُن کے عقائد و نظریات میں کوئی چیز شرک ہے تو اُسے شرک اور کفر ہے تو اُسے کفر کہیں اور لوگوں کو بھی اُس پر متنبہ کریں، مگر اُن کے متعلق یہ فیصلہ کہ وہ مسلمان نہیں رہے یا اُنھیں مسلمانوں کی جماعت سے الگ کر دینا چاہیے، اِس کا حق کسی کو بھی حاصل نہیں ہے، اِس لیے کہ یہ حق خدا ہی دے سکتا تھا اور قرآن و حدیث سے واقف ہر شخص جانتا ہے کہ اُس نے یہ حق کسی کو نہیں دیا ہے۔"}, {"t": "li", "n": "۵۔", "html": "شرک، کفر اور ارتداد یقیناً سنگین جرائم ہیں، لیکن اِن کی سزا کوئی انسان کسی دوسرے انسان کو نہیں دے سکتا۔ یہ خدا کا حق ہے۔ قیامت میں بھی اِن کی سزا وہی دے گا اور دنیا میں بھی، اگر کبھی چاہے تو وہی دیتا ہے۔ قیامت کا معاملہ اِس وقت موضوع بحث نہیں ہے۔ دنیامیں اِس کی صورت یہ ہوتی ہے کہ اللہ تعالیٰ جب کسی قوم میں اپنی عدالت کے ظہور کا فیصلہ کر لیتے ہیں تو اُس کی طرف اپنا رسول بھیجتے ہیں۔ یہ رسول اُس قوم پر اتمام حجت کرتا ہے، یہاں تک کہ کسی کے پاس خدا کے حضور میں پیش کرنے کے لیے کوئی عذر باقی نہیں رہتا۔ اِس کے بعد خدا کا فیصلہ صادر ہوتا ہے اور جو لوگ اِس طرح اتمام حجت کے بعد بھی کفر و شرک پر اصرار کریں، اُنھیں اِسی دنیا میں سزا دی جاتی ہے۔ یہ ایک سنت الٰہی ہے جسے قرآن نے اِس طرح بیان فرمایا ہے کہ ''ہر قوم کے لیے ایک رسول ہے۔ پھر جب اُن کا رسول آ جاتا ہے تو اُن کے درمیان انصاف کے ساتھ فیصلہ کر دیا جاتا ہے اور اُن پر کوئی ظلم نہیں کیا جاتا۔''[ اِس کی نوعیت بالکل وہی ہے جو اسمٰعیل علیہ السلام کی قربانی اور واقعۂ خضر میں ہمارے سامنے آتی ہے۔ اِس کا عام انسانوں سے کوئی تعلق نہیں ہے۔ ہم جس طرح کسی غریب کی مدد کے لیے اُس کی اجازت کے بغیر اُس کی کشتی میں شگاف نہیں ڈال سکتے، کسی بچے کو والدین کا نافرمان دیکھ کر اُس کو قتل نہیں کر سکتے، اپنے کسی خواب کی بنیاد پر ابراہیم علیہ السلام کی طرح اپنے بیٹے کے گلے پر چھری نہیں رکھ سکتے، اُسی طرح کسی شخص کو اُس کے شرک، کفر یا ارتداد کی سزا بھی نہیں دے سکتے، الاّ یہ کہ وحی آئے اور خدا اپنے کسی رسول کے ذریعے سے براہ راست اِس کا حکم دے۔ ہر شخص جانتا ہے کہ رسول اللہ صلی اللہ علیہ وسلم کے بعد اِس کا دروازہ ہمیشہ کے لیے بند ہو چکا ہے۔]"}, {"t": "li", "n": "۶۔", "html": "اِس میں شبہ نہیں کہ جہاد اسلام کا حکم ہے۔ قرآن اپنے ماننے والوں سے تقاضا کرتا ہے کہ اُن کے پاس طاقت ہو تو وہ ظلم و عدوان کے خلاف جنگ کریں۔ قرآن میں اِس کی ہدایت اصلاً فتنہ کے استیصال کے لیے کی گئی ہے۔ اِس کے معنی کسی شخص کو ظلم و جبر کے ساتھ اُس کے مذہب سے برگشتہ کرنے کی کوشش کے ہیں۔ یہی چیز ہے جسے انگریزی زبان میں 'persecution' کہا جاتا ہے۔ اہل نظر جانتے ہیں کہ مسلمانوں کو یہ حکم اُن کی انفرادی حیثیت میں نہیں، بلکہ بحیثیت جماعت دیا گیا ہے۔ اِس کی جو آیتیں قرآن میں آئی ہیں، وہ اپنی انفرادی حیثیت میں اُن کے مخاطب ہی نہیں ہیں۔ لہٰذا اِس معاملے میں کسی اقدام کا حق بھی اُن کے نظم اجتماعی کو حاصل ہے۔ اُن کے اندر کا کوئی فرد یا گروہ ہرگز یہ حق نہیں رکھتا کہ اُن کی طرف سے اِس طرح کے کسی اقدام کا فیصلہ کرے۔ نبی صلی اللہ علیہ وسلم نے اِسی بنا پر فرمایا ہے کہ مسلمانوں کا حکمران اُن کی سپر ہے، جنگ اُسی کے پیچھے رہ کر کی جاتی ہے۔<sup class=\"fnref\" data-n=\"20\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 20\">20</sup>"}, {"t": "li", "n": "۷۔", "html": "اسلام جس جہاد کا حکم دیتا ہے، وہ خدا کی راہ میں جنگ ہے، اِس لیے اخلاقی حدود سے بے پروا ہو کر نہیں کیا جا سکتا۔ اخلاقیات ہر حال میں اور ہر چیز پر مقدم ہیں اور جنگ و جدال کے موقع پر بھی اللہ تعالیٰ نے اُن سے انحراف کی اجازت کسی شخص کو نہیں دی۔ چنانچہ یہ بالکل قطعی ہے کہ جہاد صرف مقاتلین (combatants) سے کیا جاتا ہے۔ اسلام کا قانون یہی ہے کہ اگر کوئی زبان سے حملہ کرے گا تو اُس کا جواب زبان سے دیا جائے گا، لڑنے والوں کی مالی مدد کرے گا تو اُس کو مدد سے روکا جائے گا، لیکن جب تک وہ ہتھیار اٹھا کر لڑنے کے لیے نہیں نکلتا، اُس کی جان نہیں لی جا سکتی۔ یہاں تک کہ عین میدان جنگ میں بھی وہ اگر ہتھیار پھینک دے تو اُسے قیدی بنایاجا ئے گا، اُس کے بعد اُسے قتل نہیں کیا جا سکتا۔ قرآن میں جہاد کا حکم جس آیت میں دیا گیا ہے، اُس کے الفاظ ہی یہ ہیں کہ ''اللہ کی راہ میں اُن لوگوں سے لڑو جو تم سے لڑیں اور اِس میں کوئی زیادتی نہ کرو، اِس لیے کہ اللہ زیادتی کرنے والوں کو پسند نہیں کرتا۔''[ نبی صلی اللہ علیہ وسلم نے جنگ کے دوران میں عورتوں اور بچوں کے قتل سے منع فرمایا ہے۔][ اِس کی وجہ بھی یہی ہے کہ وہ اگر جنگ کرنے والوں کے ساتھ نکلے بھی ہوں تو بالعموم مقاتل نہیں ہوتے، زیادہ سے زیادہ لڑنے والوں کا حوصلہ بڑھا سکتے اور زبان سے اُنھیں لڑنے کی ترغیب دے سکتے ہیں۔]"}, {"t": "li", "n": "۸۔", "html": "دور حاضر کے مغربی مفکرین سے صدیوں پہلے قرآن نے اعلان کیا تھا کہ 'اَمْرُهُمْ شُوْرٰي بَيْنَهُمْ'،[ (مسلمانوں کا نظم اجتماعی اُن کے باہمی مشورے پر مبنی ہو گا)۔ اِس کے صاف معنی یہ تھے کہ مسلمانوں کی حکومت اُن کے مشورے سے قائم ہو گی۔ نظام مشورے ہی سے وجود میں آئے گا۔ مشورہ دینے میں سب کے حقوق برابر ہوں گے۔ جو کچھ مشورے سے بنے گا، وہ مشورے سے توڑا بھی جاسکے گا۔ جس چیز کو وجود میں لانے کے لیے مشورہ کیا جائے گا، ہر شخص کی راے اُس کے وجود کا حصہ بنے گی۔ اجماع و اتفاق سے فیصلہ نہ ہو سکے تو فصل نزاعات کے لیے اکثریت کی راے قبول کر لی جائے گی۔]"}, {"t": "p", "html": "یہی جمہوریت ہے۔ چنانچہ آمریت کسی خاندان کی ہو یا کسی طبقے، گروہ یا قومی ادارے کی، کسی حال میں بھی قبول نہیں کی جاسکتی، یہاں تک کہ نظم اجتماعی سے متعلق دینی احکام کی تعبیر و تشریح کے لیے دینی علوم کے ماہرین کی بھی نہیں۔ وہ یہ حق یقیناً رکھتے ہیں کہ اپنی تشریحات پیش کریں اور اپنی آرا کا اظہار کریں، مگر اُن کے موقف کو لوگوں کے لیے واجب الاطاعت قانون کی حیثیت اُسی وقت حاصل ہو گی، جب عوام کے منتخب نمایندوں کی اکثریت اُسے قبول کر لے گی۔ جدید ریاست میں پارلیمان کا ادارہ اِسی مقصد سے قائم کیا جاتا ہے۔ ریاست کے نظام میں آخری فیصلہ اُسی کا ہے اور اُسی کا ہونا چاہیے۔ لوگوں کا حق ہے کہ پارلیمان کے فیصلوں پر تنقید کریں اور اُن کی غلطی واضح کرنے کی کوشش کرتے رہیں، لیکن اُن کی خلاف ورزی اور اُن سے بغاوت کا حق کسی کو بھی حاصل نہیں ہے۔ علما ہوں یا ریاست کی عدلیہ، پارلیمان سے کوئی بالاتر نہیں ہو سکتا۔ 'اَمْرُهُمْ شُوْرٰي بَيْنَهُمْ' کا اصول ہر فرد اور ادارے کو پابند کرتا ہے کہ پارلیمان کے فیصلوں سے اختلاف کے باوجود وہ عملاً اُس کے سامنے سرتسلیم خم کر دیں۔"}, {"t": "p", "html": "اسلام میں حکومت قائم کرنے اور اُس کو چلانے کا یہی ایک جائز طریقہ ہے۔ اِس سے ہٹ کر جو حکومت بھی قائم کی جائے گی، وہ ایک ناجائز حکومت ہو گی، خواہ اُس کے سربراہ کی پیشانی پر سجدوں کے نشان ہوں یا اُسے امیرالمومنین کے لقب سے نواز دیا جائے۔"}, {"t": "li", "n": "۹۔", "html": "مسلمانوں کی حکومت اگر کسی جگہ قائم ہو تو اُس سے بالعموم نفاذ شریعت کا مطالبہ کیا جاتا ہے۔ یہ تعبیر مغالطہ انگیز ہے، اِس لیے کہ اِس سے یہ تاثر پیدا ہوتا ہے کہ اسلام میں حکومت کو یہ حق دیا گیا ہے کہ وہ شریعت کے تمام احکام ریاست کی طاقت سے لوگوں پر نافذ کر دے، دراں حالیکہ قرآن و حدیث میں یہ حق کسی حکومت کے لیے بھی ثابت نہیں ہے۔ اسلامی شریعت میں دو طرح کے احکام ہیں: ایک، جو فرد کو بحیثیت فرد دیے گئے ہیں اور دوسرے، جو مسلمانوں کے معاشرے کو دیے گئے ہیں۔ پہلی قسم کے احکام کا معاملہ خدا اور بندے کے درمیان ہے اور وہ اُس میں کسی حکومت کے سامنے نہیں، بلکہ اپنے پروردگار ہی کے سامنے جواب دہ ہے۔ لہٰذا دنیا کی کوئی حکومت اُسے، مثال کے طور پر، روزہ رکھنے یا حج و عمرہ کے لیے جانے یا ختنہ کرانے یا مونچھیں پست رکھنے اور وہ اگر عورت ہے تو سینہ ڈھانپنے، زیب و زینت کی نمایش نہ کرنے یا اسکارف اوڑھ کر باہر نکلنے کے لیے مجبور نہیں کرسکتی۔ اِس طرح کے معاملات میں تعلیم و تربیت اور تلقین و نصیحت سے آگے اُس کے کوئی اختیارات نہیں ہیں، الاّ یہ کہ کسی کی حق تلفی یا جان، مال، آبرو کے خلاف زیادتی کا اندیشہ ہو۔ قرآن نے پوری صراحت کے ساتھ واضح کر دیا ہے کہ دین کے ایجابی احکام میں سے یہ صرف نماز اور زکوٰۃ ہے جس کا مطالبہ مسلمانوں کا کوئی نظم اجتماعی، اگر چاہے تو قانون کی طاقت سے کر سکتا ہے۔ قرآن کا ارشاد ہے کہ اِس کے بعد وہ پابند ہے کہ اُن کی راہ چھوڑ دے اور کوئی چیز اُن پر نافذ کرنے کی کوشش نہ کرے[۔ رہے دوسری قسم کے احکام تو وہ درحقیقت دیے ہی حکومت کو گئے ہیں، اِس لیے کہ اجتماعی معاملات میں وہی معاشرے کی نمایندگی کرتی ہے۔ علما ارباب حل و عقد سے اُن پر عمل کا مطالبہ کریں تو یقیناً حق بجانب ہوں گے اور اپنے منصب کے لحاظ سے اُن کو کرنا بھی چاہیے۔ مگر یہ شریعت پر عمل کی دعوت ہے، نفاذ شریعت کی تعبیر اِس کے لیے بھی موزوں قرار نہیں دی جاسکتی۔]"}, {"t": "p", "html": "یہ دوسری قسم کے احکام درج ذیل ہیں:", "keep": true}, {"t": "p", "html": "ا۔ مسلمان اپنے حکمرانوں کی رعایا نہیں، بلکہ برابر کے شہری ہوں گے۔ قانون اور ریاست کی سطح پر اُن کے بڑے اور چھوٹے اور شریف اور وضیع کے مابین کوئی امتیاز روا نہیں رکھا جائے گا۔ اُن کے جان و مال اور آبرو کو حرمت حاصل ہو گی، یہاں تک کہ حکومت اُن کی رضامندی کے بغیر زکوٰۃ کے علاوہ کوئی ٹیکس بھی اُن پر عائد نہیں کر سکے گی۔ اُن کے شخصی معاملات، یعنی نکاح، طلاق، تقسیم وراثت، لین دین اور اِس نوعیت کے دوسرے امور میں اگر کوئی نزاع اُن کے درمیان پیدا ہو جائے گی تو اُس کا فیصلہ اسلامی شریعت کے مطابق ہوگا۔ روز و شب کی نمازوں، ماہ رمضان کے روزوں اور حج و عمرہ کے لیے اُنھیں تمام ضروری سہولتیں فراہم کی جائیں گی۔ اُن پر عدل و انصاف کے ساتھ اور 'اَمْرُهُمْ شُوْرٰي بَيْنَهُمْ' کے طریقے پر حکومت کی جائے گی۔ اُن کے قومی املا ک اجتماعی ضرورتوں کے لیے خاص رہیں گے، اُنھیں نجی ملکیت میں نہیں دیا جائے گا، بلکہ اِس طرح نشوونما دی جائے گی کہ جو لوگ معیشت کی دوڑ میں پیچھے رہ جائیں، اُن کی ضرورتیں بھی اِن املاک کی آمدنی سے پوری ہوتی رہیں۔ وہ دنیا سے رخصت ہوں گے تو اُن کی تجہیز و تکفین مسلمانوں کے طریقے پر ہو گی، اُن کا جنازہ پڑھا جائے گا اور اُنھیں مسلمانوں کے قبرستان میں اور اُن کے طریقے پر دفن کیا جائے گا۔"}, {"t": "p", "html": "ب۔ نماز جمعہ اور نماز عیدین کا اہتمام حکومت کرے گی۔ یہ نمازیں صرف اُنھی مقامات پر ادا کی جائیں گی جو حکومت کی طرف سے اُن کے لیے مقرر کر دیے جائیں گے۔ اِن کا منبر حکمرانوں کے لیے خاص ہو گا۔ وہ خود اِن نمازوں کا خطبہ دیں گے اور اِن کی امامت کریں گے یااُن کی طرف سے اُن کا کوئی نمایندہ یہ ذمہ داری ادا کرے گا۔ ریاست کے حدود میں کوئی شخص اپنے طور پر اِن نمازوں کا اہتمام نہیں کر سکے گا۔"}, {"t": "p", "html": "ج۔ قانون نافذ کرنے والے ادارے اصلًا امر بالمعروف اور نہی عن المنکر کے ادارے ہوں گے۔ چنانچہ معاشرے کے صالح ترین افراد اِن اداروں کے لیے کارکنوں کی حیثیت سے منتخب کیے جائیں گے۔ وہ لوگوں کو بھلائی کی تلقین کریں گے اور اُن سب چیزوں سے روکیں گے جنھیں انسان ہمیشہ سے برائی سمجھتا رہا ہے۔ تاہم قانون کی طاقت اُسی وقت استعمال کریں گے، جب کوئی شخص کسی کی حق تلفی کرے گا یا اُس کی جان، مال یا آبرو کے خلاف کسی اقدام کے درپے ہوگا۔"}, {"t": "p", "html": "د۔ حکومت اپنے دشمنوں کے معاملے میں بھی قائم بالقسط رہے گی۔ حق کہے گی،حق کی گواہی دے گی اور حق و انصاف سے ہٹ کر کبھی کوئی اقدام نہیں کرے گی۔"}, {"t": "p", "html": "ہ۔ ریاست کے اندر یا باہر اگر کسی سے کوئی معاہدہ ہوا ہے تو جب تک معاہدہ باقی ہے، لفظ اور معنی، دونوں کے اعتبار سے اُس کی پابندی پوری دیانت اور پورے اخلاص کے ساتھ کی جائے گی۔"}, {"t": "p", "html": "و۔ قتل اور فساد فی الارض کے سوا موت کی سزا کسی جرم میں بھی نہیں دی جائے گی۔ نیز ریاست کا کوئی مسلمان شہری اگر زنا، چوری، قتل، فساد فی الارض اور قذف کا ارتکاب کرے گا اور عدالت مطمئن ہو جائے گی کہ اپنے ذاتی، خاندانی اور معاشرتی حالات کے لحاظ سے وہ کسی رعایت کا مستحق نہیں ہے تو اُس پر وہ سزائیں نافذ کی جائیں گی جو اللہ تعالیٰ نے اسلام کی دعوت کو پورے شعور اور شرح صدر کے ساتھ قبول کر لینے کے بعد اِن جرائم کا ارتکاب کرنے والوں کے لیے اپنی کتاب میں مقرر کر دی ہیں۔"}, {"t": "p", "html": "ز۔ اسلام کی دعوت کو اقصاے عالم تک پہنچانے کے لیے حکومت کی سطح پر اہتمام کیا جائے گا۔ دنیا کی کوئی طاقت اگر اِس میں رکاوٹ پیدا کرے گی یا ایمان لانے والوں کو جبر و تشدد کا نشانہ بنائے گی تو حکومت اپنی استطاعت کے مطابق اِس رکاوٹ کو دور کرنے اور اِس تشدد کو روکنے کی کوشش کرے گی، اگرچہ اِس کے لیے تلوار اٹھانی پڑے۔<sup class=\"fnref\" data-n=\"25\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 25\">25</sup>"}, {"t": "li", "n": "۱۰۔", "html": "نظم اجتماعی سے متعلق یہ شریعت کے احکام ہیں اور اِس تنبیہ و تہدید کے ساتھ دیے گئے ہیں کہ جو لوگ خدا کی کتاب کو مان کر اُس میں خدا کے نازل کردہ قانون کے مطابق فیصلے نہیں کرتے، قیامت کے دن وہ اُس کے حضور میں ظالم، فاسق اور کافر قرار پائیں گے۔[ تاہم مسلمانوں کے ارباب حل و عقد اگر اِس کے باوجود اِس معاملے میں کوتاہی کے ہوتے یا سرکشی اختیار کر لیتے ہیں تو علما و مصلحین کی ذمہ داری اِس کے سوا کچھ نہیں کہ وہ اُنھیں دنیا اور آخرت میں اِس کے نتائج سے خبردار کریں۔ اُنھیں حکمت کے ساتھ اور موعظۂ حسنہ کے اسلوب میں صحیح رویہ اختیار کرنے کی دعوت دیں، اُن کے سوالات کا سامنا کریں، اُن کے اشکالات دور کریں اور دلائل کے ساتھ اُنھیں بتائیں کہ اللہ تعالیٰ نے اپنی شریعت کیوں دی ہے؟ اجتماعی زندگی کے ساتھ اُس کا کیا تعلق ہے؟ اُس میں احکام کی بنیاد کیا ہے اور دورحاضر کا انسان اُس کو سمجھنے میں دقت کیوں محسوس کرتا ہے؟ اُس کی تفہیم وتبیین کے لیے ایسے اسالیب اختیار کریں جن سے اُس کی حکمت، معنویت اور اُس کے مقاصد اُن پر واضح ہوں اور اُن کے دل و دماغ پورے اطمینان کے ساتھ اُسے قبول کرنے اور اُس پر عمل پیرا ہونے کے لیے تیار ہو جائیں۔ قرآن میں اُن کا منصب دعوت و انذار بتایا گیا ہے۔ وہ اپنی قوم اور اُس کے ارباب حل و عقد کے لیے داروغہ نہیں بنائے گئے کہ اپنے پیروکاروں کے جتھے منظم کر کے بندوق کے زور پر اُنھیں شریعت کا پابند بنانے کی کوشش کریں۔]"}], "bounds": [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21], "est": 10}, {"title": "نہی عن المنکر", "sub": "", "num": "۶", "blocks": [{"t": "p", "html": "ایمان کا ایک لازمی تقاضا یہ بھی ہے کہ لوگوں کو بھلائی کی تلقین کی جائے اور برائی سے روکا جائے۔ یہ تلقین کرنا اور روکنا، دونوں حکمت و موعظت کے ساتھ اور دعوت و نصیحت کے اسلوب میں ہونے چاہییں۔ لوگوں کی ہدایت اور گم راہی کا معاملہ اللہ تعالیٰ نے اپنے ہاتھ میں لے رکھا ہے۔ وہ اُن کو بھی جانتا ہے جو اُس کی راہ سے بھٹکے ہوئے ہیں اور اُن کو بھی جو ہدایت پانے والے ہیں، اِس لیے حق و انصاف کی دعوت کے لیے نہ کسی شخص کو داروغہ بننا چاہیے اور نہ اپنے مخاطبین کے لیے جنت اور جہنم کے فیصلے صادر کرنے چاہییں۔ قرآن اِس معاملے میں بالکل واضح ہے کہ داعی حق کی حیثیت سے خدا کے کسی پیغمبر کو بھی تذکیر و نصیحت اور بلاغ مبین سے آگے کسی اقدام کی اجازت نہیں دی گئی۔ اللہ تعالیٰ کا ارشاد ہے:", "keep": true}, {"t": "verse", "ar": ["اِنَّمَا٘ اَنْتَ مُذَكِّرٌ، لَسْتَ عَلَيْهِمْ بِمُصَۜيْطِرٍ"], "trans": ["''تم نصیحت کرنے والے ہو، تم اِن پر کوئی داروغہ نہیں ہو۔''"], "ref": "الغاشیہ ۸۸: ۲۱- ۲۲"}, {"t": "p", "html": "دائرۂ اختیار کا معاملہ، البتہ مختلف ہے۔ سن رشد کو پہنچنے کے بعد آدمی کسی عورت کا شوہر اور اِس کے نتیجے میں بچوں کا باپ بنتا ہے۔ بنی آدم کی یہ دونوں حیثیتیں دین و فطرت کی رو سے اُن کا ایک دائرۂ اختیار پیدا کرتی ہیں۔ یہی صورت اداروں اور حکومتوں کی ہے۔ یہ جب قائم ہو جاتی ہیں تو اِن کے سربراہوں کے لیے بھی ایک دائرۂ اختیار پیدا ہو جاتا ہے۔ نبی صلی اللہ علیہ وسلم نے اِسی دائرے کے اندر ہونے والی برائیوں کے بارے میں فرمایا ہے:", "keep": true}, {"t": "verse", "ar": ["من راٰی منکم منکرًا فلیغیره بیدہ، فإن لم یستطع فبلسانه، فإن لم یستطع فبقلبه، وذلك أضعف الإیمان"], "trans": ["''تم میں سے کوئی شخص برائی دیکھے تو اُسے چاہیے کہ ہاتھ سے اُس کا ازالہ کرے۔ پھر اگر اِس کی ہمت نہ ہو تو زبان سے اور اگر یہ بھی نہ ہو سکے تو دل سے اُسے ناگوار سمجھے اور یہ ایمان کا ادنیٰ ترین درجہ ہے۔''"], "ref": "مسلم، رقم ۱۷۷"}, {"t": "p", "html": "برائی کے لیے اِس روایت میں 'منکر' کا لفظ استعمال ہوا ہے۔ اِس سے مراد وہ برائیاں نہیں ہیں جو خالص مذہبی احکام کی خلاف ورزی سے پیدا ہوتی ہیں، بلکہ وہ برائیاں ہیں جنھیں پوری انسانیت بلا امتیاز مذہب و ملت برائی سمجھتی ہے۔ چوری، جھوٹ، بددیانتی، غبن، خیانت، ناپ تول میں کمی، ملاوٹ، حق تلفی، فواحش، جان، مال اور آبرو کے خلاف زیادتی اور اِس نوعیت کی دوسری برائیوں کوعربی زبان میں لفظ 'منکر' سے تعبیر کیا جاتا ہے۔ نبی صلی اللہ علیہ وسلم کا یہ ارشاد اِنھی برائیوں سے متعلق ہے۔ امر بالمعروف اور نہی عن المنکر کا جو حکم قرآن میں بیان ہوا ہے، یہ اُسی کی فرع ہے۔ آپ نے تنبیہ فرمائی ہے کہ اِن برائیوں کو اپنے اپنے دائرۂ اختیار میں دل سے بھی برا نہیں سمجھو گے تو اِس سے آگے پھر ایمان کا کوئی درجہ نہیں ہے۔"}, {"t": "p", "html": "'إن لم یستطع' کے جو الفاظ اِس روایت میں آئے ہیں، اُن کو بھی سمجھ لینا چاہیے۔ اِن سے مراد وہ استطاعت نہیں ہے جو آدمی کو کسی چیز کا مکلف ٹھیراتی ہے، اِس لیے کہ اُس کے نہ ہونے سے وہ اگر کسی حکم پر عمل نہیں کرتا تو ایمان کے کسی نچلے درجے میں نہیں آجاتا۔ روایت میں یہ الفاظ ہمت اور حوصلے کے معنی میں استعمال ہوئے ہیں جو ایمان کی قوت اور کم زوری سے کم یا زیادہ ہو سکتا ہے۔ چنانچہ یہ صرف دائرۂ اختیار ہے جس میں کوئی شخص اگر برائی کو ہاتھ سے نہیں روکتا تو اُس کے بارے میں کہا جا سکتا ہے کہ وہ ایمان کے پہلے درجے پر نہیں رہا، اِس لیے کہ اختیار و اقتدار کے باوجود اُس نے برائی کو روکنے کی کوشش نہیں کی۔ اِس کے ہرگز یہ معنی نہیں ہیں کہ ایمان کے اِس درجے کو پانے کے لیے لوگ اپنے پیرووں کے جتھے منظم کریں اور ازالۂ منکر کی غرض سے نکل کھڑے ہوں۔ اِس طرح کا اقدام اگر کیا جاتا ہے تو یہ بدترین فساد ہو گا جس کی دین میں کوئی گنجایش نہیں ہے۔ دین کے تمام احکام انسان کے اختیار اور اُس کی استطاعت کے لحاظ سے دیے گئے ہیں۔ 'لَا يُكَلِّفُ اللّٰهُ نَفْسًا اِلَّا وُسْعَهَا'<sup class=\"fnref\" data-n=\"27\" tabindex=\"0\" role=\"button\" aria-label=\"حاشیہ 27\">27</sup>[ ایک قطعی اصول ہے جو دین و شریعت کے سارے احکام میں ملحوظ ہے۔ نہی عن المنکر کے بارے میں نبی صلی اللہ علیہ وسلم کے ارشادات کو اِسی اصول کی روشنی میں سمجھنا چاہیے۔]"}], "bounds": [0, 2, 4, 5, 6], "est": 3}], "footnotes": {"1": "الجمعہ ۶۲: ۲۔", "2": "الاعلیٰ ۸۷: ۱۴- ۱۷۔", "3": "النحل ۱۶: ۹۰۔", "4": "التوبہ ۹: ۷۱۔", "5": "النساء ۴: ۱۳۵۔ المائدہ ۵: ۸۔", "6": "حٰم السجدہ ۴۱: ۳۳- ۳۵۔", "7": "النساء۴: ۹۷۔", "8": "التوبہ ۹: ۲۴۔", "9": "لسان العرب ۹/ ۱۰۔", "10": "یعنی ہر حال میں اِس پر قائم رہو ۔ اقامت دین کا صحیح مفہوم یہی ہے ۔ تفصیل کے لیے دیکھیے،ہماری کتاب ''برہان'' میں مضمون : ''تاویل کی غلطی'' ۔", "11": "البقرہ ۲: ۱۴۳۔", "12": "الاحزاب ۳۳: ۴۰۔", "13": "ق ۵۰: ۴۵۔ '' سو قرآن کے ذریعے سے یاددہانی کرو اُنھیں جو میری تنبیہ سے ڈرتے ہوں۔''", "14": "الفرقان ۲۵: ۵۲۔ '' اِسی (قرآن) کے ذریعے سے اِن کے ساتھ جہاد کبیر کرتے رہو۔''", "15": "الفرقان ۲۵: ۱۔ '' بہت بزرگ، بہت فیض رساں ہے وہ ذات جس نے اپنے بندے پر یہ فرقان اتارا ہے، اِس لیے کہ وہ اہل عالم کے لیے خبردار کرنے والا ہو۔''", "16": "اِس سے وہ معاملات مراد ہیں، جن کے احکام مسلمانوں کے معاشرے کو دیے گئے ہیں۔ اِس کے برخلاف جو احکام فرد کو بہ حیثیت فرد دیے گئے ہیں، اُن کا معاملہ خدا اور بندوں کے درمیان ہے، اور اُس میں وہ حکومت یا قانون کے سامنے نہیں، بلکہ اپنے پروردگار ہی کے سامنے جواب دہ ہیں۔ اِس طرح کے معاملات میں تعلیم و تربیت اور تلقین و نصیحت سے آگے کسی حکومت کے کوئی اختیارات نہیں ہیں، الّا یہ کہ کسی کی حق تلفی یا جان و مال اور آبرو کے خلاف کسی زیادتی کا اندیشہ ہو۔", "17": "بخاری، رقم ۷۰۵۳- ۷۰۵۴۔", "18": "الحجرا ت ۴۹: ۱۰۔", "19": "یونس ۱۰: ۴۷۔", "20": "بخاری، رقم ۲۹۵۷۔", "21": "البقرہ ۲: ۱۹۰۔", "22": "بخاری، رقم ۳۰۱۵۔ مسلم، رقم ۱۷۴۴۔", "23": "الشوری۴۲: ۳۸۔", "24": "التوبہ ۹: ۵۔", "25": "اسلام کے مآخذ میں اِن احکام کے دلائل کے لیے دیکھیے، ہماری کتاب ''میزان''۔", "26": "المائدہ ۵: ۴۴- ۴۷۔", "27": "البقرہ ۲ : ۲۸۶۔ ''(یہ حقیقت ہے کہ) اللہ کسی پر اُس کی طاقت سے زیادہ بوجھ نہیں ڈالتا۔''"}};
+const $ = s => document.querySelector(s);
+
+/* ── language ── */
+const L = DATA.labels, RTL = DATA.dir === 'rtl', FWD = RTL ? -1 : 1;
+const URDU_DIGITS = '۰۱۲۳۴۵۶۷۸۹';
+const num = n => DATA.numerals === 'urdu' ? String(n).replace(/[0-9]/g, d => URDU_DIGITS[+d]) : String(n);
+const fmt = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k]);
+$('#tocLabel').textContent = L.contents;
+$('#backLabel').textContent = L.contents;
+$('#btnBack').setAttribute('aria-label', L.contents);
+$('#btnPrev').setAttribute('aria-label', L.prev);
+$('#btnNext').setAttribute('aria-label', L.next);
+document.querySelector('.colophon .kb').textContent = L.keyhint;
+document.querySelector('.colophon .tp').textContent = L.touchhint;
+let ci = 0, li = 0;
+
+/* ——— index ——— */
+const tocList = $('#tocList');
+DATA.chapters.forEach((c, i) => {
+  const li_ = document.createElement('li');
+  li_.innerHTML = `<button class="entry" data-c="${i}">
+      <svg class="med" viewBox="0 0 100 100" aria-hidden="true"><use href="#star"/>
+        <text class="num" x="50" y="50" text-anchor="middle" dominant-baseline="central">${c.num || '✦'}</text></svg>
+      <span><h2>${c.title}</h2>${c.sub ? `<p>${c.sub}</p>` : ''}</span>
+      <span class="folio" data-c="${i}">${fmt(c.est === 1 ? L.pages_one : L.pages_many, {n: num(c.est)})}</span>
+    </button>`;
+  tocList.appendChild(li_);
+});
+tocList.addEventListener('click', e => {
+  const b = e.target.closest('.entry'); if (!b) return;
+  go(+b.dataset.c, 0);
+});
+
+/* ——— render ——— */
+function blockHTML(b, first) {
+  if (b.t === 'p') return `<p class="${first ? 'first' : ''}">${b.html}</p>`;
+  if (b.t === 'h') return `<h3>${b.html}</h3>`;
+  if (b.t === 'li') return `<div class="li"><span class="mk">${b.n}</span><p>${b.html}</p></div>`;
+  if (b.t === 'quote') return `<div class="quote"><p>${b.html}</p>${b.ref ? `<div class="qref"><span>${b.ref}</span></div>` : ''}</div>`;
+  if (b.t === 'sig') return `<div class="sig"><div class="nm">${b.html}</div><div class="sb">${b.sub}</div></div>`;
+  if (b.t === 'verse') {
+    const ar = b.ar.length ? `<div class="vfrm"><span class="cnr a"></span><span class="cnr b"></span><span class="cnr c"></span><span class="cnr d"></span>
+        ${b.ar.map(a => `<p class="ar ${b.persian ? 'fa' : ''}" dir="rtl">${a}</p>`).join('')}</div>` : '';
+    const tr = b.trans.length ? `<blockquote class="tr">${b.trans.join(' ')}</blockquote>` : '';
+    const rf = b.ref ? `<figcaption class="vref"><span>${b.ref}</span></figcaption>` : '';
+    return `<figure class="verse">${ar}${tr}${rf}</figure>`;
+  }
+  return '';
+}
+function openerHTML(c) {
+  return `<div class="opener">
+      <svg class="med" viewBox="0 0 100 100" aria-hidden="true"><use href="#star"/>
+        <text class="num" x="50" y="50" text-anchor="middle" dominant-baseline="central">${c.num || '✦'}</text></svg>
+      <h2>${c.title}</h2>${c.sub ? `<p class="sub">${c.sub}</p>` : ''}
+      <svg class="band" viewBox="0 0 400 20" aria-hidden="true"><rect width="400" height="20" fill="url(#band)"/></svg>
+    </div>`;
+}
+function blocksHTML(c, idxs, withDrop) {
+  let used = !withDrop;
+  return idxs.map(i => {
+    const b = c.blocks[i];
+    const f = !used && b.t === 'p';
+    if (f) used = true;
+    return blockHTML(b, f);
+  }).join('');
+}
+
+/* — measure-driven pagination: a page always fits the viewport — */
+const probe = document.createElement('article');
+probe.className = 'leaf probe'; probe.setAttribute('aria-hidden', 'true');
+probe.innerHTML = '<div class="type"><div class="col"></div><aside class="marg"></aside></div>';
+document.querySelector('.leafwrap').appendChild(probe);
+const pcol = probe.querySelector('.col');
+let PAGES = [];
+const fits = () => pcol.scrollHeight <= pcol.clientHeight + 2;
+
+function paginate() {
+  PAGES = DATA.chapters.map(c => {
+    const leaves = [];
+    let cur = [], acc = openerHTML(c);
+    pcol.innerHTML = acc;
+    const flush = () => { if (cur.length) { leaves.push(cur); cur = []; } acc = ''; pcol.innerHTML = ''; };
+    for (let u = 0; u + 1 < c.bounds.length; u++) {
+      const idxs = [];
+      for (let i = c.bounds[u]; i < c.bounds[u + 1]; i++) idxs.push(i);
+      const trial = acc + blocksHTML(c, idxs, false);
+      pcol.innerHTML = trial;
+      if (fits()) { cur = cur.concat(idxs); acc = trial; continue; }
+      if (cur.length) {                       // break, retry unit alone
+        flush();
+        pcol.innerHTML = blocksHTML(c, idxs, false);
+        if (fits()) { cur = idxs.slice(); acc = pcol.innerHTML; continue; }
+      }
+      // unit too tall for one leaf — pack its blocks individually
+      for (const i of idxs) {
+        const t2 = acc + blocksHTML(c, [i], false);
+        pcol.innerHTML = t2;
+        if (fits() || !cur.length) { cur.push(i); acc = t2; }
+        else { flush(); cur = [i]; pcol.innerHTML = blocksHTML(c, [i], false); acc = pcol.innerHTML; }
+      }
+    }
+    if (cur.length) leaves.push(cur);
+    return leaves.length ? leaves : [[]];
+  });
+}
+
+function render(dir) {
+  const c = DATA.chapters[ci], pg = PAGES[ci];
+  li = Math.max(0, Math.min(li, pg.length - 1));
+  const inner = (li === 0 ? openerHTML(c) : '') + blocksHTML(c, pg[li], li === 0);
+  const tmp = document.createElement('div'); tmp.innerHTML = inner;
+  const ns = [];
+  tmp.querySelectorAll('.fnref').forEach(f => { if (!ns.includes(f.dataset.n)) ns.push(f.dataset.n); });
+  const notes = ns.map(n => `<div class="note" data-n="${n}"><b>${n}</b><span>${DATA.footnotes[n] || ''}</span></div>`).join('');
+
+  const leaf = $('#leaf');
+  leaf.style.setProperty('--dir', ((dir === -1) !== RTL ? '-18px' : '18px'));
+  leaf.innerHTML = `<div class="type">
+      <div class="colwrap"><div class="col">${inner}</div></div>
+      <aside class="marg${notes ? '' : ' empty'}"><button class="close" aria-label="Close notes">×</button>
+        <div class="mfolio"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#starsm"/></svg>
+          <span>${c.num || '✦'}</span><span>·</span><span>${num(li + 1)}</span></div>
+        <div class="mhead">${L.notes}</div>${notes}</aside>
+      <div class="corners" aria-hidden="true"><span class="ktl"></span><span class="ktr"></span><span class="kbl"></span><span class="kbr"></span></div>
+    </div>`;
+  leaf.classList.remove('turning'); void leaf.offsetWidth; leaf.classList.add('turning');
+  const col = leaf.querySelector('.col');
+  col.scrollTop = 0;
+  const wrap = leaf.querySelector('.colwrap');
+  if (col.scrollHeight > col.clientHeight + 4) {
+    wrap.classList.add('scrolls');
+    wrap.insertAdjacentHTML('beforeend',
+      '<span class="cue" aria-hidden="true"><svg viewBox="0 0 12 8" fill="none" stroke="currentColor"' +
+      ' stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 1.6 L6 5.2 L10.5 1.6"/></svg></span>');
+    col.addEventListener('scroll', () => {
+      wrap.classList.toggle('atend', col.scrollHeight - col.scrollTop - col.clientHeight < 24);
+    }, { passive: true });
+  }
+
+  $('#rTitle').innerHTML = (c.num ? `<i>${c.num}</i> &nbsp;·&nbsp; ` : '') + `<b>${c.title}</b>`;
+  $('#rFolio').textContent = fmt(L.page, {n: num(li + 1), m: num(pg.length)});
+  $('#btnPrev').disabled = (ci === 0 && li === 0);
+  $('#btnNext').disabled = (ci === DATA.chapters.length - 1 && li === pg.length - 1);
+
+  const pips = $('#pips');
+  const last = li === pg.length - 1 && ci < DATA.chapters.length - 1;
+  pips.classList.toggle('dense', pg.length > 18);
+  pips.innerHTML = pg.map((_, i) => `<button class="pip ${i === li ? 'on' : ''}" data-l="${i}" aria-label="${fmt(L.page, {n: num(i + 1), m: num(pg.length)})}"></button>`).join('')
+    + `<span class="plabel">${num(li + 1)} / ${num(pg.length)}</span>`
+    + (last ? `<button class="nextch" data-next="1">${DATA.chapters[ci + 1].title} ${L.arrow}</button>` : '');
+
+  const total = PAGES.reduce((a, x) => a + x.length, 0);
+  const done = PAGES.slice(0, ci).reduce((a, x) => a + x.length, 0) + li + 1;
+  $('#prog').style.width = (done / total * 100) + '%';
+}
+
+function go(c, l) {
+  const dir = (c > ci || (c === ci && l > li)) ? 1 : -1;
+  const wasHidden = $('#reader').hidden;
+  $('#index').hidden = true; $('#reader').hidden = false;
+  if (wasHidden && !PAGES.length) paginate();
+  ci = c; li = l;
+  render(dir);
+  location.hash = `#/${ci}/${li}`;
+  updateFolios();
+}
+function updateFolios() {
+  if (!PAGES.length) return;
+  document.querySelectorAll('.folio[data-c]').forEach(f => {
+    const n = PAGES[+f.dataset.c].length;
+    f.textContent = fmt(n === 1 ? L.pages_one : L.pages_many, {n: num(n)});
+  });
+}
+function home() {
+  $('#reader').hidden = true; $('#index').hidden = false;
+  $('#index').classList.remove('enter'); void $('#index').offsetWidth; $('#index').classList.add('enter');
+  location.hash = '#/';
+}
+function step(d) {
+  let nl = li + d, nc = ci;
+  if (nl < 0) { nc = ci - 1; if (nc < 0) return; nl = PAGES[nc].length - 1; }
+  if (nl >= PAGES[ci].length) { nc = ci + 1; if (nc >= DATA.chapters.length) return; nl = 0; }
+  go(nc, nl);
+}
+
+$('#btnPrev').onclick = () => step(-1);
+$('#btnNext').onclick = () => step(1);
+$('#btnBack').onclick = home;
+$('#pips').addEventListener('click', e => {
+  const p = e.target.closest('.pip'); if (p) return go(ci, +p.dataset.l);
+  if (e.target.closest('[data-next]')) go(ci + 1, 0);
+});
+document.addEventListener('click', e => {
+  const f = e.target.closest('.fnref'); if (!f) return;
+  document.querySelectorAll('.note.lit,.fnref.lit').forEach(x => x.classList.remove('lit'));
+  f.classList.add('lit');
+  const marg = document.querySelector('#leaf .marg');
+  const n = document.querySelector(`.note[data-n="${f.dataset.n}"]`);
+  if (marg) marg.classList.add('open');
+  if (n) { n.classList.add('lit'); n.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+});
+document.addEventListener('click', e => {
+  if (e.target.closest('.marg .close')) document.querySelector('#leaf .marg').classList.remove('open');
+});
+let rt;
+addEventListener('resize', () => {
+  clearTimeout(rt);
+  rt = setTimeout(() => {
+    if ($('#reader').hidden) { PAGES = []; return; }
+    const c = ci, frac = PAGES.length ? li / Math.max(1, PAGES[ci].length) : 0;
+    paginate(); li = Math.round(frac * PAGES[c].length); render(1); updateFolios();
+  }, 260);
+});
+document.addEventListener('keydown', e => {
+  if ($('#reader').hidden) {
+    if (e.key === 'Enter' && document.activeElement.classList.contains('entry')) return;
+    return;
+  }
+  if (e.key === 'ArrowRight') { e.preventDefault(); step(FWD); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-FWD); }
+  else if (e.key === 'PageDown') { e.preventDefault(); step(1); }
+  else if (e.key === 'PageUp') { e.preventDefault(); step(-1); }
+  else if (e.key === 'Escape' || e.key === 'Home') { e.preventDefault(); home(); }
+});
+/* touch swipe */
+let tx = 0, ty = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+document.addEventListener('touchend', e => {
+  if ($('#reader').hidden) return;
+  const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.8) step(dx < 0 ? FWD : -FWD);
+}, { passive: true });
+
+function boot() {
+  const m = location.hash.match(/^#\/(\d+)\/(\d+)/);
+  if (m && DATA.chapters[+m[1]]) go(+m[1], +m[2]);
+  else {
+    $('#index').classList.add('enter');
+    $('#reader').hidden = false; $('#reader').style.visibility = 'hidden';
+    paginate();
+    $('#reader').hidden = true; $('#reader').style.visibility = '';
+    updateFolios();
+  }
+}
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(boot).catch(boot);
+else addEventListener('load', boot);
+</script>
+</body>
+</html>
